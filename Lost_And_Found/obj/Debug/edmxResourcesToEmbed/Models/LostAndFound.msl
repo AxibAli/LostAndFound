@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LostandFoundModelStoreContainer" CdmEntityContainer="LostandFoundEntities1">
+    <EntitySetMapping Name="App_Admin">
+      <EntityTypeMapping TypeName="LostandFoundModel.App_Admin">
+        <MappingFragment StoreEntitySet="App_Admin">
+          <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+          <ScalarProperty Name="Admin_FullName" ColumnName="Admin_FullName" />
+          <ScalarProperty Name="Admin_Email" ColumnName="Admin_Email" />
+          <ScalarProperty Name="Admin_Password" ColumnName="Admin_Password" />
+          <ScalarProperty Name="Admin_Picture" ColumnName="Admin_Picture" />
+          <ScalarProperty Name="Admin_Role" ColumnName="Admin_Role" />
+          <ScalarProperty Name="Admin_Created_ON" ColumnName="Admin_Created_ON" />
+          <ScalarProperty Name="Admin_Created_By" ColumnName="Admin_Created_By" />
+          <ScalarProperty Name="Admin_Updated_ON" ColumnName="Admin_Updated_ON" />
+          <ScalarProperty Name="Admin_Updated_By" ColumnName="Admin_Updated_By" />
+          <ScalarProperty Name="Admin_IsActive" ColumnName="Admin_IsActive" />
+          <ScalarProperty Name="Admin_Contact" ColumnName="Admin_Contact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="App_User">
+      <EntityTypeMapping TypeName="LostandFoundModel.App_User">
+        <MappingFragment StoreEntitySet="App_User">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="User_FullName" ColumnName="User_FullName" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Gender" ColumnName="User_Gender" />
+          <ScalarProperty Name="User_Contact" ColumnName="User_Contact" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_Picture" ColumnName="User_Picture" />
+          <ScalarProperty Name="User_DOB" ColumnName="User_DOB" />
+          <ScalarProperty Name="User_Address" ColumnName="User_Address" />
+          <ScalarProperty Name="User_Created_ON" ColumnName="User_Created_ON" />
+          <ScalarProperty Name="User_Updated_ON" ColumnName="User_Updated_ON" />
+          <ScalarProperty Name="User_IsActive" ColumnName="User_IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Found_Product">
+      <EntityTypeMapping TypeName="LostandFoundModel.Found_Product">
+        <MappingFragment StoreEntitySet="Found_Product">
+          <ScalarProperty Name="Found_Product1" ColumnName="Found_Product" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Found_Product_Status" ColumnName="Found_Product_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lost_Product">
+      <EntityTypeMapping TypeName="LostandFoundModel.Lost_Product">
+        <MappingFragment StoreEntitySet="Lost_Product">
+          <ScalarProperty Name="Lost_Product1" ColumnName="Lost_Product" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Lost_Product_Status" ColumnName="Lost_Product_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="LostandFoundModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Postedby" ColumnName="Postedby" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Product_Category" ColumnName="Product_Category" />
+          <ScalarProperty Name="Product_Image" ColumnName="Product_Image" />
+          <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+          <ScalarProperty Name="Product_Created_ON" ColumnName="Product_Created_ON" />
+          <ScalarProperty Name="Product_Location" ColumnName="Product_Location" />
+          <ScalarProperty Name="Product_IsActive" ColumnName="Product_IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
