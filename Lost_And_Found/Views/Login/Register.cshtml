@@ -23,25 +23,18 @@
                 </div>
                 <div class="input-box">
                     <span class="details">Password</span>
-<<<<<<< HEAD
-                    <input type="password" placeholder="Enter your password" required>
-                </div>       
-=======
                     @Html.TextBoxFor(x => x.User_Password, null, new { type = "password", placeholder = "Enter your password", required = true })
                 </div>
->>>>>>> e1d5ee88b482690ff41216e0891561b1ff9325c0
                 <div class="input-box">
                     <span class="details">Date of Birth</span>
                     @Html.TextBoxFor(x => x.User_DOB, null, new { type = "Date", placeholder = "Enter your Date of Birth", required = true })
                 </div>
-<<<<<<< HEAD
-               
-=======
-                <div class="input-box" style=" width 100%">
+                <div class="input-box">
+                </div>
+                <div class="input-box" style="width:100%">
                     <span class="details">Address</span>
                     @Html.TextBoxFor(x => x.User_Address, null, new { type = "text", placeholder = "Enter your Address", required = true })
                 </div>
->>>>>>> e1d5ee88b482690ff41216e0891561b1ff9325c0
             </div>
             <div class="gender-details">
                 @Html.RadioButtonFor(x => x.User_Gender, "Male", new { type = "radio", name = "gender", id = "dot-1" })

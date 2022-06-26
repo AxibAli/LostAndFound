@@ -508,7 +508,7 @@ a:hover {
   display: none;
 }
 
-/*.banner {
+.banner {
   padding: 180px 0px 230px 0px;
   background: rgba(0, 0, 0, 0.03);
 }
@@ -537,11 +537,8 @@ a:hover {
 .banner-img {
   position: relative;
   margin-right: -48px;
-}*/
-/*body{
-    background: blue;
-    background-size: cover;
-}*/
+}
+
 .video-play {
   color: #111;
   margin-left: 15px;
