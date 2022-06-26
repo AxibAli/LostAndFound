@@ -293,6 +293,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Ajax Script\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
