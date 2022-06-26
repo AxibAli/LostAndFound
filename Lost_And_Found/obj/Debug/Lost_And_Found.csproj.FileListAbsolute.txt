@@ -291,3 +291,7 @@ C:\Users\atiqa\OneDrive\Desktop\LostAndFound\Lost_And_Found\bin\EntityFramework.
 C:\Users\atiqa\OneDrive\Desktop\LostAndFound\Lost_And_Found\bin\EntityFramework.xml
 C:\Users\atiqa\OneDrive\Desktop\LostAndFound\Lost_And_Found\bin\EntityFramework.SqlServer.xml
 >>>>>>> c0945ab74a6d81347710170aff5021c21a1ece44
+F:\LostAndFound\Lost_And_Found\bin\EntityFramework.dll
+F:\LostAndFound\Lost_And_Found\bin\EntityFramework.SqlServer.dll
+F:\LostAndFound\Lost_And_Found\bin\EntityFramework.xml
+F:\LostAndFound\Lost_And_Found\bin\EntityFramework.SqlServer.xml

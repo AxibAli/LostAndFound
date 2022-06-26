@@ -11,37 +11,33 @@
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">Full Name</span>
-                    <input type="text" placeholder="Enter your name" required>
+                    @Html.TextBoxFor(x => x.User_FullName, null, new { type = "text", placeholder = "Enter your name", required = true })
                 </div>
                 <div class="input-box">
                     <span class="details">Email</span>
-                    <input type="text" placeholder="Enter your email" required>
+                    @Html.TextBoxFor(x => x.User_Email, null, new { type = "text", placeholder = "Enter your email", required = true })
                 </div>
                 <div class="input-box">
                     <span class="details">Phone Number</span>
-                    <input type="tel" placeholder="Enter your number" required>
+                    @Html.TextBoxFor(x => x.User_Contact, null, new { type = "tel", placeholder = "Enter your number", required = true })
                 </div>
                 <div class="input-box">
                     <span class="details">Password</span>
-                    <input type="password" placeholder="Enter your password" required>
-                </div>
-                <div class="input-box">
-                    <span class="details">Confirm Password</span>
-                    <input type="password" placeholder="Confirm your password" required>
+                    @Html.TextBoxFor(x => x.User_Password, null, new { type = "password", placeholder = "Enter your password", required = true })
                 </div>
                 <div class="input-box">
                     <span class="details">Date of Birth</span>
-                    <input type="Date" placeholder="Enter your Date of Birth" required>
+                    @Html.TextBoxFor(x => x.User_DOB, null, new { type = "Date", placeholder = "Enter your Date of Birth", required = true })
                 </div>
-                <div class="input-box" style=" width: 100%">
+                <div class="input-box" style=" width 100%">
                     <span class="details">Address</span>
-                    <input type="text" placeholder="Enter your Address" required>
+                    @Html.TextBoxFor(x => x.User_Address, null, new { type = "text", placeholder = "Enter your Address", required = true })
                 </div>
             </div>
             <div class="gender-details">
-                <input type="radio" name="gender" id="dot-1">
-                <input type="radio" name="gender" id="dot-2">
-                <input type="radio" name="gender" id="dot-3">
+                @Html.RadioButtonFor(x => x.User_Gender, "Male", new { type = "radio", name = "gender", id = "dot-1" })
+                @Html.RadioButtonFor(x => x.User_Gender, "Female", new { type = "radio", name = "gender", id = "dot-2" })
+                @Html.RadioButtonFor(x => x.User_Gender, "Not Say", new { type = "radio", name = "gender", id = "dot-3" })
                 <span class="gender-title">Gender</span>
                 <div class="category">
                     <label for="dot-1">
@@ -59,9 +55,8 @@
                 </div>
             </div>
             <div class="button">
-                <input type="submit" value="Register">
+                <input type="submit" value="Register Your Self">
             </div>
         </form>
     </div>
-
 </div>
