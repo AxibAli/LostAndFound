@@ -45,7 +45,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -119,6 +127,8 @@
     <Content Include="Content\css\cards.css" />
     <Content Include="Content\css\Dashboard.css" />
     <Content Include="Content\css\font-roboto.css" />
+    <Content Include="Content\css\loginstyle.css" />
+    <Content Include="Content\css\registerstyle.css" />
     <Content Include="Content\css\ViewAdmins.css" />
     <Content Include="Content\Home\css\home.css" />
     <Content Include="Content\Home\css\style.css" />
@@ -224,6 +234,16 @@
     <Content Include="Content\js\jquery.js" />
     <Content Include="Content\js\ViewAdmins.js" />
     <Content Include="Global.asax" />
+    <Content Include="Models\LostAndFound.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LostAndFound.edmx</DependentUpon>
+      <LastGenOutput>LostAndFound.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\LostAndFound.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LostAndFound.edmx</DependentUpon>
+      <LastGenOutput>LostAndFound.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +255,41 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Manager\LoginManager.cs" />
+    <Compile Include="Manager\RegisterManager.cs" />
+    <Compile Include="Models\App_Admin.cs">
+      <DependentUpon>LostAndFound.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\App_User.cs">
+      <DependentUpon>LostAndFound.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CreateAdminModel.cs" />
+    <Compile Include="Models\Found_Product.cs">
+      <DependentUpon>LostAndFound.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\LostAndFound.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LostAndFound.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LostAndFound.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LostAndFound.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LostAndFound.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LostAndFound.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lost_Product.cs">
+      <DependentUpon>LostAndFound.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>LostAndFound.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -264,6 +319,13 @@
     <Content Include="Content\Home\plugins\themify\fonts\themify.eot" />
     <Content Include="Content\Home\plugins\themify\fonts\themify.ttf" />
     <Content Include="Content\Home\plugins\themify\fonts\themify.woff" />
+    <EntityDeploy Include="Models\LostAndFound.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LostAndFound.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\LostAndFound.edmx.diagram">
+      <DependentUpon>LostAndFound.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
@@ -276,6 +338,8 @@
     <Content Include="Views\User\PostProduct.cshtml" />
     <Content Include="Views\Shared\_LogedInLayout.cshtml" />
     <Content Include="Views\User\Home.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -285,9 +349,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Manager\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Login\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

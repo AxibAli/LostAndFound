@@ -10,8 +10,6 @@
 
     <meta name="author" content="themeturn.com">
 
-    @*<title>Lost & Found</title>*@
-
     <!-- Mobile Specific Meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- bootstrap.min css -->
@@ -29,6 +27,10 @@
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="~/Content/Home/css/style.css">
+    <!-- Login User Stylesheet -->
+    <link href="~/Content/css/loginstyle.css" rel="stylesheet" />
+    <!-- Register User Stylesheet -->
+    <link href="~/Content/css/registerstyle.css" rel="stylesheet" />
 
 
 </head>
@@ -77,20 +79,20 @@
                             <a href="#" class="btn btn-solid-border btn-sm"><i class="ti-phone-alt mr-2"></i>Submit Lost Item</a>
                         </li>*@
                         <li class="list-inline-item">
-                            <a href="#" class="btn btn-main-2 btn-sm">Login</a>
+                            <a href="@Url.Action("Login","Login")" class="btn btn-main-2 btn-sm">Login</a>
                         </li>
                     </ul>
                 </div> <!-- / .navbar-collapse -->
             </nav>
         </div> <!-- / .container -->
     </div>
-    <section class="banner">
+    @*<section class="banner">*@
         <div class="container">
             <div>
                 @RenderBody()
             </div>
-        </div> <!-- / .container -->
-    </section>
+        </div> 
+    @*</section>*@
     <div class="footer-btm">
         <div class="container">
             <div class="row">

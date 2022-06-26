@@ -8,6 +8,16 @@ namespace Lost_And_Found.Controllers
 {
     public class LoginController : Controller
     {
-        
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+
     }
 }
