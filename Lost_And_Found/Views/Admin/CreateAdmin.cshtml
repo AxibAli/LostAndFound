@@ -1,11 +1,11 @@
-﻿@model Lost_And_Found.Models.RegisterModel
+﻿@model Lost_And_Found.Models.CreateAdminModel
 @{
-    ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    ViewBag.Title = "CreateAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="container3">
-    <div class="title">Registration Form</div>
+    <div class="title">Create new Admin </div>
     <div class="content">
         <form action="#">
             <div class="user-details">
@@ -24,12 +24,19 @@
                 <div class="input-box">
                     <span class="details">Password</span>
                     <input type="password" placeholder="Enter your password" required>
-                </div>       
+                </div>
+                <div class="input-box">
+                    <span class="details">Confirm Password</span>
+                    <input type="password" placeholder="Confirm your password" required>
+                </div>
                 <div class="input-box">
                     <span class="details">Date of Birth</span>
                     <input type="Date" placeholder="Enter your Date of Birth" required>
                 </div>
-               
+                <div class="input-box" style=" width: 100%">
+                    <span class="details">Address</span>
+                    <input type="text" placeholder="Enter your Address" required>
+                </div>
             </div>
             <div class="gender-details">
                 <input type="radio" name="gender" id="dot-1">
@@ -52,9 +59,10 @@
                 </div>
             </div>
             <div class="button">
-                <input type="submit" value="Register">
+                <input type="submit" value="Create">
             </div>
         </form>
     </div>
 
 </div>
+

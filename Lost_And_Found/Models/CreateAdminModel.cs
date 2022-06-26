@@ -10,6 +10,7 @@ namespace Lost_And_Found.Models
         public long Admin_ID { get; set; }
         public string Admin_FullName { get; set; }
         public string Admin_Email { get; set; }
+        public bool Gender { get; set; }
         public string Admin_Password { get; set; }
         public string Admin_Picture { get; set; }
         public string Admin_Role { get; set; }
