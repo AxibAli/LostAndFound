@@ -8,11 +8,13 @@
     <header2>Login Form</header2>
     <form>
         <div class="input-field2">
-            <input type="text" required>
+            @Html.TextBoxFor(x => x.Username, null, new { type = "text" ,required=true })
+            @*<input type="text" required>*@
             <label>Email or Username</label>
         </div>
         <div class="input-field2">
-            <input class="pswrd" type="password" required>
+            @Html.TextBoxFor(x=>x.Password,null,new {@class="pswrd" ,type="password" ,required=true })
+            @*<input class="pswrd" type="password" required>*@
             <span class="show">SHOW</span>
             <label>Password</label>
         </div>

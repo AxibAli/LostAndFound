@@ -51,6 +51,7 @@ Found_Product_Status   nvarchar(max) Not null,
 create table App_Admin(
 Admin_ID  bigint primary key Identity,
 Admin_FullName        nvarchar(max) Not null,
+Admin_Gender          nvarchar(max) Not null,
 Admin_Email           nvarchar(max) Not null,
 Admin_Password        nvarchar(max) Not null,
 Admin_Picture         nvarchar(max) Not null,
