@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "ViewAllAdmins";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="admins-table-container">
+
+    <div class="admins-head-box">
+        <h2>All Admins</h2>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Admin">
+    </div>
+
+    <table class="view-admins-table" id="view-admins-table">
+        <thead>
+            <tr class="view-admins-table-row">
+                <th class="view-admins-table-head" scope="col">User ID</th>
+                <th class="view-admins-table-head" scope="col">Name</th>
+                <th class="view-admins-table-head" scope="col">Gender</th>
+                <th class="view-admins-table-head" scope="col">Contact</th>
+                <th class="view-admins-table-head" scope="col">IsActive</th>
+                <th class="view-admins-table-head" scope="col">Modify Record</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="view-admins-table-row">
+                <td class="view-admins-table-data" data-label="Admin ID">1</td>
+                <td class="view-admins-table-data" data-label="Admin Name">Munzah Shah</td>
+                <td class="view-admins-table-data" data-label="Admin Gender">Female</td>
+                <td class="view-admins-table-data" data-label="Admin Contact">+92344 8767877</td>
+                <td class="view-admins-table-data" data-label="Admin IsActive">
+                    <div class="toggle-button-cover">
+                        <div class="button r" id="button-3">
+                            <input type="checkbox" class="checkbox">
+                            <div class="knobs"></div>
+                            <div class="layer"></div>
+                        </div>
+                    </div>
+                </td>
+                <td class="view-admins-table-data" data-label="Admin Modify">
+                    <div class="modify-record">
+                        <a href="#"><img src="~/Content/assets/images/edit-record.png" /></a>
+                        <a href="#"><img src="~/Content/assets/images/delete-record.png" /></a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="view-admins-table-row">
+                <td class="view-admins-table-data" data-label="Admin ID">2</td>
+                <td class="view-admins-table-data" data-label="Admin Name">Demo Admin 2</td>
+                <td class="view-admins-table-data" data-label="Admin Gender">Female</td>
+                <td class="view-admins-table-data" data-label="Admin Contact">+92344 8767877</td>
+                <td class="view-admins-table-data" data-label="Admin IsActive">
+                    <div class="toggle-button-cover">
+                        <div class="button r" id="button-3">
+                            <input type="checkbox" class="checkbox">
+                            <div class="knobs"></div>
+                            <div class="layer"></div>
+                        </div>
+                    </div>
+                </td>
+                <td class="view-admins-table-data" data-label="Admin Modify">
+                    <div class="modify-record">
+                        <a href="#"><img src="~/Content/assets/images/edit-record.png" /></a>
+                        <a href="#"><img src="~/Content/assets/images/delete-record.png" /></a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="view-admins-table-row">
+                <td class="view-admins-table-data" data-label="Admin ID">3</td>
+                <td class="view-admins-table-data" data-label="Admin Name">Admin 3</td>
+                <td class="view-admins-table-data" data-label="Admin Gender">Male</td>
+                <td class="view-admins-table-data" data-label="Admin Contact">+92344 8767000</td>
+                <td class="view-admins-table-data" data-label="Admin IsActive">
+                    <div class="toggle-button-cover">
+                        <div class="button r" id="button-3">
+                            <input type="checkbox" class="checkbox">
+                            <div class="knobs"></div>
+                            <div class="layer"></div>
+                        </div>
+                    </div>
+                </td>
+                <td class="view-admins-table-data" data-label="Admin Modify">
+                    <div class="modify-record">
+                        <a href="#"><img src="~/Content/assets/images/edit-record.png" /></a>
+                        <a href="#"><img src="~/Content/assets/images/delete-record.png" /></a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="view-admins-table-row">
+                <td class="view-admins-table-data" data-label="Admin ID">4</td>
+                <td class="view-admins-table-data" data-label="Admin Name">Test Admin 4</td>
+                <td class="view-admins-table-data" data-label="Admin Gender">Male</td>
+                <td class="view-admins-table-data" data-label="Admin Contact">+92344 8767877</td>
+                <td class="view-admins-table-data" data-label="Admin IsActive">
+                    <div class="toggle-button-cover">
+                        <div class="button r" id="button-3">
+                            <input type="checkbox" class="checkbox">
+                            <div class="knobs"></div>
+                            <div class="layer"></div>
+                        </div>
+                    </div>
+                </td>
+                <td class="view-admins-table-data" data-label="Admin Modify">
+                    <div class="modify-record">
+                        <a href="#"><img src="~/Content/assets/images/edit-record.png" /></a>
+                        <a href="#"><img src="~/Content/assets/images/delete-record.png" /></a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="view-admins-table-row">
+                <td class="view-admins-table-data" data-label="Admin ID">5</td>
+                <td class="view-admins-table-data" data-label="Admin Name">Demo Admin 5</td>
+                <td class="view-admins-table-data" data-label="Admin Gender">Male</td>
+                <td class="view-admins-table-data" data-label="Admin Contact">+92344 8766677</td>
+                <td class="view-admins-table-data" data-label="Admin IsActive">
+                    <div class="toggle-button-cover">
+                        <div class="button r" id="button-3">
+                            <input type="checkbox" class="checkbox">
+                            <div class="knobs"></div>
+                            <div class="layer"></div>
+                        </div>
+                    </div>
+                </td>
+                <td class="view-admins-table-data" data-label="Admin Modify">
+                    <div class="modify-record">
+                        <a href="#"><img src="~/Content/assets/images/edit-record.png" /></a>
+                        <a href="#"><img src="~/Content/assets/images/delete-record.png" /></a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="view-admins-table-row">
+                <td class="view-admins-table-data" data-label="Admin ID">6</td>
+                <td class="view-admins-table-data" data-label="Admin Name">Demo Admin 6</td>
+                <td class="view-admins-table-data" data-label="Admin Gender">Female</td>
+                <td class="view-admins-table-data" data-label="Admin Contact">+92344 8766877</td>
+                <td class="view-admins-table-data" data-label="Admin IsActive">
+                    <div class="toggle-button-cover">
+                        <div class="button r" id="button-3">
+                            <input type="checkbox" class="checkbox">
+                            <div class="knobs"></div>
+                            <div class="layer"></div>
+                        </div>
+                    </div>
+                </td>
+                <td class="view-admins-table-data" data-label="Admin Modify">
+                    <div class="modify-record">
+                        <a href="#"><img src="~/Content/assets/images/edit-record.png" /></a>
+                        <a href="#"><img src="~/Content/assets/images/delete-record.png" /></a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
