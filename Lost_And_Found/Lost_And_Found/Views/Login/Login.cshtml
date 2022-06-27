@@ -1,20 +1,18 @@
 ﻿@model Lost_And_Found.Models.LoginModel
-@{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_HomeLayout.cshtml";
-}
+
+@{ ViewBag.Title = "Login";
+   Layout = "~/Views/Shared/_HomeLayout.cshtml"; 
+ }
 
 <div class="container2">
     <header2>Login Form</header2>
-    <form>
+    <form method="post">
         <div class="input-field2">
-            @Html.TextBoxFor(x => x.Username, null, new { type = "text" ,required=true })
-            @*<input type="text" required>*@
+            @Html.TextBoxFor(x => x.Username, null, new { type = "text", required = true })
             <label>Email or Username</label>
         </div>
         <div class="input-field2">
-            @Html.TextBoxFor(x=>x.Password,null,new {@class="pswrd" ,type="password" ,required=true })
-            @*<input class="pswrd" type="password" required>*@
+            @Html.TextBoxFor(x => x.Password, null, new { @class = "pswrd", type = "password", required = true })
             <span class="show">SHOW</span>
             <label>Password</label>
         </div>

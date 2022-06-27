@@ -1,13 +1,11 @@
-﻿@model Lost_And_Found.Models.RegisterModel
-@{
-    ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_HomeLayout.cshtml";
-}
+﻿@model Lost_And_Found.Models.UserRegisterModel
+@{ ViewBag.Title = "Register";
+                Layout = "~/Views/Shared/_HomeLayout.cshtml"; }
 
 <div class="container3">
     <div class="title">Registration Form</div>
     <div class="content">
-        <form action="#">
+        <form id="form">
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">Full Name</span>
@@ -57,8 +55,38 @@
                 </div>
             </div>
             <div class="button">
-                <input type="submit" value="Register Your Self">
+                <input type="submit" id="btnDraft" value="Register Your Self">
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("#btnDraft").click(function (x) {
+            debugger;
+            var formdata = $("#form").serialize();
+            console.log(formdata);
+
+            ajaxCall("/Login/Register", formdata, function (result) {
+                if (!result.Response) {
+                    swal({ text: result.Message, icon: "warning" });
+                    console.error(result.Error);
+                }
+                else {
+                    swal({
+                        title: "Good job!",
+                        text: result.Message,
+                        icon: "success",
+                        buttons: true,
+                    })
+                        .then((ok_btn) => {
+                            if (ok_btn) {
+                            //    window.location.href = "/Login/Login"
+                            }
+                        });
+                }
+            });
+        });
+    });
+</script>

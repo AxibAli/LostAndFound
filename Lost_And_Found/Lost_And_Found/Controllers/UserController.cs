@@ -8,11 +8,12 @@ namespace Lost_And_Found.Controllers
 {
     public class UserController : Controller
     {
-        public ActionResult PostProduct()
+        public ActionResult Home() 
         {
             return View();
         }
-        public ActionResult Home() 
+
+        public ActionResult PostProduct()
         {
             return View();
         }

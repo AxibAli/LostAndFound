@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Lost_And_Found.Models
 {
-    public class RegisterModel
+    public class UserRegisterModel
     {
         public long User_ID { get; set; }
         public string User_FullName { get; set; }

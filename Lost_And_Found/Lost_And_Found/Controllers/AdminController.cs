@@ -8,6 +8,7 @@ namespace Lost_And_Found.Controllers
 {
     public class AdminController : Controller
     {
+        [HttpGet]
         public ActionResult Dashboard()
         {
             return View();
