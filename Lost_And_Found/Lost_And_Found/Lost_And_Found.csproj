@@ -224,6 +224,13 @@
     <Content Include="Content\js\jquery.js" />
     <Content Include="Content\js\ViewAdmins.js" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\GeneralAjax.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\SweetAlert.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
