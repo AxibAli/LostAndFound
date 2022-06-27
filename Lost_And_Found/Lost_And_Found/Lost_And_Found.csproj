@@ -156,6 +156,7 @@
     <Content Include="Content\css\ViewAdmins.css" />
     <Content Include="Content\Home\css\home.css" />
     <Content Include="Content\Home\css\style.css" />
+    <Content Include="Content\Home\images\570233.png" />
     <Content Include="Content\Home\images\banner\6.jpg" />
     <Content Include="Content\Home\images\banner\banner-4.jpg" />
     <Content Include="Content\Home\images\banner\banner-img.png" />
@@ -193,6 +194,7 @@
     <Content Include="Content\Home\images\instagram\p-8.jpg" />
     <Content Include="Content\Home\images\logo-dark.png" />
     <Content Include="Content\Home\images\logo-white.png" />
+    <Content Include="Content\Home\images\per.png" />
     <Content Include="Content\Home\images\process\post1.jpg" />
     <Content Include="Content\Home\images\process\post2.jpg" />
     <Content Include="Content\Home\images\process\post3.jpg" />
@@ -257,6 +259,7 @@
     <Content Include="Content\js\Dashboard.js" />
     <Content Include="Content\js\jquery.js" />
     <Content Include="Content\js\ViewAdmins.js" />
+    <Content Include="Content\css\ProfileStyleSheet1.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\GeneralAjax.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -340,6 +343,8 @@
     <Content Include="Views\Category\Laptop.cshtml" />
     <Content Include="Views\Category\Jewellery.cshtml" />
     <Content Include="Views\Category\Keys.cshtml" />
+    <Content Include="Views\Admin\AllPosts.cshtml" />
+    <Content Include="Views\Admin\AllUsers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

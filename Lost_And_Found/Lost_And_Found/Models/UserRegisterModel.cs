@@ -13,7 +13,6 @@ namespace Lost_And_Found.Models
         public string User_Gender { get; set; }
         public long User_Contact { get; set; }
         public string User_Password { get; set; }
-        public string User_Picture { get; set; }
         public System.DateTime User_DOB { get; set; }
         public string User_Address { get; set; }
         public System.DateTime User_Created_ON { get; set; }

@@ -15,7 +15,6 @@ namespace Lost_And_Found.Models
         public bool Gender { get; set; }
         public string Admin_Password { get; set; }
         public long Admin_Contact { get; set; }
-        public string Admin_Picture { get; set; }
         public string Admin_Role { get; set; }
         public System.DateTime Admin_Created_ON { get; set; }
         public System.DateTime Admin_Created_By { get; set; }

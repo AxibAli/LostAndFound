@@ -3,3 +3,38 @@
     ViewBag.Title = "Post Item";
     Layout = "~/Views/Shared/_LogedInLayout.cshtml";
 }
+
+    <div class="row">
+        <div class="col-lg-12 m-b30">
+            <div class="widget-box">
+                <div class="wc-title">
+                    <h4>Image Upload</h4>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="user-profile-image">
+                                <input type="file" class="hidden" id="BrowseImage" accept="image/*" name="ImageFile" />
+                                <img src="~/Content/Home/images/per.png" class="img-responsive" id="UserImage" />
+                                <p class="image-desc text-center">Allowed Image size: 512*512px </p>
+                                <div class="upload-pic">
+                                    <img src="~/Content/Home/images/570233.png" class="img-responsive" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-7">
+                                    <button type="submit" class="btn">Save changes</button>
+                                    <button type="reset" class="btn-secondry">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

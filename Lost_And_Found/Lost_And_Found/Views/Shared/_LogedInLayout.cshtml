@@ -10,8 +10,6 @@
 
     <meta name="author" content="themeturn.com">
 
-    @*<title>Lost & Found</title>*@
-
     <!-- Mobile Specific Meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- bootstrap.min css -->
@@ -26,7 +24,8 @@
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="~/Content/Home/plugins/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="~/Content/Home/plugins/slick-carousel/slick/slick-theme.css">
-
+    <!--Picture Uplaod Srtle-->
+    <link href="~/Content/css/ProfileStyleSheet1.css" rel="stylesheet" />
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="~/Content/Home/css/style.css">
     <!--Category Card Style-->
@@ -126,7 +125,8 @@
 
     <!--Essential Scripts-->
     <!-- Main jQuery -->
-    <script src="~/Content/Home/plugins/jquery/jquery.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    @*<script src="~/Content/Home/plugins/jquery/jquery.js"></script>*@
     <!-- Bootstrap4. 3.1 -->
     <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- Slick Slider -->
@@ -139,9 +139,6 @@
     <!--  Magnific Popup-->
     <script src="~/Content/Home/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
 
-    <!-- Google Map -->
-    <script src="~/Content/Home/plugins/google-map/map.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
 
     <script src="~/Content/Home/js/script.js"></script>
     <!--Category Card Script-->
@@ -162,6 +159,51 @@
             }
         )
     </script>
+    <!--Picture upload-->
+    <script type="text/javascript">
 
+        $('#UserImage').click(function () {
+            UploadClickEvent();
+
+        });
+
+        $('.upload-pic').click(function () {
+            UploadClickEvent();
+        });
+
+        function UploadClickEvent() {
+            $('#BrowseImage').trigger('click');
+        }
+
+
+        //select and upload window
+        $('#BrowseImage').change(function () {
+            var File = this.files;
+
+            if (File && File[0]) {
+                var reader = new FileReader();
+                reader.readAsDataURL(File[0]);
+
+                reader.onload = function (x) {
+                    var image = new Image;
+                    image.src = x.target.result;
+
+                    image.onload = function () {
+                        var width = this.width;
+                        var height = this.height;
+                        var type = File[0].type;
+                        if ((width >= "512" && height >= "512") && (type == "image/png" || type == "image/jpg" || type == "image/jpeg")) {
+                            $('#UserImage').attr('src', x.target.result);
+                            $('.image-desc ').css("color", "black");
+                        }
+                        else {
+                            $('.image-desc ').css("color", "red");
+                        }
+                        //alert("Width: " + width + ", Height: " + height + ", Type: " + type);
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
