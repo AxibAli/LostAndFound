@@ -237,6 +237,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -294,6 +295,16 @@
     <Content Include="Views\User\Home.cshtml" />
     <Content Include="Views\User\PostProduct.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Category\Mobile.cshtml" />
+    <Content Include="Views\Category\Pets.cshtml" />
+    <Content Include="Views\Category\Cars.cshtml" />
+    <Content Include="Views\Category\Clothes_Shoes.cshtml" />
+    <Content Include="Views\Category\Bags.cshtml" />
+    <Content Include="Views\Category\People.cshtml" />
+    <Content Include="Views\Category\Documents.cshtml" />
+    <Content Include="Views\Category\Laptop.cshtml" />
+    <Content Include="Views\Category\Jewellery.cshtml" />
+    <Content Include="Views\Category\Keys.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
