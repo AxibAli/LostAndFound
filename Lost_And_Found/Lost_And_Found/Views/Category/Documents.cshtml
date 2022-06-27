@@ -1,8 +1,23 @@
-﻿
+﻿@model List<Lost_And_Found.Models.CategoryModel>
 @{
     ViewBag.Title = "Documents";
     Layout = "~/Views/Shared/_LogedInLayout.cshtml";
 }
 
-<h2>Documents</h2>
-
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width:20em;margin:10px;">
+            <img src="@item.img" class="card-img-top" />
+            <div class="card-body">
+                <div class="card-title">
+                    <h2>@item.title</h2>
+                </div>
+                <div class="card-text">
+                    <p>@item.text</p>
+                </div>
+                <a href="#" class="btn btn-primary">Read More...</a>
+            </div>
+        </div>
+    }
+</div>

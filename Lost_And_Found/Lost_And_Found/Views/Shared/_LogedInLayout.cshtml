@@ -29,8 +29,12 @@
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="~/Content/Home/css/style.css">
-
-
+    <!--Category Card Style-->
+    <style>
+        .card:hover {
+            box-shadow: -1px 9px 40px -12px #808080;
+        }
+    </style>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -74,8 +78,8 @@
 
                     <ul class="list-inline header-contact float-lg-right">
                         <li class="list-inline-item">
-                                <a href="#" class="btn btn-solid-border btn-sm"><i class="ti-phone-alt mr-2"></i>Post Item</a>
-                            </li>
+                            <a href="#" class="btn btn-solid-border btn-sm"><i class="ti-phone-alt mr-2"></i>Post Item</a>
+                        </li>
                         <li class="list-inline-item">
                             <a href="#" class="btn btn-main-2 btn-sm">Login</a>
                         </li>
@@ -140,6 +144,24 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
 
     <script src="~/Content/Home/js/script.js"></script>
+    <!--Category Card Script-->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $('.card').hover(
+            function () {
+                $(this).animate({
+                    marginTop: "-=1%",
+                    marginBottom: "+=1%"
+                }, 200)
+            },
+            function () {
+                $(this).animate({
+                    marginTop: "+=1%",
+                    marginBottom: "-=1%"
+                })
+            }
+        )
+    </script>
 
 </body>
 </html>
