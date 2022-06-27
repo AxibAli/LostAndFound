@@ -20,9 +20,9 @@
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-  margin: auto;
+  margin: auto;/*
   margin-top:150px;
-  margin-bottom:50px;
+  margin-bottom:50px;*/
 }
 .container3 .title{
   font-size: 25px;

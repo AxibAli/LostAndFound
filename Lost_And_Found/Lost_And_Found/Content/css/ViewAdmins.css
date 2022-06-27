@@ -3,7 +3,17 @@ body {
     font-family: "Open Sans", sans-serif;
     line-height: 1.25;
 }
-
+.container4 {
+    max-width: 700px;
+    width: 100%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    margin: auto; 
+  margin-top:50px;
+  margin-bottom:50px;
+}
 
 /* table container styling */
 .admins-table-container {
@@ -102,7 +112,6 @@ body {
 .button {
     position: relative;
     top: 50%;
-    width: 69px;
     height: 29px;
     margin: -15px auto 0 auto;
     overflow: hidden;
