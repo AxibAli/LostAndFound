@@ -74,26 +74,53 @@
                             </a>
                         </li>
                     </ul>
-
+                    <ul></ul>
                     <ul class="list-inline header-contact float-lg-right">
                         <li class="list-inline-item">
                             <a href="#" class="btn btn-solid-border btn-sm"><i class="ti-phone-alt mr-2"></i>Post Item</a>
                         </li>
+                    </ul>
+                    <ul></ul>
+                    <ul class="list-inline header-contact float-lg-right">
                         <li class="list-inline-item">
-                            <a href="#" class="btn btn-main-2 btn-sm">Login</a>
+                            <a class="btn btn-main-2 btn-sm" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
                         </li>
                     </ul>
                 </div> <!-- / .navbar-collapse -->
             </nav>
         </div> <!-- / .container -->
     </div>
+    <!--Render Section-->
     <section class="banner">
         <div class="container">
             <div>
                 @RenderBody()
             </div>
-        </div> <!-- / .container -->
+        </div>
     </section>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="@Url.Action("Logout","Login")">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Footer-->
     <div class="footer-btm">
         <div class="container">
             <div class="row">

@@ -57,5 +57,10 @@ namespace Lost_And_Found.Controllers
             ajaxResponse = new AjaxResponse { Message = message, Response = response };
             return Json(ajaxResponse, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Login");
+        }
     }
 }
