@@ -1,4 +1,5 @@
-﻿using Lost_And_Found.Models;
+﻿using Lost_And_Found.Manager;
+using Lost_And_Found.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,18 +46,33 @@ namespace Lost_And_Found.Controllers
         {
             if (ModelState.IsValid)
             {
-                message = "Successfull";
-                response = true;
+                RegisterManager obj = new RegisterManager();
+                Rm.User_Created_ON = DateTime.Now;
+                long u_id = obj.AddUser(Rm);
+                if (u_id > 0)
+                {
+                    message = "Successfull";
+                    response = true;
+                }
+
+                else
+                {
+                    message = "Not Successfull";
+                    response = false;
+                }
+                
             }
             else
             {
-                message = "Not Successfull";
+                message = "Error! Add missing fields";
                 response = false;
             }
 
             ajaxResponse = new AjaxResponse { Message = message, Response = response };
             return Json(ajaxResponse, JsonRequestBehavior.AllowGet);
         }
+
+
         public ActionResult Logout()
         {
             Session.Clear();
