@@ -22,5 +22,13 @@ namespace Lost_And_Found.Controllers
         {
             return View();
         }
+        public ActionResult AllPosts()
+        {
+            return View();
+        }
+        public ActionResult AllUsers() 
+        {
+            return View();
+        }
     }
 }

@@ -33,8 +33,8 @@
                 <input type="checkbox" id="header-hamburger__checkbox" onchange="openCloseSidebar()">
                 <label for="header-hamburger__checkbox" class="header-hamburger__label">
                     @*<div></div>
-                        <div></div>
-                        <div></div>*@
+                    <div></div>
+                    <div></div>*@
                 </label>
             </div>
 
@@ -47,7 +47,7 @@
             <div class="header-user">
                 @*<img src="~/Content/assets/images/dashboard__user.png" alt="User Image" class="header-user__img">*@
                 <a href="#"><h2 class="header-user__name">Munzah Shah</h2></a>
-                <a href="#"><img src="~/Content/assets/images/dashboard__signout.png" alt="Logo Image" class="header-user__signout"></a>
+                <a href="#" data-toggle="modal" data-target="#logoutModal"><img src="~/Content/assets/images/dashboard__signout.png" alt="Logo Image" class="header-user__signout"></a>
             </div>
         </header>
 
@@ -69,7 +69,7 @@
 
                         <!-- Create User Link -->
                         <li class="sidebar-menu__box">
-                            <a class="sidebar-menu__item" href="#">
+                            <a class="sidebar-menu__item" href="@Url.Action("CreateAdmin","Admin")">
                                 <img src="~/Content/assets/images/dashboard__add-admin.png" alt="icon add user" class="sidebar-menu__icon">
                                 <span>Create Admin</span>
                             </a>
@@ -85,7 +85,7 @@
 
                         <!-- Create User Link -->
                         <li class="sidebar-menu__box">
-                            <a class="sidebar-menu__item" href="#">
+                            <a class="sidebar-menu__item" href="@Url.Action("AllPosts","Admin")">
                                 <img src="~/Content/assets/images/dashboard__all-posts.png" alt="icon add user" class="sidebar-menu__icon">
                                 <span>All Posts</span>
                             </a>
@@ -93,7 +93,7 @@
 
                         <!-- Create User Link -->
                         <li class="sidebar-menu__box">
-                            <a class="sidebar-menu__item" href="#">
+                            <a class="sidebar-menu__item" href="@Url.Action("AllUsers","Admin")">
                                 <img src="~/Content/assets/images/dashboard__all-users.png" alt="icon add user" class="sidebar-menu__icon">
                                 <span>All Users</span>
                             </a>
@@ -108,7 +108,25 @@
             </div>
 
         </div>
-
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="@Url.Action("Logout","Login")">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!---------------------- Building The Footer ---------------------->
         <footer class="footer">

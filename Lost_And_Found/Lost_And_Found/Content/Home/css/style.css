@@ -110,14 +110,14 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 }
 
 .btn-main-2 {
-  background: #ff6984;
-  color: #fff;
+    background: #00173E;
+    color: #fff;
 }
 
-.btn-main-2:hover {
-  background: #ff506f;
-  color: #fff;
-}
+    .btn-main-2:hover {
+        background: #111;
+        color: #fff;
+    }
 
 .btn-white {
   background: #fff;
