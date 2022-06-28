@@ -43,12 +43,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
     </Reference>
@@ -81,8 +75,6 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -269,16 +261,6 @@
     <Content Include="Content\js\ViewAdmins.js" />
     <Content Include="Content\css\ProfileStyleSheet1.css" />
     <Content Include="Global.asax" />
-    <Content Include="Models\LostAndFound.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LostAndFound.edmx</DependentUpon>
-      <LastGenOutput>LostAndFound.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\LostAndFound.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LostAndFound.edmx</DependentUpon>
-      <LastGenOutput>LostAndFound.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\GeneralAjax.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -300,45 +282,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Manager\AdminManager.cs" />
     <Compile Include="Manager\LoginManager.cs" />
     <Compile Include="Manager\RegisterManager.cs" />
-    <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Models\AjaxResponseModel.cs" />
-    <Compile Include="Models\App_Admin.cs">
-      <DependentUpon>LostAndFound.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\App_User.cs">
-      <DependentUpon>LostAndFound.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\CreateAdminModel.cs" />
-    <Compile Include="Models\Found_Product.cs">
-      <DependentUpon>LostAndFound.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\LostAndFound.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LostAndFound.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LostAndFound.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LostAndFound.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LostAndFound.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LostAndFound.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Lost_Product.cs">
-      <DependentUpon>LostAndFound.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PostProductModel.cs" />
-    <Compile Include="Models\Product.cs">
-      <DependentUpon>LostAndFound.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\UserRegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -369,13 +318,6 @@
     <Content Include="Content\Home\plugins\themify\fonts\themify.eot" />
     <Content Include="Content\Home\plugins\themify\fonts\themify.ttf" />
     <Content Include="Content\Home\plugins\themify\fonts\themify.woff" />
-    <EntityDeploy Include="Models\LostAndFound.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LostAndFound.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\LostAndFound.edmx.diagram">
-      <DependentUpon>LostAndFound.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <Content Include="Views\Admin\CreateAdmin.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
@@ -412,9 +354,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
