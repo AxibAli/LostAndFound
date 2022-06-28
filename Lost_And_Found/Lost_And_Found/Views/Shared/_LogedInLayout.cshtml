@@ -34,6 +34,7 @@
             box-shadow: -1px 9px 40px -12px #808080;
         }
     </style>
+
 </head>
 <body>
     <!-- NAVBAR -->
@@ -59,7 +60,7 @@
                         </li>
 
                         <li class="nav-item ">
-                            <a href="@Url.Action("About","Home")" class="nav-link js-scroll-trigger">
+                            <a href="@Url.Action("About","User")" class="nav-link js-scroll-trigger">
                                 About
                             </a>
                         </li>
@@ -69,18 +70,16 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a href="@Url.Action("Contact","Home")" class="nav-link">
+                            <a href="@Url.Action("Contact","User")" class="nav-link">
                                 Contact
                             </a>
                         </li>
                     </ul>
-                    <ul></ul>
                     <ul class="list-inline header-contact float-lg-right">
                         <li class="list-inline-item">
-                            <a href="#" class="btn btn-solid-border btn-sm"><i class="ti-phone-alt mr-2"></i>Post Item</a>
+                            <a href="@Url.Action("PostProduct","User")" class="btn btn-solid-border btn-sm"><i class="ti-phone-alt mr-2"></i>Post Item</a>
                         </li>
                     </ul>
-                    <ul></ul>
                     <ul class="list-inline header-contact float-lg-right">
                         <li class="list-inline-item">
                             <a class="btn btn-main-2 btn-sm" href="#" data-toggle="modal" data-target="#logoutModal">
