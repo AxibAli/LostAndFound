@@ -7,7 +7,7 @@
 <div class="container4">
     <div class="title">Create new Admin </div>
     <div class="content">
-        <form action="#">
+        <form id="form">
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">Full Name</span>
@@ -25,6 +25,10 @@
                 <div class="input-box">
                     <span class="details">Date of Birth</span>
                     @Html.TextBoxFor(x => x.Admin_DOB, null, new { type = "date", placeholder = "Enter your date of birth", required = true })
+                </div>
+                <div class="input-box">
+                    <span class="details">Role</span>
+                    @Html.TextBoxFor(x => x.Admin_Role, null, new { type = "text", placeholder = "Enter your role", required = true })
                 </div>
                 <div class="input-box">
                     <span class="details">Phone Number</span>
@@ -53,10 +57,39 @@
                 </div>
             </div>
             <div class="button">
-                <input type="submit" value="Create">
+                <input type="submit" id="btnDraft" value="Create new Admin">
             </div>
         </form>
     </div>
 
 </div>
 
+<script>
+    $(document).ready(function () {
+        $("#btnDraft").click(function (x) {
+            debugger;
+            var formdata = $("#form").serialize();
+            console.log(formdata);
+
+            ajaxCall("/Admin/CreateAdmin", formdata, function (result) {
+                if (!result.Response) {
+                    swal({ text: result.Message, icon: "warning" });
+                    console.error(result.Error);
+                }
+                else {
+                    swal({
+                        title: "Good job!",
+                        text: result.Message,
+                        icon: "success",
+                        buttons: true,
+                    })
+                        .then((ok_btn) => {
+                            if (ok_btn) {
+                            //    window.location.href = "/Login/Login"
+                            }
+                        });
+                }
+            });
+        });
+    });
+</script>
