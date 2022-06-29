@@ -52,7 +52,7 @@ namespace Lost_And_Found.Manager
                     User_DOB = x.User_DOB,
                     User_Address = x.User_Address,
                     User_Created_ON = x.User_Created_ON,
-                    User_Updated_ON = x.User_Updated_ON.Value,
+                    User_Updated_ON = x.User_Updated_ON,
                     User_IsActive = x.User_IsActive
                 }).ToList();
                 return List;

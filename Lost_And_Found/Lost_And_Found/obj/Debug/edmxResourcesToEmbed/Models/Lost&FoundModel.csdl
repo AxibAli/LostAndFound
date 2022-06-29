@@ -31,7 +31,7 @@
     <Property Name="User_DOB" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="User_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="User_Created_ON" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="User_Updated_ON" Type="DateTime" Precision="0" />
+    <Property Name="User_Updated_ON" Type="DateTime" Precision="0" Nullable="false" />
     <Property Name="User_IsActive" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Products" Relationship="Self.FK__Product__Postedb__1273C1CD" FromRole="App_User" ToRole="Product" />
   </EntityType>

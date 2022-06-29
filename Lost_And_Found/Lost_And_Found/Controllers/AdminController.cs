@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using static Lost_And_Found.Models.AjaxResponseModel;
+using Lost_And_Found.Lost_And_Found.Manager;
 
 namespace Lost_And_Found.Controllers
 {
@@ -16,9 +17,11 @@ namespace Lost_And_Found.Controllers
         bool response;
 
         [HttpGet]
-        public ActionResult Dashboard()
+        public ActionResult Dashboard(DashboardModel dbm)
         {
-            return View();
+            DashboardManager obj = new DashboardManager();
+            var request = obj.Cards(dbm);
+            return View(request);
         }
 
         public ActionResult ViewAllAdmins()
