@@ -12,16 +12,16 @@
           <Property Name="Admin_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Admin_FullName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Admin_Gender" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Admin_DOB" Type="date" Nullable="false" />
+          <Property Name="Admin_Contact" Type="bigint" Nullable="false" />
           <Property Name="Admin_Email" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Admin_Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Admin_Role" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Admin_Created_ON" Type="datetime" Nullable="false" />
+          <Property Name="Admin_Created_ON" Type="date" Nullable="false" />
           <Property Name="Admin_Created_By" Type="int" Nullable="false" />
-          <Property Name="Admin_Updated_ON" Type="datetime" />
+          <Property Name="Admin_Updated_ON" Type="date" />
           <Property Name="Admin_Updated_By" Type="int" />
           <Property Name="Admin_IsActive" Type="bit" Nullable="false" />
-          <Property Name="Admin_Contact" Type="bigint" Nullable="false" />
-          <Property Name="Admin_DOB" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="App_User">
           <Key>
@@ -138,13 +138,13 @@
           <Property Name="Admin_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Admin_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Admin_Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Admin_Created_ON" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Admin_Created_ON" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Admin_Created_By" Type="Int32" Nullable="false" />
-          <Property Name="Admin_Updated_ON" Type="DateTime" Precision="3" />
+          <Property Name="Admin_Updated_ON" Type="DateTime" Precision="0" />
           <Property Name="Admin_Updated_By" Type="Int32" />
           <Property Name="Admin_IsActive" Type="Boolean" Nullable="false" />
           <Property Name="Admin_Contact" Type="Int64" Nullable="false" />
-          <Property Name="Admin_DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Admin_DOB" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="App_User">
           <Key>

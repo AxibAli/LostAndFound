@@ -9,8 +9,6 @@ namespace Lost_And_Found.Manager
     public class AdminManager
     {
         long adminid = 0;
-        
-
         public long AddAdmin( CreateAdminModel aid)
         {
             using (LostandFoundEntities db = new LostandFoundEntities())
@@ -19,11 +17,12 @@ namespace Lost_And_Found.Manager
                 tbladmin.Admin_ID = aid.Admin_ID;
                 tbladmin.Admin_FullName = aid.Admin_FullName;
                 tbladmin.Admin_Gender = aid.Admin_Gender;
+                tbladmin.Admin_DOB = aid.Admin_DOB;
                 tbladmin.Admin_Email = aid.Admin_Email;
                 tbladmin.Admin_Password = aid.Admin_Password;
                 tbladmin.Admin_Role = aid.Admin_Role;
                 tbladmin.Admin_Created_ON = aid.Admin_Created_ON;
-                tbladmin.Admin_Created_By = aid.Admin_Created_By = 1;
+                tbladmin.Admin_Created_By = 0;
                 tbladmin.Admin_Updated_ON = aid.Admin_Updated_ON;
                 tbladmin.Admin_Updated_By = aid.Admin_Updated_By;
                 tbladmin.Admin_Contact = aid.Admin_Contact;

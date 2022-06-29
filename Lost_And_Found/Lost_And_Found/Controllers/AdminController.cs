@@ -25,7 +25,6 @@ namespace Lost_And_Found.Controllers
         {
             AdminManager obj = new AdminManager();
             List<CreateAdminModel> User = obj.selectAdmin();
-            //return Json(User,JsonRequestBehavior.AllowGet);
             return View(User);
         }
         [HttpGet]
@@ -73,7 +72,6 @@ namespace Lost_And_Found.Controllers
         {
             AdminManager obj = new AdminManager();
             List<UserRegisterModel> User = obj.selectUser();
-            //return Json(User,JsonRequestBehavior.AllowGet);
             return View(User);
         }
     }

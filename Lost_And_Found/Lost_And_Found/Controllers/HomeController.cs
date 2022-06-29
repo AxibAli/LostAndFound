@@ -23,14 +23,6 @@ namespace Lost_And_Found.Controllers
         {
             return View();
         }
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        public ActionResult SignUp()
-        {
-            return View();
-        }
+        
     }
 }

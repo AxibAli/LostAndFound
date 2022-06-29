@@ -10,13 +10,13 @@
     <Property Name="Admin_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Admin_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Admin_Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Admin_Created_ON" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Admin_Created_ON" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Admin_Created_By" Type="Int32" Nullable="false" />
-    <Property Name="Admin_Updated_ON" Type="DateTime" Precision="3" />
+    <Property Name="Admin_Updated_ON" Type="DateTime" Precision="0" />
     <Property Name="Admin_Updated_By" Type="Int32" />
     <Property Name="Admin_IsActive" Type="Boolean" Nullable="false" />
     <Property Name="Admin_Contact" Type="Int64" Nullable="false" />
-    <Property Name="Admin_DOB" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Admin_DOB" Type="DateTime" Nullable="false" Precision="0" />
   </EntityType>
   <EntityType Name="App_User">
     <Key>
