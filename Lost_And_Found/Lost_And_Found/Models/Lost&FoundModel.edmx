@@ -11,9 +11,8 @@
           </Key>
           <Property Name="Admin_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Admin_FullName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Admin_Gender" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Admin_DOB" Type="date" Nullable="false" />
           <Property Name="Admin_Contact" Type="bigint" Nullable="false" />
+          <Property Name="Admin_Gender" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Admin_Email" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Admin_Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Admin_Role" Type="nvarchar(max)" Nullable="false" />
@@ -22,6 +21,7 @@
           <Property Name="Admin_Updated_ON" Type="date" />
           <Property Name="Admin_Updated_By" Type="int" />
           <Property Name="Admin_IsActive" Type="bit" Nullable="false" />
+          <Property Name="Admin_DOB" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="App_User">
           <Key>
@@ -36,7 +36,7 @@
           <Property Name="User_DOB" Type="date" Nullable="false" />
           <Property Name="User_Address" Type="nvarchar(max)" Nullable="false" />
           <Property Name="User_Created_ON" Type="date" Nullable="false" />
-          <Property Name="User_Updated_ON" Type="date" />
+          <Property Name="User_Updated_ON" Type="date" Nullable="false" />
           <Property Name="User_IsActive" Type="bit" Nullable="false" />
           <Property Name="User_Role" Type="nchar" MaxLength="10" />
         </EntityType>
@@ -70,7 +70,7 @@
           <Property Name="Product_Location" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Product_IsActive" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Found_Pro__Produ__182C9B23">
+        <Association Name="FK__Found_Pro__Produ__3E52440B">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Found_Product" Type="Self.Found_Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -82,7 +82,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Lost_Prod__Produ__15502E78">
+        <Association Name="FK__Lost_Prod__Produ__3B75D760">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Lost_Product" Type="Self.Lost_Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -94,7 +94,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Postedb__1273C1CD">
+        <Association Name="FK__Product__Postedb__38996AB5">
           <End Role="App_User" Type="Self.App_User" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -112,15 +112,15 @@
           <EntitySet Name="Found_Product" EntityType="Self.Found_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lost_Product" EntityType="Self.Lost_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Found_Pro__Produ__182C9B23" Association="Self.FK__Found_Pro__Produ__182C9B23">
+          <AssociationSet Name="FK__Found_Pro__Produ__3E52440B" Association="Self.FK__Found_Pro__Produ__3E52440B">
             <End Role="Product" EntitySet="Product" />
             <End Role="Found_Product" EntitySet="Found_Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Lost_Prod__Produ__15502E78" Association="Self.FK__Lost_Prod__Produ__15502E78">
+          <AssociationSet Name="FK__Lost_Prod__Produ__3B75D760" Association="Self.FK__Lost_Prod__Produ__3B75D760">
             <End Role="Product" EntitySet="Product" />
             <End Role="Lost_Product" EntitySet="Lost_Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Postedb__1273C1CD" Association="Self.FK__Product__Postedb__1273C1CD">
+          <AssociationSet Name="FK__Product__Postedb__38996AB5" Association="Self.FK__Product__Postedb__38996AB5">
             <End Role="App_User" EntitySet="App_User" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
@@ -160,7 +160,7 @@
           <Property Name="User_DOB" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="User_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="User_Created_ON" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="User_Updated_ON" Type="DateTime" Precision="0" />
+          <Property Name="User_Updated_ON" Type="DateTime" Precision="0" Nullable="false" />
           <Property Name="User_IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK__Product__Postedb__1273C1CD" FromRole="App_User" ToRole="Product" />
           <Property Name="User_Role" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />

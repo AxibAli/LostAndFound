@@ -307,6 +307,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manager\AdminManager.cs" />
+    <Compile Include="Manager\DashboardManager.cs" />
     <Compile Include="Manager\LoginManager.cs" />
     <Compile Include="Manager\RegisterManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
@@ -319,6 +320,7 @@
     </Compile>
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\CreateAdminModel.cs" />
+    <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\Found_Product.cs">
       <DependentUpon>Lost&amp;FoundModel.tt</DependentUpon>
     </Compile>
