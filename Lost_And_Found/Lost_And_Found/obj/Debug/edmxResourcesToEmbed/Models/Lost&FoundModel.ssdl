@@ -33,6 +33,7 @@
     <Property Name="User_Created_ON" Type="date" Nullable="false" />
     <Property Name="User_Updated_ON" Type="date" />
     <Property Name="User_IsActive" Type="bit" Nullable="false" />
+    <Property Name="User_Role" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Found_Product">
     <Key>

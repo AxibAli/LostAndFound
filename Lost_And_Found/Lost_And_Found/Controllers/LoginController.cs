@@ -24,15 +24,50 @@ namespace Lost_And_Found.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel lm)
         {
-            if (lm.Username == "admin")
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Dashboard", "Admin");
+                LoginManager obj = new LoginManager();
+                
+                CreateAdminModel admindata = obj.adminchecklogin(lm);
+                UserRegisterModel userdata = obj.userchecklogin(lm);
+
+                if (admindata != null && admindata.Admin_IsActive == false )
+                {
+                    TempData["Message"] = "You have currently disabled, kindly contact your Admin";
+                    return View();
+                }
+                else if (userdata != null && userdata.User_IsActive == false)
+                {
+                    TempData["Message"] = "You have currently disabled, kindly contact With Lost & Found Contact Email";
+                    return View();
+                }
+                if (admindata != null)
+                {
+                    Session["IsLogedIn"] = true;
+                    Session["Admin_FullName"] = admindata.Admin_FullName;
+                    Session["Admin_ID"] = admindata.Admin_ID;
+
+                    return RedirectToAction("Dashboard", "Admin");
+                }
+                else if (userdata != null)
+                {
+                    Session["IsLogedIn"] = true;
+                    Session["User_FullName"] = userdata.User_FullName;
+                    Session["User_ID"] = userdata.User_ID;
+
+                    return RedirectToAction("Home", "User");
+                }
+                else
+                {
+                    TempData["Message"] = "UserName Or Password Incorrect";
+                    return View();
+                }
             }
-            else if (lm.Username == "user")
+            else
             {
-                return RedirectToAction("Home", "User");
+                TempData["Message"] = "Please Enter UserName and Password First ";
+                return View();
             }
-            return View();
         }
 
         [HttpGet]

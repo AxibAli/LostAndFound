@@ -31,6 +31,7 @@ namespace Lost_And_Found.Models
         public System.DateTime User_Created_ON { get; set; }
         public Nullable<System.DateTime> User_Updated_ON { get; set; }
         public bool User_IsActive { get; set; }
+        public string User_Role { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

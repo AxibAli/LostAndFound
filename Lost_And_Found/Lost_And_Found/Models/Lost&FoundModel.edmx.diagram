@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2c66985740d64c5a92a9840f7bbebb84" Name="Diagram1">
-        <EntityTypeShape EntityType="LostandFoundModel.App_Admin" Width="1.5" PointX="7.375" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LostandFoundModel.App_User" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LostandFoundModel.Found_Product" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="LostandFoundModel.Lost_Product" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LostandFoundModel.Product" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LostandFoundModel.App_Admin" Width="1.5" PointX="8.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LostandFoundModel.App_User" Width="1.75" PointX="0.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LostandFoundModel.Product" Width="2" PointX="3" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="LostandFoundModel.FK__Product__Postedb__1273C1CD" ManuallyRouted="false" />
-        <AssociationConnector Association="LostandFoundModel.FK__Found_Pro__Produ__182C9B23" ManuallyRouted="false" />
-        <AssociationConnector Association="LostandFoundModel.FK__Lost_Prod__Produ__15502E78" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LostandFoundModel.Found_Product" Width="1.875" PointX="5.875" PointY="1" />
+        <EntityTypeShape EntityType="LostandFoundModel.Lost_Product" Width="1.875" PointX="5.625" PointY="3.5" />
+        <AssociationConnector Association="LostandFoundModel.FK__Found_Pro__Produ__182C9B23" />
+        <AssociationConnector Association="LostandFoundModel.FK__Lost_Prod__Produ__15502E78" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

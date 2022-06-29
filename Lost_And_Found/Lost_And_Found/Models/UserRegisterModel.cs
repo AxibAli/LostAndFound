@@ -11,6 +11,7 @@ namespace Lost_And_Found.Models
         public string User_FullName { get; set; }
         public string User_Email { get; set; }
         public string User_Gender { get; set; }
+        public string User_Role { get; set; }
         public long User_Contact { get; set; }
         public string User_Password { get; set; }
         public System.DateTime User_DOB { get; set; }
