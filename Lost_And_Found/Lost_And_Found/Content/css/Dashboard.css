@@ -1,0 +1,387 @@
+/* -------------------- Colors to be used --------------------
+PRIMARY COLOR (Dark Maroon): #7D1334
+SECONDARY COLOR (Light Maroon): #96415C
+TEXT PRIMARY COLOR (White): #FFFFFF
+TEXT SECONDARY COLOR (Black): #000000
+BACKGROUND COLOR (Light grey): #EFF0F5
+ADDITIONAL (Dark Grey): #AAAAAA
+*/
+
+/* -------------------- Basic Page Setup -------------------- */
+@import url("https://fonts.googleapis.com/css?family=poppins:400,600,700&display=swap|Lato:400");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.main-container {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100vh;
+}
+
+/* -------------------- Header Styling -------------------- */
+
+/* main header bar */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    width: 100vw;
+/*    position: fixed;
+    top: 0;
+    z-index: 2;*/
+    background-color: #ffffff;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.2);
+}
+
+/* header hamburger icon styling */
+#header-hamburger__checkbox {
+    display: none;
+}
+
+.header-hamburger__label {
+    position: absolute;
+    top: 1rem;
+    left: 0.7rem;
+    width: 60px;
+    height: 60px;
+    transition: 0.3s ease transform;
+    cursor: pointer;
+}
+
+.header-hamburger__label div {
+    width: 6px;
+    height: 5px;
+    background-color: #00173E;
+    margin-left: 0;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    transition: 0.3s ease width, 0.3s ease margin-left, 0.3s ease margin-bottom, 0.3s ease background-color;
+}
+
+.header-hamburger__label div:first-child {
+    width: 22px;
+}
+
+.header-hamburger__label div:nth-child(2) {
+    width: 15px;
+}
+
+.header-hamburger__label div:last-child {
+    width: 30px;
+    margin-bottom: 0;
+}
+
+/* hamburger icon animation */
+#header-hamburger__checkbox:checked + .header-hamburger__label {
+    transform: translateY(-50%) rotateZ(-90deg);
+}
+
+#header-hamburger__checkbox:checked + .header-hamburger__label div {
+    width: 6px;
+    margin-left: 12px;
+    margin-bottom: 3px;
+    background-color: #00173E;
+}
+
+/* header Heading */
+.header-heading {
+    text-align: center;
+    margin: 0 auto;
+    padding-left: 14rem;
+}
+
+.header-heading__text {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #1E1F4D;
+}
+
+/* header user */
+.header-user {
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+}
+
+.header-user a {
+    text-decoration: none;
+ }
+
+.header-user__img {
+    border-radius: 50%;
+    height: 2rem;
+    width: auto;
+    margin-right: 0.8rem;
+}
+
+.header-user__name {
+    color: #000000;
+    font-size: 1.1rem;
+}
+
+.header-user__signout {
+    height: 2rem;
+    width: auto;
+    margin-left: 1rem;
+}
+
+.header-user__name:hover,
+.header-user__signout:hover {
+    cursor: pointer;
+    color: #1E1F4D;
+}
+
+/* -------------------- Center Window Styling -------------------- */
+
+/* ----------- Overall Components Styling ----------- */
+.middle-window {
+    display: flex;
+    position: relative;
+    height: 100%;
+}
+
+.middle-window__dashboard {
+    width: 100%;
+}
+
+.middle-window__sidebar {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+}
+
+/* ------------ Component # 01 - Sidebar ------------ */
+
+/* sidebar overall styling */
+
+.sidebar {
+    height: 100%;
+    width: 3.3rem;
+    overflow-x: hidden;
+    display: block;
+    top: 4rem;
+    margin: 0;
+    padding-top: 2rem;
+    list-style: none;
+    white-space: nowrap;
+    overflow-x: hidden;
+    background-color: #00173E;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.2);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+/* sidebar navigation menu styling */
+.sidebar-menu__box {
+    transition: all .3s ease;
+}
+
+.sidebar-menu__box:hover {
+    background-color: #24255f;
+}
+
+.sidebar-menu__item {
+    display: block;
+    padding: 17px 0 17px 16px;
+    color: #ffffff;
+    text-decoration: none;
+    transition-duration: .25s;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-menu__item:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.sidebar-menu__icon {
+    height: 1.15rem;
+    width: auto;
+    display: inline;
+    padding-right: 22px;
+}
+
+/* Sidebar submenu items styling */
+/*.sidebar-submenu {
+    padding-left: 4.8rem;
+    color: #ffffff;
+    z-index: 100;
+}
+
+.sidebar-submenu__subitem {
+    display: block;
+    color: #ffffff;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.3rem;
+    text-decoration: none;
+    transition-duration: .25s;
+}
+
+.sidebar-submenu__subitem:hover {
+    background-color: red;
+    text-decoration: none;
+    color: #ffffff;
+}*/
+
+
+/*.sidebar-submenu__subitem::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0.6px;
+    background: #ffffff;
+    transition: width .6s;
+}
+
+.sidebar-submenu__subitem:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+*/
+
+
+/* Sir Colapsibles Links Styling */
+.dash__collapsible {
+    display: none;
+}
+
+.dash__wrap-collabsible {
+    display: inline;
+}
+
+.dash__lbl-toggle {
+    margin: 0 !important;
+}
+
+.dash__lbl-toggle::before {
+    content: ' ';
+    display: inline-block;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid currentColor;
+    vertical-align: middle;
+    margin-right: 1rem;
+    transform: translateY(-1px);
+    transition: transform .2s ease-out;
+}
+
+.dash__toggle:checked + .dash__lbl-toggle::before {
+    transform: rotate(90deg) translateX(2px);
+}
+
+.dash__collapsible-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height .25s ease-in-out;
+}
+
+.dash__toggle:checked + .dash__lbl-toggle + .dash__collapsible-content {
+    max-height: fit-content;
+}
+
+.dash__toggle:checked + .dash__lbl-toggle {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* -------- Component # 02 - Center Window(Dashboard) --------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------- Footer Styling -------------------- */
+
+/* footer bar */
+.footer {
+    height: 2rem;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.2);
+}
+
+/* footer text */
+.footer-text {
+    padding: 7px;
+    font-size: 0.9rem;
+    color: #1E1F4D;
+    font-weight: 400;
+}
+
+
+/* On Smaller Screens */
+@media (min-width:700px) and (max-width:750px) {
+
+    .header-heading {
+        padding-left: 0rem;
+        padding-right: 9rem;
+    }
+}
+@media (min-width:620px) and (max-width:700px) {
+
+    .header-heading {
+        padding-left: 0rem;
+        padding-right: 6rem;
+    }
+}
+@media (min-width:550px) and (max-width:620px) {
+
+    .header-heading {
+        padding-left: 0rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width:450px) and (max-width:550px) {
+
+    .header-heading {
+        padding-left: 2rem;
+        padding-right: 0rem;
+    }
+
+    .header-heading__text {
+        letter-spacing: 1px;
+        font-size: 1.35rem;
+    }
+}
+
+@media (max-width:450px) {
+
+    .header-heading {
+        display: none;
+    }
+}
+
+
+
+/* ADD ADDITIONAL TESTING CODE HERE (once checked, move the code above) */

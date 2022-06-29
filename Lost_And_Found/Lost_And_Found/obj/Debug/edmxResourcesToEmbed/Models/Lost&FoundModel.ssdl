@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LostandFoundModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="App_Admin">
+    <Key>
+      <PropertyRef Name="Admin_ID" />
+    </Key>
+    <Property Name="Admin_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Admin_FullName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin_Gender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin_Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin_Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin_Role" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin_Created_ON" Type="datetime" Nullable="false" />
+    <Property Name="Admin_Created_By" Type="int" Nullable="false" />
+    <Property Name="Admin_Updated_ON" Type="datetime" />
+    <Property Name="Admin_Updated_By" Type="int" />
+    <Property Name="Admin_IsActive" Type="bit" Nullable="false" />
+    <Property Name="Admin_Contact" Type="bigint" Nullable="false" />
+    <Property Name="Admin_DOB" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="App_User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_FullName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Gender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Contact" Type="bigint" Nullable="false" />
+    <Property Name="User_Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_DOB" Type="date" Nullable="false" />
+    <Property Name="User_Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Created_ON" Type="date" Nullable="false" />
+    <Property Name="User_Updated_ON" Type="date" />
+    <Property Name="User_IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Found_Product">
+    <Key>
+      <PropertyRef Name="Found_Product" />
+    </Key>
+    <Property Name="Found_Product" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_ID" Type="bigint" />
+    <Property Name="Found_Product_Status" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lost_Product">
+    <Key>
+      <PropertyRef Name="Lost_Product" />
+    </Key>
+    <Property Name="Lost_Product" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_ID" Type="bigint" />
+    <Property Name="Lost_Product_Status" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Postedby" Type="bigint" />
+    <Property Name="Product_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Product_Category" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Product_Image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Product_Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Product_Created_ON" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Product_Location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Product_IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Found_Pro__Produ__182C9B23">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Found_Product" Type="Self.Found_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="Found_Product">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Lost_Prod__Produ__15502E78">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Lost_Product" Type="Self.Lost_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="Lost_Product">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Postedb__1273C1CD">
+    <End Role="App_User" Type="Self.App_User" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App_User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Postedby" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LostandFoundModelStoreContainer">
+    <EntitySet Name="App_Admin" EntityType="Self.App_Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="App_User" EntityType="Self.App_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Found_Product" EntityType="Self.Found_Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lost_Product" EntityType="Self.Lost_Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Found_Pro__Produ__182C9B23" Association="Self.FK__Found_Pro__Produ__182C9B23">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Found_Product" EntitySet="Found_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Lost_Prod__Produ__15502E78" Association="Self.FK__Lost_Prod__Produ__15502E78">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Lost_Product" EntitySet="Lost_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Postedb__1273C1CD" Association="Self.FK__Product__Postedb__1273C1CD">
+      <End Role="App_User" EntitySet="App_User" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

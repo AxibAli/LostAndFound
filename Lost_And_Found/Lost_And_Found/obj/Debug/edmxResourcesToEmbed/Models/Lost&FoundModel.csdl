@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LostandFoundModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="App_Admin">
+    <Key>
+      <PropertyRef Name="Admin_ID" />
+    </Key>
+    <Property Name="Admin_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Admin_FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Admin_Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Admin_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Admin_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Admin_Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Admin_Created_ON" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Admin_Created_By" Type="Int32" Nullable="false" />
+    <Property Name="Admin_Updated_ON" Type="DateTime" Precision="3" />
+    <Property Name="Admin_Updated_By" Type="Int32" />
+    <Property Name="Admin_IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Admin_Contact" Type="Int64" Nullable="false" />
+    <Property Name="Admin_DOB" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="App_User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Contact" Type="Int64" Nullable="false" />
+    <Property Name="User_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="User_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Created_ON" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="User_Updated_ON" Type="DateTime" Precision="0" />
+    <Property Name="User_IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Product__Postedb__1273C1CD" FromRole="App_User" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Found_Product">
+    <Key>
+      <PropertyRef Name="Found_Product1" />
+    </Key>
+    <Property Name="Found_Product1" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_ID" Type="Int64" />
+    <Property Name="Found_Product_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Found_Pro__Produ__182C9B23" FromRole="Found_Product" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Lost_Product">
+    <Key>
+      <PropertyRef Name="Lost_Product1" />
+    </Key>
+    <Property Name="Lost_Product1" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_ID" Type="Int64" />
+    <Property Name="Lost_Product_Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Lost_Prod__Produ__15502E78" FromRole="Lost_Product" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Postedby" Type="Int64" />
+    <Property Name="Product_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Product_Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Product_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Product_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Product_Created_ON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Product_Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Product_IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="App_User" Relationship="Self.FK__Product__Postedb__1273C1CD" FromRole="Product" ToRole="App_User" />
+    <NavigationProperty Name="Found_Product" Relationship="Self.FK__Found_Pro__Produ__182C9B23" FromRole="Product" ToRole="Found_Product" />
+    <NavigationProperty Name="Lost_Product" Relationship="Self.FK__Lost_Prod__Produ__15502E78" FromRole="Product" ToRole="Lost_Product" />
+  </EntityType>
+  <Association Name="FK__Product__Postedb__1273C1CD">
+    <End Role="App_User" Type="Self.App_User" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App_User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Postedby" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Found_Pro__Produ__182C9B23">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Found_Product" Type="Self.Found_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="Found_Product">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Lost_Prod__Produ__15502E78">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Lost_Product" Type="Self.Lost_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="Lost_Product">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LostandFoundEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="App_Admin" EntityType="Self.App_Admin" />
+    <EntitySet Name="App_User" EntityType="Self.App_User" />
+    <EntitySet Name="Found_Product" EntityType="Self.Found_Product" />
+    <EntitySet Name="Lost_Product" EntityType="Self.Lost_Product" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <AssociationSet Name="FK__Product__Postedb__1273C1CD" Association="Self.FK__Product__Postedb__1273C1CD">
+      <End Role="App_User" EntitySet="App_User" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Found_Pro__Produ__182C9B23" Association="Self.FK__Found_Pro__Produ__182C9B23">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Found_Product" EntitySet="Found_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Lost_Prod__Produ__15502E78" Association="Self.FK__Lost_Prod__Produ__15502E78">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Lost_Product" EntitySet="Lost_Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
