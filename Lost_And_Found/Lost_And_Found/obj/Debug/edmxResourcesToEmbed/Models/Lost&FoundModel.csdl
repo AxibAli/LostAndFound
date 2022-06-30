@@ -6,15 +6,15 @@
     <EntitySet Name="Found_Product" EntityType="LostandFoundModel.Found_Product" />
     <EntitySet Name="Lost_Product" EntityType="LostandFoundModel.Lost_Product" />
     <EntitySet Name="Products" EntityType="LostandFoundModel.Product" />
-    <AssociationSet Name="FK__Product__Postedb__1273C1CD" Association="LostandFoundModel.FK__Product__Postedb__1273C1CD">
+    <AssociationSet Name="FK__Product__Postedb__38996AB5" Association="LostandFoundModel.FK__Product__Postedb__38996AB5">
       <End Role="App_User" EntitySet="App_User" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
-    <AssociationSet Name="FK__Found_Pro__Produ__182C9B23" Association="LostandFoundModel.FK__Found_Pro__Produ__182C9B23">
+    <AssociationSet Name="FK__Found_Pro__Produ__3E52440B" Association="LostandFoundModel.FK__Found_Pro__Produ__3E52440B">
       <End Role="Product" EntitySet="Products" />
       <End Role="Found_Product" EntitySet="Found_Product" />
     </AssociationSet>
-    <AssociationSet Name="FK__Lost_Prod__Produ__15502E78" Association="LostandFoundModel.FK__Lost_Prod__Produ__15502E78">
+    <AssociationSet Name="FK__Lost_Prod__Produ__3B75D760" Association="LostandFoundModel.FK__Lost_Prod__Produ__3B75D760">
       <End Role="Product" EntitySet="Products" />
       <End Role="Lost_Product" EntitySet="Lost_Product" />
     </AssociationSet>
@@ -53,45 +53,45 @@
     <Property Name="User_Updated_ON" Type="DateTime" Precision="0" />
     <Property Name="User_IsActive" Type="Boolean" Nullable="false" />
     <Property Name="User_Role" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <NavigationProperty Name="Products" Relationship="LostandFoundModel.FK__Product__Postedb__1273C1CD" FromRole="App_User" ToRole="Product" />
+    <NavigationProperty Name="Products" Relationship="LostandFoundModel.FK__Product__Postedb__38996AB5" FromRole="App_User" ToRole="Product" />
   </EntityType>
   <EntityType Name="Found_Product">
     <Key>
       <PropertyRef Name="Found_Product_ID" />
     </Key>
     <Property Name="Found_Product_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Product_ID" Type="Int64" Nullable="false" />
+    <Property Name="Product_ID" Type="Int64" />
     <Property Name="Found_Product_Status" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Product" Relationship="LostandFoundModel.FK__Found_Pro__Produ__182C9B23" FromRole="Found_Product" ToRole="Product" />
+    <NavigationProperty Name="Product" Relationship="LostandFoundModel.FK__Found_Pro__Produ__3E52440B" FromRole="Found_Product" ToRole="Product" />
   </EntityType>
   <EntityType Name="Lost_Product">
     <Key>
       <PropertyRef Name="Lost_Product_ID" />
     </Key>
     <Property Name="Lost_Product_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Product_ID" Type="Int64" Nullable="false" />
+    <Property Name="Product_ID" Type="Int64" />
     <Property Name="Lost_Product_Status" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Product" Relationship="LostandFoundModel.FK__Lost_Prod__Produ__15502E78" FromRole="Lost_Product" ToRole="Product" />
+    <NavigationProperty Name="Product" Relationship="LostandFoundModel.FK__Lost_Prod__Produ__3B75D760" FromRole="Lost_Product" ToRole="Product" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="Product_ID" />
     </Key>
     <Property Name="Product_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Postedby" Type="Int64" Nullable="false" />
+    <Property Name="Postedby" Type="Int64" />
     <Property Name="Product_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Product_Category" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Product_Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Product_Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Product_Created_On" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Product_Created_ON" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Product_Location" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Product_IsActive" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="App_User" Relationship="LostandFoundModel.FK__Product__Postedb__1273C1CD" FromRole="Product" ToRole="App_User" />
-    <NavigationProperty Name="Found_Product" Relationship="LostandFoundModel.FK__Found_Pro__Produ__182C9B23" FromRole="Product" ToRole="Found_Product" />
-    <NavigationProperty Name="Lost_Product" Relationship="LostandFoundModel.FK__Lost_Prod__Produ__15502E78" FromRole="Product" ToRole="Lost_Product" />
+    <NavigationProperty Name="App_User" Relationship="LostandFoundModel.FK__Product__Postedb__38996AB5" FromRole="Product" ToRole="App_User" />
+    <NavigationProperty Name="Found_Product" Relationship="LostandFoundModel.FK__Found_Pro__Produ__3E52440B" FromRole="Product" ToRole="Found_Product" />
+    <NavigationProperty Name="Lost_Product" Relationship="LostandFoundModel.FK__Lost_Prod__Produ__3B75D760" FromRole="Product" ToRole="Lost_Product" />
   </EntityType>
-  <Association Name="FK__Product__Postedb__1273C1CD">
-    <End Type="LostandFoundModel.App_User" Role="App_User" Multiplicity="1" />
+  <Association Name="FK__Product__Postedb__38996AB5">
+    <End Type="LostandFoundModel.App_User" Role="App_User" Multiplicity="0..1" />
     <End Type="LostandFoundModel.Product" Role="Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="App_User">
@@ -102,8 +102,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Found_Pro__Produ__182C9B23">
-    <End Type="LostandFoundModel.Product" Role="Product" Multiplicity="1" />
+  <Association Name="FK__Found_Pro__Produ__3E52440B">
+    <End Type="LostandFoundModel.Product" Role="Product" Multiplicity="0..1" />
     <End Type="LostandFoundModel.Found_Product" Role="Found_Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Product">
@@ -114,8 +114,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Lost_Prod__Produ__15502E78">
-    <End Type="LostandFoundModel.Product" Role="Product" Multiplicity="1" />
+  <Association Name="FK__Lost_Prod__Produ__3B75D760">
+    <End Type="LostandFoundModel.Product" Role="Product" Multiplicity="0..1" />
     <End Type="LostandFoundModel.Lost_Product" Role="Lost_Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Product">

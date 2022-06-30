@@ -1,4 +1,4 @@
-﻿@model List<Lost_And_Found.Models.CategoryModel>
+﻿@model List<Lost_And_Found.Models.PostProductModel>
 @{
     ViewBag.Title = "Mobile";
     Layout = "~/Views/Shared/_LogedInLayout.cshtml";
@@ -8,13 +8,13 @@
     @foreach (var item in Model)
         {
     <div class="card" style="width:20em;margin:10px;">
-        <img src="@item.img" class="card-img-top" />
+        <img src="@Url.Content(item.Product_Image)" class="card-img-top" />
         <div class="card-body">
             <div class="card-title">
-                <h2>@item.title</h2>
+                <h2>@item.Product_Name</h2>
             </div>
             <div class="card-text">
-                <p>@item.text</p>
+                <p>@item.Product_Description</p>
             </div>
             <a href="#" class="btn btn-primary">Read More...</a>
         </div>

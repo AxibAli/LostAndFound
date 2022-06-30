@@ -72,7 +72,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a href="ItemsListing.html" class="nav-link js-scroll-trigger">
+                            <a href="@Url.Action("ItemListing","User")" class="nav-link js-scroll-trigger">
                                 Items Listing
                             </a>
                         </li>
@@ -157,7 +157,6 @@
 
 
     <!--Essential Scripts-->
-
     <!-- Bootstrap4. 3.1 -->
     <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- Slick Slider -->
@@ -233,5 +232,13 @@
             }
         });
     </script>
+    @if (TempData["Message"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["Message"]");
+            }
+        </script>
+    }
 </body>
 </html>

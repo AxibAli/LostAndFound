@@ -307,6 +307,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manager\AdminManager.cs" />
+    <Compile Include="Manager\CategoryManager.cs" />
     <Compile Include="Manager\DashboardManager.cs" />
     <Compile Include="Manager\LoginManager.cs" />
     <Compile Include="Manager\RegisterManager.cs" />
@@ -414,6 +415,7 @@
     <Content Include="Models\Lost&amp;FoundModel.edmx.diagram">
       <DependentUpon>Lost&amp;FoundModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\User\ItemListing.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
