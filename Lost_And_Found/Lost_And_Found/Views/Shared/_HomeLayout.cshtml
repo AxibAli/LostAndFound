@@ -92,13 +92,13 @@
         </div> <!-- / .container -->
     </div>
     <section class="banner">
-    <div class="container">
-        <div>
-            @RenderBody()
+        <div class="container">
+            <div>
+                @RenderBody()
+            </div>
         </div>
-    </div>
     </section>
-    <div class="footer-btm" >
+    <div class="footer-btm">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -128,7 +128,6 @@
 
 
     <!--Essential Scripts-->
-
     <!-- Bootstrap4. 3.1 -->
     <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- Slick Slider -->
@@ -146,6 +145,13 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
 
     <script src="~/Content/Home/js/script.js"></script>
-
+    @if (TempData["Message"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["Message"]");
+            }
+        </script>
+    }
 </body>
 </html>

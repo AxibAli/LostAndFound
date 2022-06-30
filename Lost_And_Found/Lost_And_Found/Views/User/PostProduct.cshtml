@@ -30,12 +30,17 @@
     <div class="rightcont">
         <div class="input-box">
             <span class="details">Product Name </span>
+<<<<<<< HEAD
             @Html.TextBoxFor(x => x.Product_Name, null, new { @Class = "form-class-r" })
+=======
+            @Html.TextBoxFor(x => x.Product_Name, null, new { })
+            @Html.ValidationMessageFor(x => x.Product_Name, null, new { style = "color:red" })
+>>>>>>> fd7e4bdba6e0019be3458391ffa3bc2f7c6c0ccf
         </div>
         <div class="input-box">
             <span class="details">Product Category </span>
             @Html.DropDownListFor(x => x.Product_Category, new List<SelectListItem>
-            { new SelectListItem() { Text = "Please Select" },
+            { new SelectListItem() { Text = "Please Select" ,Value=""},
               new SelectListItem() { Text = "Bags" },
               new SelectListItem() { Text = "Cars" },
                new SelectListItem() { Text = "Clothes_Shoes" },
@@ -45,21 +50,39 @@
                 new SelectListItem() { Text = "Mobile" },
                 new SelectListItem() { Text = "People" },
                 new SelectListItem() { Text = "Pets" },
+<<<<<<< HEAD
             }, new { @Class = "form-class-r" })
+=======
+                new SelectListItem() { Text = "Keys" },
+            }, new { @Class = "input-box" })
+>>>>>>> fd7e4bdba6e0019be3458391ffa3bc2f7c6c0ccf
             @Html.ValidationMessageFor(x => x.Product_Category, null, new { style = "color:red" })
+
+
         </div>
         <div class="input-box">
             <span class="details">Product Description </span>
+<<<<<<< HEAD
             @Html.TextBoxFor(x => x.Product_Description, null, new { @Class = "form-class-r" })
         </div>
         <div class="input-box">
             <span class="details">Product Location </span>
             @Html.TextBoxFor(x => x.Product_Location, null, new { @Class = "form-class-r" })
+=======
+            @Html.TextBoxFor(x => x.Product_Description, null, new { })
+            @Html.ValidationMessageFor(x => x.Product_Description,null, new { style = "color:red" })
+        </div>
+        <div class="input-box">
+            <span class="details">Product Location </span>
+            @Html.TextBoxFor(x => x.Product_Location, null, new { })
+            @Html.ValidationMessageFor(x => x.Product_Location, null, new { style = "color:red" })
+>>>>>>> fd7e4bdba6e0019be3458391ffa3bc2f7c6c0ccf
         </div>
         <div class="input-box">
             <span class="details">Product Status </span>
             @Html.DropDownListFor(x => x.Product_Status, new List<SelectListItem>
-            {  new SelectListItem() { Text = "Have you found the product?" },
+            {  new SelectListItem(){Text = "Please Select" ,Value=""},
+           new SelectListItem() { Text = "Have you found the product?" },
               new SelectListItem() { Text = "Have you lost the product?" },
             }, new { @Class = "form-class-r" })
             @Html.ValidationMessageFor(x => x.Product_Status, null, new { style = "color:red" })

@@ -1,17 +1,16 @@
-﻿using System;
+﻿using Lost_And_Found.Manager;
+using Lost_And_Found.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
-using Lost_And_Found.Models;
-using Lost_And_Found.Manager;
-using System.IO;
 
 namespace Lost_And_Found.Controllers
 {
     public class UserController : Controller
     {
-        public ActionResult Home() 
+        public ActionResult Home()
         {
             return View();
         }
@@ -69,5 +68,14 @@ namespace Lost_And_Found.Controllers
             }
             return View();
         }
+
+
+        public ActionResult ItemListing(PostProductModel ppm)
+        {
+            UserManager obj = new UserManager();
+            List<PostProductModel> items = obj.selectitems();
+            return View(items);
+        }
+
     }
 }

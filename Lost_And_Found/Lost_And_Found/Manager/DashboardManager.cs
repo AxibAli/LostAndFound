@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Linq;
 using Lost_And_Found.Models;
 
 namespace Lost_And_Found

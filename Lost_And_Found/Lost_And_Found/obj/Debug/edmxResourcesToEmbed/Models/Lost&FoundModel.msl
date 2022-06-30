@@ -61,7 +61,7 @@
         <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="Product_IsActive" ColumnName="Product_IsActive" />
           <ScalarProperty Name="Product_Location" ColumnName="Product_Location" />
-          <ScalarProperty Name="Product_Created_On" ColumnName="Product_Created_On" />
+          <ScalarProperty Name="Product_Created_ON" ColumnName="Product_Created_ON" />
           <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
           <ScalarProperty Name="Product_Image" ColumnName="Product_Image" />
           <ScalarProperty Name="Product_Category" ColumnName="Product_Category" />
