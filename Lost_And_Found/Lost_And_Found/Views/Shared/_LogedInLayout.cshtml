@@ -28,6 +28,13 @@
     <link href="~/Content/css/ProfileStyleSheet1.css" rel="stylesheet" />
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="~/Content/Home/css/style.css">
+    <!--Ajax Script-->
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/GeneralAjax.js"></script>
+    <!--Sweet Alert Script-->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/SweetAlert.js"></script>
     <!--Category Card Style-->
     <style>
         .card:hover {
@@ -150,9 +157,7 @@
 
 
     <!--Essential Scripts-->
-    <!-- Main jQuery -->
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    @*<script src="~/Content/Home/plugins/jquery/jquery.js"></script>*@
+
     <!-- Bootstrap4. 3.1 -->
     <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- Slick Slider -->
@@ -164,7 +169,6 @@
 
     <!--  Magnific Popup-->
     <script src="~/Content/Home/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-
 
     <script src="~/Content/Home/js/script.js"></script>
     <!--Category Card Script-->
@@ -201,7 +205,6 @@
             $('#BrowseImage').trigger('click');
         }
 
-
         //select and upload window
         $('#BrowseImage').change(function () {
             var File = this.files;
@@ -218,14 +221,13 @@
                         var width = this.width;
                         var height = this.height;
                         var type = File[0].type;
-                        if ((width >= "512" && height >= "512") && (type == "image/png" || type == "image/jpg" || type == "image/jpeg")) {
+                        if ((width >= "200" && height >= "200") && (type == "image/png" || type == "image/jpg" || type == "image/jpeg")) {
                             $('#UserImage').attr('src', x.target.result);
                             $('.image-desc ').css("color", "black");
                         }
                         else {
                             $('.image-desc ').css("color", "red");
                         }
-                        //alert("Width: " + width + ", Height: " + height + ", Type: " + type);
                     }
                 }
             }

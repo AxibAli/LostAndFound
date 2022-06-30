@@ -22,12 +22,12 @@ namespace Lost_And_Found.Models
         }
     
         public long Product_ID { get; set; }
-        public Nullable<long> Postedby { get; set; }
+        public long Postedby { get; set; }
         public string Product_Name { get; set; }
         public string Product_Category { get; set; }
         public string Product_Image { get; set; }
         public string Product_Description { get; set; }
-        public string Product_Created_ON { get; set; }
+        public System.DateTime Product_Created_On { get; set; }
         public string Product_Location { get; set; }
         public bool Product_IsActive { get; set; }
     

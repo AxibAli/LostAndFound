@@ -5,101 +5,69 @@
 }
 
 <div class="row">
-    <div class="col-lg-12 m-b30">
-        <div class="widget-box">
-            <div class="wc-title">
-                <h4>Image Upload</h4>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <form id="form">
+    <form id="form" method="post" enctype="multipart/form-data">
+        <div class="col-lg-12 m-b30">
+            <div class="widget-box">
+                <div class="wc-title">
+                    <h4>Image Upload</h4>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="user-profile-image">
-                                <input type="file" class="hidden" id="BrowseImage" accept="image/*" name="ImageFile" />
+                                <input type="file" class="hidden" id="BrowseImage" accept="image/*" name="ItemImage" />
                                 <img src="~/Content/Home/images/per.png" class="img-responsive" id="UserImage" />
                                 <p class="image-desc text-center">Allowed Image size: 512*512px </p>
                                 <div class="upload-pic">
                                     <img src="~/Content/Home/images/570233.png" class="img-responsive" />
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-    <div class="col-md-6">
-        <div class="row">
-            <div class="input-box">
-
-                <span class="details">Product Name </span>
-                @Html.TextBoxFor(x => x.Product_Name, null, new { })
-            </div>
+        <div class="input-box">
+            <span class="details">Product Name </span>
+            @Html.TextBoxFor(x => x.Product_Name, null, new { })
         </div>
-    </div>
-
-
-
-    <div class="col-md-6">
-        <div class="row">
+        <div class="input-box">
             <span class="details">Product Category </span>
-            <div class="input-box">
-                @Html.DropDownListFor(x => x.Product_Category, new List<SelectListItem>
-                { new SelectListItem() { Text = "Please Select" },
-                  new SelectListItem() { Text = "Bags" },
-                  new SelectListItem() { Text = "Cars" },
-                   new SelectListItem() { Text = "Clothes_Shoes" },
-                    new SelectListItem() { Text = "Documents" },
-                    new SelectListItem() { Text = "Jewellery" },
-                    new SelectListItem() { Text = "Laptop" },
-                    new SelectListItem() { Text = "Mobile" },
-                    new SelectListItem() { Text = "People" },
-                    new SelectListItem() { Text = "Pets" },
-                }, new { @Class = "input-box" })
-                @Html.ValidationMessageFor(x => x.Product_Category, null, new { style = "color:red" })
-
-            </div>
+            @Html.DropDownListFor(x => x.Product_Category, new List<SelectListItem>
+            { new SelectListItem() { Text = "Please Select" },
+              new SelectListItem() { Text = "Bags" },
+              new SelectListItem() { Text = "Cars" },
+               new SelectListItem() { Text = "Clothes_Shoes" },
+                new SelectListItem() { Text = "Documents" },
+                new SelectListItem() { Text = "Jewellery" },
+                new SelectListItem() { Text = "Laptop" },
+                new SelectListItem() { Text = "Mobile" },
+                new SelectListItem() { Text = "People" },
+                new SelectListItem() { Text = "Pets" },
+            }, new { @Class = "input-box" })
+            @Html.ValidationMessageFor(x => x.Product_Category, null, new { style = "color:red" })
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="row">
-            <div class="input-box">
-                <span class="details">Product Description </span>
-                @Html.TextBoxFor(x => x.Product_Description, null, new { })
-            </div>
+        <div class="input-box">
+            <span class="details">Product Description </span>
+            @Html.TextBoxFor(x => x.Product_Description, null, new { })
         </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="row">
-            <div class="input-box">
-                <span class="details">Product Location </span>
-                @Html.TextBoxFor(x => x.Product_Location, null, new { })
-            </div>
+        <div class="input-box">
+            <span class="details">Product Location </span>
+            @Html.TextBoxFor(x => x.Product_Location, null, new { })
         </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="row">
+        <div class="input-box">
             <span class="details">Product Status </span>
-            <div class="input-box">
-                @Html.DropDownListFor(x => x.Product_Status, new List<SelectListItem>
-                {  new SelectListItem() { Text = "Have you found the product?" },
-                  new SelectListItem() { Text = "Have you lost the product?" },
-                }, new { @Class = "input-box" })
-                @Html.ValidationMessageFor(x => x.Product_Status, null, new { style = "color:red" })
-
-            </div>
+            @Html.DropDownListFor(x => x.Product_Status, new List<SelectListItem>
+            {  new SelectListItem() { Text = "Have you found the product?" },
+              new SelectListItem() { Text = "Have you lost the product?" },
+            }, new { @Class = "input-box" })
+            @Html.ValidationMessageFor(x => x.Product_Status, null, new { style = "color:red" })
         </div>
+        <div class="button">
+            <input type="submit" id="btnDraft" value="Post Your Item">
+        </div>
+       </form>
     </div>
-
-    <div class="button">
-        <input type="submit" id="btnDraft" value="Register Your Self">
-    </div>
-    </form>
-</div>
 
 <script>
     $(document).ready(function () {
@@ -108,7 +76,7 @@
             var formdata = $("#form").serialize();
             console.log(formdata);
 
-            ajaxCall("/Login/Register", formdata, function (result) {
+            ajaxCall("/User/PostProduct", formdata, function (result) {
                 if (!result.Response) {
                     swal({ text: result.Message, icon: "warning" });
                     console.error(result.Error);

@@ -14,5 +14,9 @@ namespace Lost_And_Found.Models
         public string Product_Location { get; set; }
         public string Product_Status { get; set; }
         public bool Product_IsActive { get; set; }
+        public long Product_Id { get; set; }
+        public long Postedby { get; set; }
+        public DateTime Product_Created_On { get; set; }
+
     }
 }
