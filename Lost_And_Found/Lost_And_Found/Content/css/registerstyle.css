@@ -50,7 +50,19 @@ form .user-details .input-box{
   width: calc(100% / 2 - 20px);
 }
 
-
+.container5{
+    width:100%;
+    display:table;
+    background: white;
+    box-shadow: 4px 8px 4px #ccc;
+}
+.leftcont{
+    display:table-cell;
+    width:50%;
+}
+.rightcont{
+    display:table-cell;
+}
 
 form .input-box span.details{
   display: block;
@@ -107,7 +119,8 @@ form .input-box span.details{
  }
  form .button{
    height: 45px;
-   margin: 35px 0
+   margin: 35px 0;
+   max-width: 69px;
  }
  form .button input{
    height: 100%;
@@ -126,6 +139,30 @@ form .input-box span.details{
   /* transform: scale(0.99); */
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
   }
+
+form .crtbutton {
+    height: 45px;
+    margin: 35px 0;
+}
+
+    form .crtbutton input {
+        height: 100%;
+        width: 100%;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+
+        form .crtbutton input:hover {
+            /* transform: scale(0.99); */
+            background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+        }
  @media(max-width: 584px){
  .container3{
   max-width: 100%;
@@ -149,4 +186,14 @@ form .user-details .input-box{
   .container3 .content .category{
     flex-direction: column;
   }
+}
+
+  /* Dropdown*/
+.lowerdrop{
+    visibility: hidden;
+}
+.form-class-r {
+    width: 410px;
+    border: 1px solid #ccc;
+    height: 40px;
 }
