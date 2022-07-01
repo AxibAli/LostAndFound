@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Photography,agency,business,company,agency,multipurpose,modern,bootstrap4">
+
+    <meta name="author" content="themeturn.com">
+
+    <!-- Mobile Specific Meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="~/Content/Home/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Icofont Css -->
+    <link rel="stylesheet" href="~/Content/Home/plugins/themify/css/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/Home/plugins/fontawesome/css/all.css">
+    <!-- animate.css -->
+    <link rel="stylesheet" href="~/Content/Home/plugins/animate-css/animate.css">
+    <!-- Magnify Popup -->
+    <link rel="stylesheet" href="~/Content/Home/plugins/magnific-popup/dist/magnific-popup.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="~/Content/Home/plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="~/Content/Home/plugins/slick-carousel/slick/slick-theme.css">
+    <!--Picture Uplaod Srtle-->
+    <link href="~/Content/css/ProfileStyleSheet1.css" rel="stylesheet" />
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="~/Content/Home/css/style.css">
+    <!--Ajax Script-->
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/GeneralAjax.js"></script>
+    <!--Sweet Alert Script-->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/SweetAlert.js"></script>
+    <!--Post Product Style -->
+    <link href="~/Content/css/registerstyle.css" rel="stylesheet" />
+    <!--Category Card Style-->
+    <style>
+        .card:hover {
+            box-shadow: -1px 9px 40px -12px #808080;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div class="main-navigation main_menu " id="mainmenu-area">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="index.html">
+                    <img src="~/Content/Home/images/logo-dark.png" alt="Digicon" class="img-fluid">
+                </a>
+                <!-- Toggler -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="ti-menu-alt"></span>
+                </button>
+
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- Links -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item ">
+                            <a href="@Url.Action("Home", "User")" class="nav-link js-scroll-trigger">
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a href="@Url.Action("About","User")" class="nav-link js-scroll-trigger">
+                                About
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="@Url.Action("ItemListing","User")" class="nav-link js-scroll-trigger">
+                                Items Listing
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="@Url.Action("Contact","User")" class="nav-link">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="list-inline header-contact float-lg-right">
+                        <li class="list-inline-item">
+                            <a href="@Url.Action("PostProduct","User")" class="btn btn-solid-border btn-sm"><i class="ti-phone-alt mr-2"></i>Post Item</a>
+                        </li>
+                    </ul>
+                    @*<ul class="list-inline header-contact float-lg-right">
+                            <li class="list-inline-item">
+                                <a class="btn btn-main-2 btn-sm" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>*@
+                    <ul class="list-inline header-contact float-lg-right" style="margin-left:8px; margin-right: 8px;">
+                        <li class="nav-item dropdown">
+                            <a class="btn btn-main-2 btn-sm nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i>
+                                Username
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li>
+                                    <a class="dropdown-item btn btn-main-2 btn-sm" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div> <!-- / .navbar-collapse -->
+            </nav>
+        </div> <!-- / .container -->
+    </div>
+    <!--Render Section-->
+    <section class="banner">
+        <div class="container">
+            <div>
+                @RenderBody()
+            </div>
+        </div>
+    </section>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="@Url.Action("Logout","Login")">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Footer-->
+    <div class="footer-btm">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="copyright">
+                        <p>Copyright reserved to <a href="themeturn.com">Digicon.</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list-inline footer-socials text-lg-right mb-0">
+                        <li class="list-inline-item">
+                            <a href="#"> <i class="fab fa-facebook-f"></i>Facebook</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"> <i class="fab fa-twitter"></i>Twitter</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"> <i class="fab fa-pinterest"></i> Pinterest</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"> <i class="fab fa-linkedin"></i>Linkedin</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Essential Scripts-->
+    <!-- Bootstrap4. 3.1 -->
+    <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Slick Slider -->
+    <script src="~/Content/Home/plugins/slick-carousel/slick/slick.min.js"></script>
+    <!-- Counterup -->
+    <script src="~/Content/Home/plugins/counterup/waypoint.js"></script>
+    <script src="~/Content/Home/plugins/counterup/jquery.counterup.min.js"></script>
+    <script src="~/Content/Home/plugins/instafeed-js/instafeed.min.js"></script>
+
+    <!--  Magnific Popup-->
+    <script src="~/Content/Home/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+
+    <script src="~/Content/Home/js/script.js"></script>
+    <!--Category Card Script-->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $('.card').hover(
+            function () {
+                $(this).animate({
+                    marginTop: "-=1%",
+                    marginBottom: "+=1%"
+                }, 200)
+            },
+            function () {
+                $(this).animate({
+                    marginTop: "+=1%",
+                    marginBottom: "-=1%"
+                })
+            }
+        )
+    </script>
+    <!--Picture upload-->
+    <script type="text/javascript">
+
+        $('#UserImage').click(function () {
+            UploadClickEvent();
+
+        });
+
+        $('.upload-pic').click(function () {
+            UploadClickEvent();
+        });
+
+        function UploadClickEvent() {
+            $('#BrowseImage').trigger('click');
+        }
+
+        //select and upload window
+        $('#BrowseImage').change(function () {
+            var File = this.files;
+
+            if (File && File[0]) {
+                var reader = new FileReader();
+                reader.readAsDataURL(File[0]);
+
+                reader.onload = function (x) {
+                    var image = new Image;
+                    image.src = x.target.result;
+
+                    image.onload = function () {
+                        var width = this.width;
+                        var height = this.height;
+                        var type = File[0].type;
+                        if ((width >= "200" && height >= "200") && (type == "image/png" || type == "image/jpg" || type == "image/jpeg")) {
+                            $('#UserImage').attr('src', x.target.result);
+                            $('.image-desc ').css("color", "black");
+                        }
+                        else {
+                            $('.image-desc ').css("color", "red");
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    @if (TempData["Message"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["Message"]");
+            }
+        </script>
+    }
+</body>
+</html>

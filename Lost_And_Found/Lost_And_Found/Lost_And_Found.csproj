@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D7AD01B9-42B8-4372-8F1C-1EEB9ABD7D00}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lost_And_Found</RootNamespace>
+    <AssemblyName>Lost_And_Found</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.20.0.103, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.20.0\lib\net452\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.20.0.103, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.20.0\lib\net452\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.20.0.103, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.20.0\lib\net452\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.20.0.103, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.20.0\lib\net452\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.20.0.103, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.20.0\lib\net452\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.20.0.103, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.20.0\lib\net452\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.8\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\netstandard1.1\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\assets\images\dashboard__add-admin.png" />
+    <Content Include="Content\assets\images\dashboard__all-posts.png" />
+    <Content Include="Content\assets\images\dashboard__all-users.png" />
+    <Content Include="Content\assets\images\dashboard__dashboard.png" />
+    <Content Include="Content\assets\images\dashboard__signout.png" />
+    <Content Include="Content\assets\images\dashboard__user.png" />
+    <Content Include="Content\assets\images\dashboard__view-admins.png" />
+    <Content Include="Content\assets\images\delete-record.png" />
+    <Content Include="Content\assets\images\edit-record.png" />
+    <Content Include="Content\assets\images\icon\icon-bag.png" />
+    <Content Include="Content\assets\images\icon\icon-car.png" />
+    <Content Include="Content\assets\images\icon\icon-clothes-shoes.png" />
+    <Content Include="Content\assets\images\icon\icon-document.png" />
+    <Content Include="Content\assets\images\icon\icon-jewellery.png" />
+    <Content Include="Content\assets\images\icon\icon-key.png" />
+    <Content Include="Content\assets\images\icon\icon-laptop.png" />
+    <Content Include="Content\assets\images\icon\icon-mobile.png" />
+    <Content Include="Content\assets\images\icon\icon-people.png" />
+    <Content Include="Content\assets\images\icon\icon-pet.png" />
+    <Content Include="Content\assets\images\icon\icon_1.png" />
+    <Content Include="Content\assets\images\icon\icon_2.png" />
+    <Content Include="Content\assets\images\icon\icon_3.png" />
+    <Content Include="Content\assets\images\login__backgroung.jpeg" />
+    <Content Include="Content\assets\images\logo.png" />
+    <Content Include="Content\assets\images\search-record.png" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\cards.css" />
+    <Content Include="Content\css\Dashboard.css" />
+    <Content Include="Content\css\font-roboto.css" />
+    <Content Include="Content\css\loginstyle.css" />
+    <Content Include="Content\css\ProfileStyleSheet1.css" />
+    <Content Include="Content\css\registerstyle.css" />
+    <Content Include="Content\css\ViewAdmins.css" />
+    <Content Include="Content\Home\css\home.css" />
+    <Content Include="Content\Home\css\style.css" />
+    <Content Include="Content\Home\images\570233.png" />
+    <Content Include="Content\Home\images\banner\6.jpg" />
+    <Content Include="Content\Home\images\banner\banner-4.jpg" />
+    <Content Include="Content\Home\images\banner\banner-img.png" />
+    <Content Include="Content\Home\images\banner\bg-1.png" />
+    <Content Include="Content\Home\images\banner\blog-2.jpg" />
+    <Content Include="Content\Home\images\banner\img-2.png" />
+    <Content Include="Content\Home\images\bg\5.jpg" />
+    <Content Include="Content\Home\images\bg\6.jpg" />
+    <Content Include="Content\Home\images\bg\about.jpg" />
+    <Content Include="Content\Home\images\bg\about_img.png" />
+    <Content Include="Content\Home\images\bg\clients_img_02.png" />
+    <Content Include="Content\Home\images\bg\clients_img_03.png" />
+    <Content Include="Content\Home\images\bg\clients_img_04.png" />
+    <Content Include="Content\Home\images\bg\clients_img_05.png" />
+    <Content Include="Content\Home\images\bg\counterbg2.png" />
+    <Content Include="Content\Home\images\bg\mobile.png" />
+    <Content Include="Content\Home\images\bg\t-pattern.png" />
+    <Content Include="Content\Home\images\blog\barner.jpg" />
+    <Content Include="Content\Home\images\blog\news-5.jpg" />
+    <Content Include="Content\Home\images\blog\news-6.jpg" />
+    <Content Include="Content\Home\images\blog\news-7.jpg" />
+    <Content Include="Content\Home\images\blog\post-thumb-2.jpg" />
+    <Content Include="Content\Home\images\blog\post-thumb-3.jpg" />
+    <Content Include="Content\Home\images\clients\client1.png" />
+    <Content Include="Content\Home\images\clients\client2.png" />
+    <Content Include="Content\Home\images\clients\client3.png" />
+    <Content Include="Content\Home\images\clients\client4.png" />
+    <Content Include="Content\Home\images\instagram\p-1.jpg" />
+    <Content Include="Content\Home\images\instagram\p-2.jpg" />
+    <Content Include="Content\Home\images\instagram\p-3.jpg" />
+    <Content Include="Content\Home\images\instagram\p-4.jpg" />
+    <Content Include="Content\Home\images\instagram\p-5.jpg" />
+    <Content Include="Content\Home\images\instagram\p-6.jpg" />
+    <Content Include="Content\Home\images\instagram\p-7.jpg" />
+    <Content Include="Content\Home\images\instagram\p-8.jpg" />
+    <Content Include="Content\Home\images\logo-dark.png" />
+    <Content Include="Content\Home\images\logo-white.png" />
+    <Content Include="Content\Home\images\per.png" />
+    <Content Include="Content\Home\images\process\post1.jpg" />
+    <Content Include="Content\Home\images\process\post2.jpg" />
+    <Content Include="Content\Home\images\process\post3.jpg" />
+    <Content Include="Content\Home\images\svg\001-notepad.svg" />
+    <Content Include="Content\Home\images\svg\001-photo-camera.svg" />
+    <Content Include="Content\Home\images\svg\002-social-media.svg" />
+    <Content Include="Content\Home\images\svg\002-stopwatch.svg" />
+    <Content Include="Content\Home\images\svg\003-bullhorn.svg" />
+    <Content Include="Content\Home\images\svg\003-smartphone.svg" />
+    <Content Include="Content\Home\images\svg\004-digital-marketing.svg" />
+    <Content Include="Content\Home\images\svg\004-network.svg" />
+    <Content Include="Content\Home\images\svg\005-idea.svg" />
+    <Content Include="Content\Home\images\svg\005-social-campaign.svg" />
+    <Content Include="Content\Home\images\svg\006-data.svg" />
+    <Content Include="Content\Home\images\svg\006-file.svg" />
+    <Content Include="Content\Home\images\svg\007-blog.svg" />
+    <Content Include="Content\Home\images\svg\007-users.svg" />
+    <Content Include="Content\Home\images\svg\008-blog-1.svg" />
+    <Content Include="Content\Home\images\svg\008-like.svg" />
+    <Content Include="Content\Home\images\svg\009-digital-marketing-1.svg" />
+    <Content Include="Content\Home\images\svg\009-search.svg" />
+    <Content Include="Content\Home\images\svg\010-multimedia.svg" />
+    <Content Include="Content\Home\images\svg\011-edit.svg" />
+    <Content Include="Content\Home\images\svg\012-chain.svg" />
+    <Content Include="Content\Home\images\svg\013-server.svg" />
+    <Content Include="Content\Home\images\svg\014-film.svg" />
+    <Content Include="Content\Home\images\svg\015-layers.svg" />
+    <Content Include="Content\Home\images\svg\016-upload.svg" />
+    <Content Include="Content\Home\images\team\team-1.jpg" />
+    <Content Include="Content\Home\images\team\team-2.jpg" />
+    <Content Include="Content\Home\images\team\team-3.jpg" />
+    <Content Include="Content\Home\images\team\team-4.jpg" />
+    <Content Include="Content\Home\images\team\team-5.jpg" />
+    <Content Include="Content\Home\js\script.js" />
+    <Content Include="Content\Home\plugins\animate-css\animate.css" />
+    <Content Include="Content\Home\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Home\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Home\plugins\bootstrap\js\jquery.slim3.31.js" />
+    <Content Include="Content\Home\plugins\bootstrap\js\popper.js" />
+    <Content Include="Content\Home\plugins\counterup\jquery.counterup.min.js" />
+    <Content Include="Content\Home\plugins\counterup\waypoint.js" />
+    <Content Include="Content\Home\plugins\fontawesome\css\all.css" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\Home\plugins\google-map\map.js" />
+    <Content Include="Content\Home\plugins\instafeed-js\instafeed.js" />
+    <Content Include="Content\Home\plugins\instafeed-js\instafeed.min.js" />
+    <Content Include="Content\Home\plugins\jquery\jquery.js" />
+    <Content Include="Content\Home\plugins\magnific-popup\dist\jquery.magnific-popup.js" />
+    <Content Include="Content\Home\plugins\magnific-popup\dist\jquery.magnific-popup.min.js" />
+    <Content Include="Content\Home\plugins\magnific-popup\dist\magnific-popup.css" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\ajax-loader.gif" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\fonts\slick.svg" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\slick-theme.css" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\slick.css" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\slick.js" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\slick.min.js" />
+    <Content Include="Content\Home\plugins\themify\css\themify-icons.css" />
+    <Content Include="Content\Home\plugins\themify\fonts\themify.svg" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\Dashboard.js" />
+    <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\js\ViewAdmins.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\Lost&amp;FoundModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Lost&amp;FoundModel.edmx</DependentUpon>
+      <LastGenOutput>Lost&amp;FoundModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Lost&amp;FoundModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Lost&amp;FoundModel.edmx</DependentUpon>
+      <LastGenOutput>Lost&amp;FoundModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\GeneralAjax.js" />
+    <Content Include="scripts\jquery-3.4.1.js" />
+    <Content Include="scripts\jquery-3.4.1.min.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\modernizr-2.8.3.js" />
+    <Content Include="scripts\SweetAlert.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\AuthorizedUser.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\AdminManager.cs" />
+    <Compile Include="Manager\CategoryManager.cs" />
+    <Compile Include="Manager\DashboardManager.cs" />
+    <Compile Include="Manager\LoginManager.cs" />
+    <Compile Include="Manager\RegisterManager.cs" />
+    <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Models\AjaxResponseModel.cs" />
+    <Compile Include="Models\App_Admin.cs">
+      <DependentUpon>Lost&amp;FoundModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\App_User.cs">
+      <DependentUpon>Lost&amp;FoundModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\CreateAdminModel.cs" />
+    <Compile Include="Models\DashboardModel.cs" />
+    <Compile Include="Models\Found_Product.cs">
+      <DependentUpon>Lost&amp;FoundModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Lost&amp;FoundModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lost&amp;FoundModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lost&amp;FoundModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lost&amp;FoundModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lost&amp;FoundModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lost&amp;FoundModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lost_Product.cs">
+      <DependentUpon>Lost&amp;FoundModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PostProductModel.cs" />
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>Lost&amp;FoundModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserRegisterModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Home\maps\home.css.map" />
+    <Content Include="Content\Home\maps\style.css.map" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\Home\plugins\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\config.rb" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\fonts\slick.eot" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\fonts\slick.ttf" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\fonts\slick.woff" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\slick-theme.less" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\slick-theme.scss" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\slick.less" />
+    <Content Include="Content\Home\plugins\slick-carousel\slick\slick.scss" />
+    <Content Include="Content\Home\plugins\themify\fonts\themify.eot" />
+    <Content Include="Content\Home\plugins\themify\fonts\themify.ttf" />
+    <Content Include="Content\Home\plugins\themify\fonts\themify.woff" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Admin\AllPosts.cshtml" />
+    <Content Include="Views\Admin\AllUsers.cshtml" />
+    <Content Include="Views\Admin\CreateAdmin.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Admin\ViewAllAdmins.cshtml" />
+    <Content Include="Views\Category\Bags.cshtml" />
+    <Content Include="Views\Category\Cars.cshtml" />
+    <Content Include="Views\Category\Clothes_Shoes.cshtml" />
+    <Content Include="Views\Category\Documents.cshtml" />
+    <Content Include="Views\Category\Jewellery.cshtml" />
+    <Content Include="Views\Category\Keys.cshtml" />
+    <Content Include="Views\Category\Laptop.cshtml" />
+    <Content Include="Views\Category\Mobile.cshtml" />
+    <Content Include="Views\Category\People.cshtml" />
+    <Content Include="Views\Category\Pets.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\MainIndex.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\Shared\_LogedInLayout.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\User\Home.cshtml" />
+    <Content Include="Views\User\PostProduct.cshtml" />
+    <EntityDeploy Include="Models\Lost&amp;FoundModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Lost&amp;FoundModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Lost&amp;FoundModel.edmx.diagram">
+      <DependentUpon>Lost&amp;FoundModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Views\User\ItemListing.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="ProjectData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1284</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1284/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.20.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.20.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.20.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.20.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.20.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.20.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.20.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.20.0\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.Web.2.20.0\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.Web.2.20.0\build\Microsoft.ApplicationInsights.Web.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.20.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.20.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.20.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.20.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.20.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.20.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.20.0\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.20.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.Web.2.20.0\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.Web.2.20.0\build\Microsoft.ApplicationInsights.Web.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

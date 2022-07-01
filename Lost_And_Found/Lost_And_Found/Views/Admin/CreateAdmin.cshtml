@@ -1,0 +1,102 @@
+﻿@model Lost_And_Found.Models.CreateAdminModel
+@{
+    ViewBag.Title = "Create Admin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container4">
+    <div class="title">Create new Admin </div>
+    <div class="content">
+        <form id="form">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Full Name</span>
+                    @Html.TextBoxFor(x => x.Admin_FullName, null, new { type = "text", placeholder = "Enter your name", required = true })
+                    @Html.ValidationMessageFor(x => x.Admin_FullName, null, new { style = "color:red" })
+                </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    @Html.TextBoxFor(x => x.Admin_Email, null, new { type = "text", placeholder = "Enter your email", required = true })
+                    @Html.ValidationMessageFor(x => x.Admin_Email, null, new { style = "color:red" })
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    @Html.TextBoxFor(x => x.Admin_Password, null, new { type = "text", placeholder = "Enter your password", required = true })
+                    @Html.ValidationMessageFor(x => x.Admin_Password, null, new { style = "color:red" })
+                </div>
+                <div class="input-box">
+                    <span class="details">Date of Birth</span>
+                    @Html.TextBoxFor(x => x.Admin_DOB, null, new { type = "date", placeholder = "Enter your date of birth", required = true })
+                    @Html.ValidationMessageFor(x => x.Admin_DOB, null, new { style = "color:red" })
+                </div>
+                <div class="input-box">
+                    <span class="details">Role</span>
+                    @Html.TextBoxFor(x => x.Admin_Role, null, new { type = "text", placeholder = "Enter your role", required = true })
+                    @Html.ValidationMessageFor(x => x.Admin_Role, null, new { style = "color:red" })
+                </div>
+                <div class="input-box">
+                    <span class="details">Phone Number</span>
+                    @Html.TextBoxFor(x => x.Admin_Contact, null, new { type = "text", placeholder = "Enter your phone number", required = true })
+                    @Html.ValidationMessageFor(x => x.Admin_Contact, null, new { style = "color:red" })
+                </div>
+
+            </div>
+            <div class="gender-details">
+                @Html.RadioButtonFor(x => x.Admin_Gender, "Male", new { type = "radio", name = "gender", id = "dot-1" })
+                @Html.RadioButtonFor(x => x.Admin_Gender, "Female", new { type = "radio", name = "gender", id = "dot-2" })
+                @Html.RadioButtonFor(x => x.Admin_Gender, "Not Say", new { type = "radio", name = "gender", id = "dot-3" })
+                @Html.ValidationMessageFor(x => x.Admin_Gender, null, new { style = "color:red" })
+                <span class="gender-title">Gender</span>
+                <div class="category">
+                    <label for="dot-1">
+                        <span class="dot one"></span>
+                        <span class="gender">Male</span>
+                    </label>
+                    <label for="dot-2">
+                        <span class="dot two"></span>
+                        <span class="gender">Female</span>
+                    </label>
+                    <label for="dot-3">
+                        <span class="dot three"></span>
+                        <span class="gender">Prefer not to say</span>
+                    </label>
+                </div>
+            </div>
+            <div class="crtbutton">
+                <input type="submit" id="btnDraft" value="Create New Admin">
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#btnDraft").click(function (x) {
+            debugger;
+            var formdata = $("#form").serialize();
+            console.log(formdata);
+
+            ajaxCall("/Admin/CreateAdmin", formdata, function (result) {
+                if (!result.Response) {
+                    swal({ text: result.Message, icon: "warning" });
+                    console.error(result.Error);
+                }
+                else {
+                    swal({
+                        title: "Good job!",
+                        text: result.Message,
+                        icon: "success",
+                        buttons: true,
+                    })
+                        .then((ok_btn) => {
+                            if (ok_btn) {
+                            //    window.location.href = "/Login/Login"
+                            }
+                        });
+                }
+            });
+        });
+    });
+</script>

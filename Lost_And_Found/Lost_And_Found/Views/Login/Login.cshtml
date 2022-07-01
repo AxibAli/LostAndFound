@@ -1,0 +1,48 @@
+﻿@model Lost_And_Found.Models.LoginModel
+
+@{ ViewBag.Title = "Login";
+   Layout = "~/Views/Shared/_HomeLayout.cshtml"; 
+ }
+
+<div class="container2">
+    <header2>Login Form</header2>
+    <form method="post">
+        <div class="input-field2">
+            @Html.TextBoxFor(x => x.Username, null, new { type = "text", required = true })
+            @Html.ValidationMessageFor(x=>x.Username, null, new { style = "color:red" })
+            <label>Email or Username</label>
+        </div>
+        <div class="input-field2">
+            @Html.TextBoxFor(x => x.Password, null, new { @class = "pswrd", type = "password", required = true })
+            @Html.ValidationMessageFor(x=>x.Password, null, new { style = "color:red" })
+            <span class="show">SHOW</span>
+            <label>Password</label>
+        </div>
+        <div class="button2">
+            <div class="inner"></div>
+            <button class="btncls">LOGIN</button>
+        </div>
+    </form>
+
+    <div class="signup2">
+        Not a member? <a href="@Url.Action("Register","Login")">Signup now</a>
+    </div>
+</div>
+
+
+<script>
+    var input = document.querySelector('.pswrd');
+    var show = document.querySelector('.show');
+    show.addEventListener('click', active);
+    function active() {
+        if (input.type === "password") {
+            input.type = "text";
+            show.style.color = "#1DA1F2";
+            show.textContent = "HIDE";
+        } else {
+            input.type = "password";
+            show.textContent = "SHOW";
+            show.style.color = "#111";
+        }
+    }
+</script>
