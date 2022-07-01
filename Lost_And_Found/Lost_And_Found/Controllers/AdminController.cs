@@ -69,7 +69,9 @@ namespace Lost_And_Found.Controllers
 
         public ActionResult AllPosts()
         {
-            return View();
+            UserManager obj = new UserManager();
+            List<PostProductModel> posts = obj.selectitems();
+            return View(posts);
         }
         public ActionResult AllUsers()
         {

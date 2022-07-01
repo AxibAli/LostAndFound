@@ -77,5 +77,13 @@ namespace Lost_And_Found.Controllers
             return View(items);
         }
 
+        public ActionResult MyPosts()
+        {
+            return View();
+        }
+
+
+
+
     }
 }
