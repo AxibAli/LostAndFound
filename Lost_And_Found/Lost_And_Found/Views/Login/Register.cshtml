@@ -5,7 +5,7 @@
 <div class="container3">
     <div class="title">Registration Form</div>
     <div class="content">
-        <form id="form">
+        <form id="form" >
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">Full Name</span>
@@ -24,12 +24,12 @@
                 </div>
                 <div class="input-box">
                     <span class="details">Password</span>
-                    @Html.TextBoxFor(x => x.User_Password, null, new { type = "password", placeholder = "Enter your password", required = true })
+                    @Html.TextBoxFor(x => x.User_Password, null, new { type = "text", placeholder = "Enter your password", required = true })
                     @Html.ValidationMessageFor(x => x.User_Password, null, new { style = "color:red" })
                 </div>
                 <div class="input-box">
                     <span class="details">Date of Birth</span>
-                    @Html.TextBoxFor(x => x.User_DOB, null, new { type = "Date", placeholder = "Enter your Date of Birth", required = true })
+                    @Html.TextBoxFor(x => x.User_DOB, null, new { type = "date",placeholder = "Enter your Date of Birth", required = true })
                     @Html.ValidationMessageFor(x => x.User_DOB, null, new { style = "color:red" })
                 </div>
                 <div class="input-box">
@@ -61,7 +61,7 @@
                     </label>
                 </div>
             </div>
-            <div class="button">
+            <div class="crtbutton">
                 <input type="submit" id="btnDraft" value="Register Your Self">
             </div>
         </form>
@@ -73,7 +73,6 @@
         $("#btnDraft").click(function (x) {
             debugger;
             var formdata = $("#form").serialize();
-            console.log(formdata);
 
             ajaxCall("/Login/Register", formdata, function (result) {
                 if (!result.Response) {
@@ -97,4 +96,3 @@
         });
     });
 </script>
-<script src="~/scripts/jquery.validate.min.js"></script>

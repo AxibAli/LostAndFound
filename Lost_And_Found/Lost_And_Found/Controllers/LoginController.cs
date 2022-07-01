@@ -83,6 +83,9 @@ namespace Lost_And_Found.Controllers
             {
                 RegisterManager obj = new RegisterManager();
                 Rm.User_Created_ON = DateTime.Now;
+                Rm.User_Role = "User";
+                Rm.User_IsActive = true;
+
                 long u_id = obj.AddUser(Rm);
                 if (u_id > 0)
                 {
