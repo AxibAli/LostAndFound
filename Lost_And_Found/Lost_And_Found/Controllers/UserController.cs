@@ -48,13 +48,13 @@ namespace Lost_And_Found.Controllers
                         long u_id = obj.addpost(ppm);
                         if (u_id > 0)
                         {
-                            TempData["Message"] = "User Created Successfuly and User Id is " + u_id;
-                            return RedirectToAction("Home");
+                            TempData["Message"] = "Your Item Posted Succefully ";
+                            return RedirectToAction("Itemlisting");
                         }
 
                         else
                         {
-                            TempData["Message"] = "User Not Created !";
+                            TempData["Message"] = "Your Item Not Posted Check Again !";
                         }
                     }
                     else
@@ -66,7 +66,7 @@ namespace Lost_And_Found.Controllers
             }
             else
             {
-                TempData["Message"] = "User Not Created Kindly Fill Complete Form !";
+                TempData["Message"] = "Kindly Fill Complete Form !";
             }
             return View();
         }
@@ -78,12 +78,6 @@ namespace Lost_And_Found.Controllers
             List<PostProductModel> items = obj.selectitems();
             return View(items);
         }
-
-        public ActionResult MyPosts()
-        {
-            return View();
-        }
-
 
 
 
