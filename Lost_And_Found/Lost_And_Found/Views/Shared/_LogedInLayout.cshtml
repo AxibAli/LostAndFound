@@ -105,10 +105,11 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">My Profile</a></li>
-                                <li class="dropdown-item ">
-                                    <a href="@Url.Action("MyPosts","User")" style="color:black">
-                                     My Posts
-                                    </a>
+                                <li class="dropdown-item">
+                                    @Html.ActionLink("My Posts", "MyPosts", "User", new { postedby = Session["User_ID"] }, new {style = "color:black" })
+                                    @*<a href="@Url.Action("MyPosts","User"),new" style="color:black">
+                                        My Posts
+                                    </a>*@
                                 </li>
                                 <li>
                                     <a class="dropdown-item btn btn-main-2 btn-sm" href="#" data-toggle="modal" data-target="#logoutModal">

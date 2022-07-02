@@ -51,13 +51,27 @@ namespace Lost_And_Found.Manager
 
         public List<PostProductModel> selectitems()
         {
-            var request = db.Products.Where(x =>x.Product_IsActive == true).OrderByDescending(x=>x.Product_ID).ToList();
+            var request = db.Products.Where(x => x.Product_IsActive == true).OrderByDescending(x => x.Product_ID).ToList();
             List<PostProductModel> List = request.Select(x => new PostProductModel
             {
                 Product_Id = x.Product_ID,
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
-               Product_Description = x.Product_Description,
+                Product_Description = x.Product_Description,
+            }).ToList();
+            return List;
+
+        }
+
+        public List<PostProductModel> selectMyposts(long postedby)
+        {
+            var request = db.Products.Where(x => x.Product_IsActive == true && x.Postedby == postedby).OrderByDescending(x => x.Product_ID).ToList();
+            List<PostProductModel> List = request.Select(x => new PostProductModel
+            {
+                Product_Id = x.Product_ID,
+                Product_Image = x.Product_Image,
+                Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description,
             }).ToList();
             return List;
 

@@ -32,6 +32,7 @@ namespace Lost_And_Found.Models
         public long Postedby { get; set; }
 
         public System.DateTime Product_Created_On { get; set; }
+        public long Myposts { get; set; }
 
     }
 }
