@@ -49,12 +49,14 @@ namespace Lost_And_Found.Controllers
                 long u_id = obj.AddAdmin(cam);
                 if (u_id > 0)
                 {
+                    TempData["Message"] = "New Admin Created Successfully";
                     message = "Successfull";
                     response = true;
                 }
 
                 else
                 {
+                    TempData["Message"] = "Admin Not Created !";
                     message = "Not Successfull";
                     response = false;
                 }
@@ -62,6 +64,7 @@ namespace Lost_And_Found.Controllers
             }
             else
             {
+                TempData["Message"] = "Fill Complete Form !";
                 message = "Error! Add missing fields";
                 response = false;
             }
