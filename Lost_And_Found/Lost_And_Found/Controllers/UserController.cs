@@ -95,7 +95,7 @@ namespace Lost_And_Found.Controllers
 
         }
 
-
+        public ActionResult abc() { return View(); }
 
 
     }
