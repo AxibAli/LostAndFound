@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -72,10 +73,46 @@ namespace Lost_And_Found.Manager
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
                 Product_Description = x.Product_Description,
+                Product_IsActive = x.Product_IsActive,  
             }).ToList();
             return List;
 
         }
 
+
+        public List<PostProductModel> selectMyDeactiveposts(long postedby)
+        {
+            var request = db.Products.Where(x => x.Product_IsActive == false && x.Postedby == postedby).OrderByDescending(x => x.Product_ID).ToList();
+            List<PostProductModel> List = request.Select(x => new PostProductModel
+            {
+                Product_Id = x.Product_ID,
+                Product_Image = x.Product_Image,
+                Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description,
+                Product_IsActive = x.Product_IsActive,
+            }).ToList();
+            return List;
+
+        }
+
+
+        public bool UpdatePostStatus(bool Status, int productid)
+        {
+            try
+            {
+                var result = db.Products.FirstOrDefault(x => x.Product_ID == productid);
+                result.Product_IsActive = Status;
+                db.Entry(result).State = EntityState.Modified;
+                var check = db.SaveChanges();
+                if (check > 0) return true;
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
     }
+
 }
