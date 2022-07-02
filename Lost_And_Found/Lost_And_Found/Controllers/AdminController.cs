@@ -6,10 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using static Lost_And_Found.Models.AjaxResponseModel;
-using Lost_And_Found.Lost_And_Found.Manager;
+using Lost_And_Found.Filters;
 
 namespace Lost_And_Found.Controllers
 {
+    [AuthorizedUser]
     public class AdminController : Controller
     {
         AjaxResponse ajaxResponse;
@@ -41,8 +42,10 @@ namespace Lost_And_Found.Controllers
             if (ModelState.IsValid)
             {
                 AdminManager obj = new AdminManager();
-                //cam.Admin_Created_By = Convert.ToString(Session["Admin ID"]);
+                cam.Admin_Created_By = Convert.ToInt32(Session["Admin_ID"]);
                 cam.Admin_Created_ON = DateTime.Now;
+                cam.Admin_IsActive = true;
+
                 long u_id = obj.AddAdmin(cam);
                 if (u_id > 0)
                 {

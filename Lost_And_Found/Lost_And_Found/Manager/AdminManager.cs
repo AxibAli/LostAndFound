@@ -21,11 +21,9 @@ namespace Lost_And_Found.Manager
             tbladmin.Admin_Password = aid.Admin_Password;
             tbladmin.Admin_Role = aid.Admin_Role;
             tbladmin.Admin_Created_ON = aid.Admin_Created_ON;
-            tbladmin.Admin_Created_By = 0;
-            tbladmin.Admin_Updated_ON = aid.Admin_Updated_ON;
-            tbladmin.Admin_Updated_By = aid.Admin_Updated_By;
-            tbladmin.Admin_Contact = aid.Admin_Contact;
-            tbladmin.Admin_IsActive = true;
+            tbladmin.Admin_Created_By = aid.Admin_Created_By;
+            tbladmin.Admin_Contact =  aid.Admin_Contact;
+            tbladmin.Admin_IsActive = aid.Admin_IsActive;
             db.App_Admin.Add(tbladmin);
             db.SaveChanges();
 
@@ -49,7 +47,6 @@ namespace Lost_And_Found.Manager
                 User_DOB = x.User_DOB,
                 User_Address = x.User_Address,
                 User_Created_ON = x.User_Created_ON,
-                User_Updated_ON = x.User_Updated_ON.Value,
                 User_IsActive = x.User_IsActive
             }).ToList();
             return List;
@@ -70,8 +67,6 @@ namespace Lost_And_Found.Manager
                 Admin_Password = x.Admin_Password,
                 Admin_DOB = x.Admin_DOB,
                 Admin_Created_ON = x.Admin_Created_ON,
-                Admin_Updated_By = x.Admin_Updated_By.Value,
-                Admin_Updated_ON = x.Admin_Updated_ON.Value,
                 Admin_Created_By = x.Admin_Created_By,
                 Admin_IsActive = x.Admin_IsActive
             }).ToList();

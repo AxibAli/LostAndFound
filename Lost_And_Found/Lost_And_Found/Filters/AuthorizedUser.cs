@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace QRSCS.Filters
+namespace Lost_And_Found.Filters
 {
     public class AuthorizedUser : ActionFilterAttribute, IActionFilter
     {

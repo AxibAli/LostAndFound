@@ -1,4 +1,5 @@
-﻿using Lost_And_Found.Manager;
+﻿using Lost_And_Found.Filters;
+using Lost_And_Found.Manager;
 using Lost_And_Found.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Lost_And_Found.Controllers
 {
+    [AuthorizedUser]
     public class UserController : Controller
     {
         public ActionResult Home()

@@ -11,7 +11,7 @@
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">Full Name</span>
-                    @Html.TextBoxFor(x => x.Admin_FullName, null, new { type = "text", placeholder = "Enter your name", required = true })
+                    @Html.TextBoxFor(x => x.Admin_FullName, null, new { type = "text", placeholder = "Enter your name", required = "required" })
                     @Html.ValidationMessageFor(x => x.Admin_FullName, null, new { style = "color:red" })
                 </div>
                 <div class="input-box">

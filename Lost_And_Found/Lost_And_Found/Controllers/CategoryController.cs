@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using Lost_And_Found.Models;
 using Lost_And_Found.Manager;
+using Lost_And_Found.Filters;
 
 namespace Lost_And_Found.Controllers
 {
+    [AuthorizedUser]
     public class CategoryController : Controller
     {
         public ActionResult Mobile(PostProductModel ppm)

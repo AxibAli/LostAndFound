@@ -20,11 +20,11 @@ namespace Lost_And_Found.Manager
             tbluser.User_Gender = uid.User_Gender;
             tbluser.User_Contact = uid.User_Contact;
             tbluser.User_Password = uid.User_Password;
+            tbluser.User_Role = uid.User_Role;
             tbluser.User_DOB = uid.User_DOB;
             tbluser.User_Address = uid.User_Address;
             tbluser.User_Created_ON = uid.User_Created_ON;
-            tbluser.User_Updated_ON = uid.User_Updated_ON;
-            tbluser.User_IsActive = true;
+            tbluser.User_IsActive = uid.User_IsActive;
             db.App_User.Add(tbluser);
             db.SaveChanges();
 
