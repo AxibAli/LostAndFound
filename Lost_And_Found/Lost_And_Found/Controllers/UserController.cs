@@ -79,9 +79,20 @@ namespace Lost_And_Found.Controllers
             return View(items);
         }
 
-        public ActionResult MyPosts()
+        public ActionResult MyPosts(long postedby)
         {
-            return View();
+            UserManager obj = new UserManager();
+            List<PostProductModel> posts = obj.selectMyposts(postedby);
+            if (posts == null)
+            {
+                TempData["Message"] = "Posts not Found";
+                return View();
+            }
+            else
+            {
+                return View(posts);
+            }
+
         }
 
 
