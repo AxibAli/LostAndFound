@@ -91,23 +91,31 @@ namespace Lost_And_Found.Controllers
                 {
                     message = "Successfull";
                     response = true;
+                    //TempData["Message"] = "You are Registered Successfull";
+                    //return View();
+
                 }
 
                 else
                 {
                     message = "Not Successfull";
                     response = false;
+                    //TempData["Message"] = "You Not Registered ";
+                    //return View();
                 }
 
             }
             else
             {
-                message = "Error! Add missing fields";
-                response = false;
+               message = "Error! Add missing fields";
+               response = false;
+               // TempData["Message"] = "Fill all missing fields";
+                //return View();
             }
 
             ajaxResponse = new AjaxResponse { Message = message, Response = response };
-            return Json(ajaxResponse, JsonRequestBehavior.AllowGet);
+            return Json(ajaxResponse);
+           
         }
 
 

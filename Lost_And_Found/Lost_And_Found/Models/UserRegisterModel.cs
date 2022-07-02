@@ -15,18 +15,17 @@ namespace Lost_And_Found.Models
 
         [Required(ErrorMessage = "Kindly Enter your Email")]
         public string User_Email { get; set; }
-        public string User_Gender { get; set; }
 
+        [Required(ErrorMessage = "Kindly Select your Gender")]
+        public string User_Gender { get; set; }
         public string User_Role { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Kindly Enter your Contact")]
         [MaxLength(11, ErrorMessage = "Enter a valid Contact Format: 03##-#######")]
         [MinLength(11, ErrorMessage = "Enter a valid contact Format: 03##-#######")]
         public string User_Contact { get; set; }
 
-        [Required]
-        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
-        //[DataType(DataType.Password)]
+        [Required(ErrorMessage = "Kindly Enter your Password")]
         public string User_Password { get; set; }
 
         [Required(ErrorMessage = "Kindly Enter Date of Birth?")]
@@ -34,9 +33,7 @@ namespace Lost_And_Found.Models
 
         [Required(ErrorMessage = "Kindly Enter a Complete Address")]
         public string User_Address { get; set; }
-
         public DateTime User_Created_ON { get; set; }
-
         public DateTime User_Updated_ON { get; set; }
         public bool User_IsActive { get; set; }
     }

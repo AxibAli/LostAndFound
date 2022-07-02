@@ -6,9 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using static Lost_And_Found.Models.AjaxResponseModel;
+using Lost_And_Found.Filters;
 
 namespace Lost_And_Found.Controllers
 {
+    [AuthorizedUser]
     public class AdminController : Controller
     {
         AjaxResponse ajaxResponse;

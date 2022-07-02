@@ -75,11 +75,12 @@
             var formdata = $("#form").serialize();
 
             ajaxCall("/Login/Register", formdata, function (result) {
-                if (!result.Response) {
+
+                if (result.Response == null) {
                     swal({ text: result.Message, icon: "warning" });
                     console.error(result.Error);
                 }
-                else {
+                else if (result.Response == true) {
                     swal({
                         title: "Good job!",
                         text: result.Message,
@@ -88,7 +89,8 @@
                     })
                         .then((ok_btn) => {
                             if (ok_btn) {
-                            //    window.location.href = "/Login/Login"
+                                // window.location.href = "/Login/Login"
+                                
                             }
                         });
                 }
