@@ -38,6 +38,27 @@
                                 <div class="layer"></div>
                             </div>
                         </div>
+                        <div>
+                            <a href='#' class='checkbox'><span class='checkbox'></span></a>
+                            @{
+                                var stat = string.Empty;
+                                if (@item.User_IsActive == true)
+                                {
+                                    stat = "checked";
+                                }
+                                else
+                                {
+                                    stat = "";
+                                }
+                                <label class="checkbox">
+                                    <input type="checkbox" id="switchId-@item.User_ID" onchange="UpdateUserStatus(this,@item.User_ID)" @stat>
+                                    <span class="slider round"></span>
+                                </label>
+                            }
+                        </div>
+
+
+
                     </td>
                     <td class="view-admins-table-data" data-label="User Modify">
                         <div class="modify-record">
@@ -53,3 +74,26 @@
 
 
 
+<script>
+    function UpdateUserStatus(data, userid) {
+        debugger;
+        var id = data.id;
+        var status = document.getElementById(id).checked
+
+        $.post("/Admin/UpdateUserStatus",
+            {
+                Status: status,
+                Userid: userid
+            },
+            function (data) {
+                if (data == true) {
+
+                }
+                else {
+                    document.getElementById(id).checked = status;
+                    alert("Error Updating")
+                }
+                console.log(status)
+            });
+    }
+</script>

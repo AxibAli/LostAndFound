@@ -73,11 +73,20 @@ namespace Lost_And_Found.Controllers
             return Json(ajaxResponse, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult AllPosts()
+        public ActionResult AllPosts(long postedby)
         {
-            UserManager obj = new UserManager();
-            List<PostProductModel> posts = obj.selectitems();
-            return View(posts);
+            AdminManager obj = new AdminManager();
+            List<PostProductModel> posts = obj.selectMyposts(postedby);
+            if (posts == null)
+            {
+                TempData["Message"] = "Posts not Found";
+                return View();
+            }
+            else
+            {
+                return View(posts);
+            }
+           
         }
         public ActionResult AllUsers()
         {
@@ -85,5 +94,27 @@ namespace Lost_And_Found.Controllers
             List<UserRegisterModel> User = obj.selectUser();
             return View(User);
         }
+
+        [HttpPost]
+        public ActionResult UpdateAdminStatus(bool Status, int adminid)
+        {
+            AdminManager obj = new AdminManager();
+            var response = obj.UpdateAdminStatus(Status, adminid);
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+        [HttpPost]
+        public ActionResult UpdatePostStatus(bool Status, int productid)
+        {
+            AdminManager obj = new AdminManager();
+            var response = obj.UpdatePostStatus(Status, productid);
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+
+        }
+
     }
 }
