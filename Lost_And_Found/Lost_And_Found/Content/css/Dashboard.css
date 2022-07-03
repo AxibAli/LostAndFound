@@ -18,9 +18,10 @@ ADDITIONAL (Dark Grey): #AAAAAA
     font-weight: 300;
 }
 
-.main-container {/*
+.main-container {
+    
     overflow-x: hidden;
-    overflow-y: hidden;*/
+    /*overflow-y: hidden;*/
     height: 100vh;
 }
 
