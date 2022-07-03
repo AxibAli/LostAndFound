@@ -147,6 +147,21 @@ namespace Lost_And_Found.Manager
             }
 
         }
+        public List<PostProductModel> selectitemsforadmins()
+        {
+            var request = db.Products.OrderByDescending(x => x.Product_ID).ToList();
+            List<PostProductModel> List = request.Select(x => new PostProductModel
+            {
+                Product_Id = x.Product_ID,
+                Product_Image = x.Product_Image,
+                Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description,
+                Product_IsActive = x.Product_IsActive
+            }).ToList();
+            return List;
+
+        }
+
     }
 
 

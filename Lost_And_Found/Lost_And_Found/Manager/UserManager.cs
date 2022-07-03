@@ -59,6 +59,7 @@ namespace Lost_And_Found.Manager
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
                 Product_Description = x.Product_Description,
+                Product_IsActive = x.Product_IsActive
             }).ToList();
             return List;
 

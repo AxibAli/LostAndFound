@@ -73,21 +73,13 @@ namespace Lost_And_Found.Controllers
             return Json(ajaxResponse, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult AllPosts(long postedby)
+        public ActionResult AllPosts()
         {
             AdminManager obj = new AdminManager();
-            List<PostProductModel> posts = obj.selectMyposts(postedby);
-            if (posts == null)
-            {
-                TempData["Message"] = "Posts not Found";
-                return View();
-            }
-            else
-            {
-                return View(posts);
-            }
-           
+            List<PostProductModel> posts = obj.selectitemsforadmins();
+            return View(posts);
         }
+
         public ActionResult AllUsers()
         {
             AdminManager obj = new AdminManager();
