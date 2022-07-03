@@ -96,9 +96,10 @@ body {
 .toggle-button-cover {
     display: table-cell;
     position: relative;
-    width: 400px;
+    width: 69px;
     height: 20px;
     box-sizing: border-box;
+    transform: translateX(100%);
 }
 
 .button-cover, .knobs, .layer {

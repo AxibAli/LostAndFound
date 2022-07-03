@@ -25,6 +25,8 @@
     <!--Sweet Alert Script & Validation-->
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="stylesheet" href="~/Content/Home/plugins/bootstrap/css/bootstrap.min.css">
+
     @*<script src="~/Scripts/SweetAlert.js"></script>*@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -40,9 +42,11 @@
             <div class="header-hamburger">
                 <input type="checkbox" id="header-hamburger__checkbox" onchange="openCloseSidebar()">
                 <label for="header-hamburger__checkbox" class="header-hamburger__label">
-                    @*<div></div>
-                        <div></div>
-                        <div></div>*@
+                    @*<img src="~/Content/assets/images/dashboard__add-admin.png" alt="icon add user" class="sidebar-menu__icon">*@
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </label>
             </div>
 
@@ -54,15 +58,16 @@
             <!-- Header User Profile & Signout -->
             <div class="header-user">
                 @*<img src="~/Content/assets/images/dashboard__user.png" alt="User Image" class="header-user__img">*@
-                <a href="#"><h2 class="header-user__name">Munzah Shah</h2></a>
-                <a href="#" data-toggle="modal" data-target="#logoutModal"><img src="~/Content/assets/images/dashboard__signout.png" alt="Logo Image" class="header-user__signout"></a>
+                <h2 class="header-user__name">@Session["Admin_FullName"]</h2>
+                <a href="" data-toggle="modal" data-target="#logoutModal"><img src="~/Content/assets/images/dashboard__signout.png" alt="Logo Image" class="header-user__signout" ></a>
             </div>
         </header>
 
         <!-- Building Middle Section (Main Dashboard) -->
         <div class="middle-window">
-
+            <i class="fa-solid fa-bars" style="color: white !important;"></i>
             <!---------------------- Building The Fixed SideBar ---------------------->
+            <i class="fa-solid fa-bars" style="color: white !important;"></i>
             <div class="middle-window__Sidebar">
                 <aside class="sidebar" id="sidebar">
                     <ul>
@@ -148,10 +153,11 @@
 
 
     <!--Linking Scripts-->
+    <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="~/Content/js/Dashboard.js"></script>
     <script src="~/Content/js/ViewAdmins.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-   
+
     @if (TempData["Message"] != null)
     {
         <script type="text/javascript">
