@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+
+
 <div class="admins-table-container">
 
     <div class="admins-head-box">
@@ -31,14 +33,7 @@
                     <td class="view-admins-table-data" data-label="Admin Gender">@item.User_Gender</td>
                     <td class="view-admins-table-data" data-label="Admin Contact">@item.User_Contact</td>
                     <td class="view-admins-table-data" data-label="Admin IsActive">
-                        <div class="toggle-button-cover">
-                            <div class="button r" id="button-3">
-                                <input type="checkbox" class="checkbox">
-                                <div class="knobs"></div>
-                                <div class="layer"></div>
-                            </div>
-                        </div>
-                        <div>
+                       <div>
                             <a href='#' class='checkbox'><span class='checkbox'></span></a>
                             @{
                                 var stat = string.Empty;
@@ -50,15 +45,12 @@
                                 {
                                     stat = "";
                                 }
-                                <label class="checkbox">
+                                <label class="switch">
                                     <input type="checkbox" id="switchId-@item.User_ID" onchange="UpdateUserStatus(this,@item.User_ID)" @stat>
                                     <span class="slider round"></span>
                                 </label>
                             }
                         </div>
-
-
-
                     </td>
                     <td class="view-admins-table-data" data-label="User Modify">
                         <div class="modify-record">

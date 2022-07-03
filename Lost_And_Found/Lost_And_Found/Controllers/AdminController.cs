@@ -92,7 +92,6 @@ namespace Lost_And_Found.Controllers
         {
             AdminManager obj = new AdminManager();
             var response = obj.UpdateAdminStatus(Status, adminid);
-
             return Json(response, JsonRequestBehavior.AllowGet);
 
         }

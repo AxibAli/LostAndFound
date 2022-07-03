@@ -31,32 +31,24 @@
                     <td class="view-admins-table-data" data-label="Admin Gender">@item.Admin_Gender</td>
                     <td class="view-admins-table-data" data-label="Admin Contact">@item.Admin_Contact</td>
                     <td class="view-admins-table-data" data-label="Admin IsActive">
-                        <div class="toggle-button-cover">
-                            <div class="button r" id="button-3">
-                                <input type="checkbox" class="checkbox">
-                                <div class="knobs"></div>
-                                <div class="layer"></div>
-                            </div>
-                        </div>
                         <div>
-                            <a href='#' class='checkbox'><span class='checkbox'></span></a>
-                            @{
-                                var stat = string.Empty;
-                                if (@item.Admin_IsActive == true)
-                                {
-                                    stat = "checked";
+                                <a href='#' class='checkbox'><span class='checkbox'></span></a>
+                                @{
+                                    var stat = string.Empty;
+                                    if (@item.Admin_IsActive == true)
+                                    {
+                                        stat = "checked";
+                                    }
+                                    else
+                                    {
+                                        stat = "";
+                                    }
+                                    <label class="switch">
+                                        <input type="checkbox" id="switchId-@item.Admin_ID" onchange="UpdateAdminStatus(this,@item.Admin_ID)" @stat>
+                                        <span class="slider round"></span>
+                                    </label>
                                 }
-                                else
-                                {
-                                    stat = "";
-                                }
-                                <label class="checkbox">
-                                    <input type="checkbox" id="switchId-@item.Admin_ID" onchange="UpdateAdminStatus(this,@item.Admin_ID)" @stat>
-                                    <span class="slider round"></span>
-                                </label>
-                            }
-                        </div>
-
+                            </div>
                     </td>
                     <td class="view-admins-table-data" data-label="Admin Modify">
                         <div class="modify-record">
