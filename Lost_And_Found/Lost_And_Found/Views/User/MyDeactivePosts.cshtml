@@ -1,6 +1,6 @@
 ﻿@model List<Lost_And_Found.Models.PostProductModel>
 @{
-    ViewBag.Title = "MyPosts";
+    ViewBag.Title = "MyDeactivePosts";
     Layout = "~/Views/Shared/_LogedInLayout.cshtml";
 }
 
@@ -140,48 +140,14 @@
                     <p>@item.Product_Description</p>
                 </div>
                 <a href="#" class="btn btn-primary">Read More...</a>
+                
                 <div>
-                    <a href='#' class='btn btn-warning'><span class='glyphicon glyphicon-edit'></span></a>
-                    @{
-                        var stat = string.Empty;
-                        if (@item.Product_IsActive == true)
-                        {
-                            stat = "checked";
-                        }
-                        else
-                        {
-                            stat = "";
-                        }
-                        <label class="switch">
-                            <input type="checkbox" id="switchId-@item.Product_Id" onchange="UpdatePostStatus(this,  @item.Product_Id)" @stat>
-                            <span class="slider round"></span>
-                        </label>
-                    }
+
                 </div>
             </div>
         </div>
     }
 </div>
 
-<script>
-    function UpdatePostStatus(data, productid) {
-        var id = data.id;
-        var status = document.getElementById(id).checked
-
-        $.post("/User/UpdatePostStatus",
-            {
-                Status: status,
-                productid: productid
-            },
-            function (data) {
-                if (data == true) {
-
-                }
-                else {
-                    document.getElementById(id).checked = status;
-                    alert("Error Updating")
-                }
-                console.log(status)
-            });
-    }
-</script>
+       
+      

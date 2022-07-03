@@ -33,26 +33,7 @@ namespace Lost_And_Found.Manager
             return userid;
         }
 
-        ////public bool UpdateUserStatus(bool Status, int userId)
-        ////{
-        ////    using (LostandFoundEntities1 db = new LostandFoundEntities1())
-        ////    {
-        ////        try
-        ////        {
-        ////            var result = db.App_User.FirstOrDefault(x => x.User_ID == userId);
-        ////            result.User_IsActive = Status;
-        ////            db.Entry(result).State = EntityState.Modified;
-        ////            var check = db.SaveChanges();
-        ////            if (check > 0) return true;
-        ////            return false;
-        ////        }
-        ////        catch (Exception)
-        ////        {
-        ////            return false;
-        ////        }
 
-        ////    }
-        ////}
 
 
         //    public UserRegisterModel GetUser(int uid)

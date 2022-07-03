@@ -431,6 +431,7 @@
     <Content Include="Views\User\MyPosts.cshtml" />
     <Content Include="scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="scripts\jquery-3.6.0.min.map" />
+    <Content Include="Views\User\MyDeactivePosts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
