@@ -1,11 +1,13 @@
 ﻿@model Lost_And_Found.Models.UserRegisterModel
-@{ ViewBag.Title = "Register";
-                Layout = "~/Views/Shared/_HomeLayout.cshtml"; }
+@{ 
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml"; 
+    }
 
 <div class="container3">
     <div class="title">Registration Form</div>
     <div class="content">
-        <form id="form" >
+        <form id="form" method="post">
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">Full Name</span>
@@ -40,10 +42,10 @@
                     @Html.ValidationMessageFor(x => x.User_Address, null, new { style = "color:red" })
                 </div>
             </div>
-            <div class="gender-details">
-                @Html.RadioButtonFor(x => x.User_Gender, "Male", new { type = "radio", name = "gender", id = "dot-1" })
-                @Html.RadioButtonFor(x => x.User_Gender, "Female", new { type = "radio", name = "gender", id = "dot-2" })
-                @Html.RadioButtonFor(x => x.User_Gender, "Not Say", new { type = "radio", name = "gender", id = "dot-3" })
+            <div class="gender-details" >
+                @Html.RadioButtonFor(x => x.User_Gender, "Male", new { type = "radio", name = "gender", id = "dot-1" , required = true })
+                @Html.RadioButtonFor(x => x.User_Gender, "Female", new { type = "radio", name = "gender", id = "dot-2" , required = true })
+                @Html.RadioButtonFor(x => x.User_Gender, "Not Say", new { type = "radio", name = "gender", id = "dot-3", required = true })
                 @Html.ValidationMessageFor(x => x.User_Gender, "", new { style = "color:red" })
                 <span class="gender-title">Gender</span>
                 <div class="category">
@@ -67,34 +69,3 @@
         </form>
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-        $("#btnDraft").click(function (x) {
-            debugger;
-            var formdata = $("#form").serialize();
-
-            ajaxCall("/Login/Register", formdata, function (result) {
-
-                if (result.Response == null) {
-                    swal({ text: result.Message, icon: "warning" });
-                    console.error(result.Error);
-                }
-                else if (result.Response == true) {
-                    swal({
-                        title: "Good job!",
-                        text: result.Message,
-                        icon: "success",
-                        buttons: true,
-                    })
-                        .then((ok_btn) => {
-                            if (ok_btn) {
-                                // window.location.href = "/Login/Login"
-                                
-                            }
-                        });
-                }
-            });
-        });
-    });
-</script>

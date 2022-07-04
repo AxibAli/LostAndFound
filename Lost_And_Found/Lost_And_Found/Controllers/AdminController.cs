@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using static Lost_And_Found.Models.AjaxResponseModel;
 using Lost_And_Found.Filters;
 
 namespace Lost_And_Found.Controllers
@@ -13,10 +12,6 @@ namespace Lost_And_Found.Controllers
     [AuthorizedUser]
     public class AdminController : Controller
     {
-        AjaxResponse ajaxResponse;
-        string message = string.Empty;
-        bool response;
-
         [HttpGet]
         public ActionResult Dashboard(DashboardModel dbm)
         {
@@ -50,27 +45,21 @@ namespace Lost_And_Found.Controllers
                 if (u_id > 0)
                 {
                     TempData["Message"] = "New Admin Created Successfully";
-                    message = "Successfull";
-                    response = true;
+                    return RedirectToAction("ViewAllAdmins");
                 }
 
                 else
                 {
                     TempData["Message"] = "Admin Not Created !";
-                    message = "Not Successfull";
-                    response = false;
+                    return View();
                 }
 
             }
             else
             {
                 TempData["Message"] = "Fill Complete Form !";
-                message = "Error! Add missing fields";
-                response = false;
+                return View();
             }
-
-            ajaxResponse = new AjaxResponse { Message = message, Response = response };
-            return Json(ajaxResponse, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult AllPosts()

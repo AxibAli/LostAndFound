@@ -5,15 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using static Lost_And_Found.Models.AjaxResponseModel;
 
 namespace Lost_And_Found.Controllers
 {
     public class LoginController : Controller
     {
-        AjaxResponse ajaxResponse;
-        string message = string.Empty;
-        bool response;
 
         [HttpGet]
         public ActionResult Login()
@@ -27,11 +23,11 @@ namespace Lost_And_Found.Controllers
             if (ModelState.IsValid)
             {
                 LoginManager obj = new LoginManager();
-                
+
                 CreateAdminModel admindata = obj.adminchecklogin(lm);
                 UserRegisterModel userdata = obj.userchecklogin(lm);
 
-                if (admindata != null && admindata.Admin_IsActive == false )
+                if (admindata != null && admindata.Admin_IsActive == false)
                 {
                     TempData["Message"] = "You have currently disabled, kindly contact your Admin";
                     return View();
@@ -89,33 +85,24 @@ namespace Lost_And_Found.Controllers
                 long u_id = obj.AddUser(Rm);
                 if (u_id > 0)
                 {
-                    message = "Successfull";
-                    response = true;
-                    //TempData["Message"] = "You are Registered Successfull";
-                    //return View();
+                    TempData["Message"] = "You are Registered Successfull";
+                    return View();
 
                 }
 
                 else
                 {
-                    message = "Not Successfull";
-                    response = false;
-                    //TempData["Message"] = "You Not Registered ";
-                    //return View();
+                    TempData["Message"] = "You are Not Registered ";
+                    return View();
                 }
 
             }
             else
             {
-               message = "Error! Add missing fields";
-               response = false;
-               // TempData["Message"] = "Fill all missing fields";
-                //return View();
+                TempData["Message"] = "Fill all missing fields";
+                return View();
             }
 
-            ajaxResponse = new AjaxResponse { Message = message, Response = response };
-            return Json(ajaxResponse);
-           
         }
 
 
