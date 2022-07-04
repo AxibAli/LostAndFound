@@ -3,6 +3,7 @@ using Lost_And_Found.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace Lost_And_Found.Manager
 {
@@ -54,6 +55,22 @@ namespace Lost_And_Found.Manager
         }
 
 
+        public List<PostProductModel> selectMyposts(long postedby)
+        {
+            var request = db.Products.Where(x => x.Product_IsActive == true && x.Postedby == postedby).OrderByDescending(x => x.Product_ID).ToList();
+            List<PostProductModel> List = request.Select(x => new PostProductModel
+            {
+                Product_Id = x.Product_ID,
+                Product_Image = x.Product_Image,
+                Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description,
+                Product_IsActive = x.Product_IsActive,
+            }).ToList();
+            return List;
+
+        }
+
+
         public List<CreateAdminModel> selectAdmin()
         {
             var request = db.App_Admin.ToList();
@@ -72,5 +89,81 @@ namespace Lost_And_Found.Manager
             }).ToList();
             return List;
         }
+
+
+
+        public bool UpdateAdminStatus(bool Status, int adminid)
+        {
+            try
+            {
+                var result = db.App_Admin.FirstOrDefault(x => x.Admin_ID == adminid);
+                result.Admin_IsActive = Status;
+                db.Entry(result).State = EntityState.Modified;
+                var check = db.SaveChanges();
+                if (check > 0) return true;
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+
+        public bool UpdateUserStatus(bool Status, int userid)
+        {
+            try
+            {
+                var result = db.App_User.FirstOrDefault(x => x.User_ID == userid);
+                result.User_IsActive = Status;
+                db.Entry(result).State = EntityState.Modified;
+                var check = db.SaveChanges();
+                if (check > 0) return true;
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+
+        public bool UpdatePostStatus(bool Status, int productid)
+        {
+            try
+            {
+                var result = db.Products.FirstOrDefault(x => x.Product_ID == productid);
+                result.Product_IsActive = Status;
+                db.Entry(result).State = EntityState.Modified;
+                var check = db.SaveChanges();
+                if (check > 0) return true;
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+        public List<PostProductModel> selectitemsforadmins()
+        {
+            var request = db.Products.OrderByDescending(x => x.Product_ID).ToList();
+            List<PostProductModel> List = request.Select(x => new PostProductModel
+            {
+                Product_Id = x.Product_ID,
+                Product_Image = x.Product_Image,
+                Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description,
+                Product_IsActive = x.Product_IsActive
+            }).ToList();
+            return List;
+
+        }
+
     }
+
+
 }
+

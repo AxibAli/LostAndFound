@@ -98,7 +98,34 @@ namespace Lost_And_Found.Controllers
 
         }
 
-        public ActionResult abc() { return View(); }
+        public ActionResult MyDeactivePosts(long postedby)
+        {
+            UserManager obj = new UserManager();
+            List<PostProductModel> posts = obj.selectMyDeactiveposts(postedby);
+            if (posts == null)
+            {
+                TempData["Message"] = "Posts not Found";
+                return View();
+            }
+            else
+            {
+                return View(posts);
+            }
+
+        }
+
+
+        [HttpPost]
+        public ActionResult UpdatePostStatus(bool Status, int productid) 
+        {
+            UserManager obj = new UserManager();
+            var response = obj.UpdatePostStatus(Status, productid);
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+
+        }
+
+
 
 
         public JsonResult GetUserById(int User_ID)

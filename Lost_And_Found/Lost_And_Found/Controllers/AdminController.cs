@@ -5,20 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using static Lost_And_Found.Models.AjaxResponseModel;
 using Lost_And_Found.Filters;
-using Newtonsoft.Json;
 
 namespace Lost_And_Found.Controllers
 {
     [AuthorizedUser]
     public class AdminController : Controller
     {
-        LostandFoundEntities db = new LostandFoundEntities();
-        AjaxResponse ajaxResponse;
-        string message = string.Empty;
-        bool response;
-
         [HttpGet]
         public ActionResult Dashboard(DashboardModel dbm)
         {
@@ -52,35 +45,30 @@ namespace Lost_And_Found.Controllers
                 if (u_id > 0)
                 {
                     TempData["Message"] = "New Admin Created Successfully";
-                    message = "Successfull";
-                    response = true;
+                    return RedirectToAction("ViewAllAdmins");
                 }
 
                 else
                 {
                     TempData["Message"] = "Admin Not Created !";
-                    message = "Not Successfull";
-                    response = false;
+                    return View();
                 }
 
             }
             else
             {
                 TempData["Message"] = "Fill Complete Form !";
-                message = "Error! Add missing fields";
-                response = false;
+                return View();
             }
-
-            ajaxResponse = new AjaxResponse { Message = message, Response = response };
-            return Json(ajaxResponse, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult AllPosts()
         {
-            UserManager obj = new UserManager();
-            List<PostProductModel> posts = obj.selectitems();
+            AdminManager obj = new AdminManager();
+            List<PostProductModel> posts = obj.selectitemsforadmins();
             return View(posts);
         }
+
         public ActionResult AllUsers()
         {
             AdminManager obj = new AdminManager();
@@ -88,47 +76,25 @@ namespace Lost_And_Found.Controllers
             return View(User);
         }
 
-        public JsonResult GetStudentById(int Admin_ID)
+        [HttpPost]
+        public ActionResult UpdateAdminStatus(bool Status, int adminid)
         {
-            App_Admin model = db.App_Admin.Where(x => x.Admin_ID == Admin_ID).SingleOrDefault();
-            string value = string.Empty;
-            value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            });
-            return Json(value, JsonRequestBehavior.AllowGet);
+            AdminManager obj = new AdminManager();
+            var response = obj.UpdateAdminStatus(Status, adminid);
+            return Json(response, JsonRequestBehavior.AllowGet);
+
         }
 
-        public JsonResult SaveDataInDatabase(CreateAdminModel model)
+
+        [HttpPost]
+        public ActionResult UpdatePostStatus(bool Status, int productid)
         {
-            var result = false;
-            try
-            {
-                if (model.Admin_ID > 0)
-                {
-                    App_Admin Add = db.App_Admin.SingleOrDefault(x => x.Admin_IsActive == false && x.Admin_ID == model.Admin_ID);
-                    Add.Admin_FullName  = model.Admin_FullName;
-                    db.SaveChanges();
-                    result = true;
-                }
+            AdminManager obj = new AdminManager();
+            var response = obj.UpdatePostStatus(Status, productid);
 
-                else
-                {
-                    App_Admin Add = new App_Admin();
-                    Add.Admin_ID = model.Admin_ID;
-                    Add.Admin_FullName = model.Admin_FullName;
-                    db.SaveChanges();
-                    result = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return Json(response, JsonRequestBehavior.AllowGet);
 
         }
+
     }
 }

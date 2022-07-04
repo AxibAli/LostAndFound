@@ -3,6 +3,19 @@
     ViewBag.Title = "Create Admin";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<style>
+    .dropdown {
+        height: 45px;
+        width: 100%;
+        outline: none;
+        font-size: 16px;
+        border-radius: 5px;
+        padding-left: 15px;
+        border: 1px solid #ccc;
+        border-bottom-width: 2px;
+        transition: all 0.3s ease;
+    }
+</style>
 
 <div class="container4">
     <div class="title">Create new Admin </div>
@@ -32,7 +45,10 @@
                 </div>
                 <div class="input-box">
                     <span class="details">Role</span>
-                    @Html.TextBoxFor(x => x.Admin_Role, null, new { type = "text", placeholder = "Enter your role", required = true })
+                    @Html.DropDownListFor(x => x.Admin_Role, new List<SelectListItem>
+                 { new SelectListItem() { Text = "Please Select" ,Value=""},
+                   new SelectListItem() { Text = "Admin" },
+                 }, new { @class = "dropdown" })
                     @Html.ValidationMessageFor(x => x.Admin_Role, null, new { style = "color:red" })
                 </div>
                 <div class="input-box">
@@ -71,32 +87,32 @@
 
 </div>
 
-<script>
-    $(document).ready(function () {
-        $("#btnDraft").click(function (x) {
-            debugger;
-            var formdata = $("#form").serialize();
-            console.log(formdata);
+@*<script>
+        $(document).ready(function () {
+            $("#btnDraft").click(function (x) {
+                debugger;
+                var formdata = $("#form").serialize();
+                console.log(formdata);
 
-            ajaxCall("/Admin/CreateAdmin", formdata, function (result) {
-                if (!result.Response) {
-                    swal({ text: result.Message, icon: "warning" });
-                    console.error(result.Error);
-                }
-                else {
-                    swal({
-                        title: "Good job!",
-                        text: result.Message,
-                        icon: "success",
-                        buttons: true,
-                    })
-                        .then((ok_btn) => {
-                            if (ok_btn) {
-                            //    window.location.href = "/Login/Login"
-                            }
-                        });
-                }
+                ajaxCall("/Admin/CreateAdmin", formdata, function (result) {
+                    if (!result.Response) {
+                        swal({ text: result.Message, icon: "warning" });
+                        console.error(result.Error);
+                    }
+                    else {
+                        swal({
+                            title: "Good job!",
+                            text: result.Message,
+                            icon: "success",
+                            buttons: true,
+                        })
+                            .then((ok_btn) => {
+                                if (ok_btn) {
+                                    window.location.href = "/Admin/ViewAllAdmins"
+                                }
+                            });
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>*@

@@ -96,9 +96,10 @@ body {
 .toggle-button-cover {
     display: table-cell;
     position: relative;
-    width: 400px;
+    width: 69px;
     height: 20px;
     box-sizing: border-box;
+    transform: translateX(100%);
 }
 
 .button-cover, .knobs, .layer {
@@ -153,15 +154,14 @@ body {
     position: absolute;
     top: 4px;
     left: 4px;
-    width: 15px;
-    height: 5px;
+    text-align: center;
+    width: 20px;
+    height: 20px;
     color: #fff;
     font-size: 8px;
     font-weight: bold;
-    text-align: center;
-    line-height: 1;
-    padding: 8px 4px;
-    background-color: #182ebd;
+    line-height: 2.5;
+    background-color: green; /*#182ebd*/
     border-radius: 50%;
     transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
 }

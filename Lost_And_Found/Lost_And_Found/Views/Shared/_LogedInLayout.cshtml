@@ -1,10 +1,4 @@
-﻿@model Lost_And_Found.Models.UserRegisterModel
-
-@{
-    Layout = "";
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -107,15 +101,22 @@
                         <li class="nav-item dropdown">
                             <a class="btn btn-main-2 btn-sm nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-user-circle"></i>
-                                Username
+                                @Session["User_FullName"]
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#" onclick="EditUserRecord(@Session["User_ID"])">My Profile</a></li>
+                                <li><a class="dropdown-item" href="#">My Profile</a></li>
                                 <li class="dropdown-item">
-                                    @Html.ActionLink("My Posts", "MyPosts", "User" , new { postedby = Session["User_ID"] }, new { style = "color:black" })
+                                    @Html.ActionLink("My Active Posts", "MyPosts", "User", new { postedby = Session["User_ID"] }, new {style = "color:black" })
                                     @*<a href="@Url.Action("MyPosts","User"),new" style="color:black">
-                                            My Posts
-                                        </a>*@
+                                        My Posts
+                                    </a>*@
+                                </li>
+
+                                <li class="dropdown-item">
+                                    @Html.ActionLink("My Deactive Posts", "MyDeactivePosts", "User", new { postedby = Session["User_ID"] }, new {style = "color:black" })
+                                    @*<a href="@Url.Action("MyPosts","User"),new" style="color:black">
+                                        My Posts
+                                    </a>*@
                                 </li>
                                 <li>
                                     <a class="dropdown-item btn btn-main-2 btn-sm" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -130,48 +131,6 @@
             </nav>
         </div> <!-- / .container -->
     </div>
-
-    @*Create a Popup Modal For Edit User's Profile'*@
-    <div class="modal fade" id="MyModal">
-        <div class="modal-dialog">
-            <div class="modal-header">
-                <a href="#" class="close" data-dismiss="modal">&times;</a>
-                <h4 id="ModalTitle"></h4>
-            </div>
-            <div class="modal-body">
-                <form id="form">
-                    <fieldset id="SubmitForm">
-                        @Html.HiddenFor(m => m.User_ID, new { @id = "UserId" })
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_FullName, new { @id = "UserName", @class = "form-control", @placeholder = "Name" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_Email, new { @id = "UserEmail", @class = "form-control", @placeholder = "Email" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_Contact, new { @id = "UserContact", @class = "form-control", @placeholder = "Contact" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_Password, new { @id = "UserPass", @class = "form-control", @placeholder = "Password" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_DOB, new { @id = "UserDOB", @class = "form-control", @placeholder = "DOB" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_Address, new { @id = "UserAddress", @class = "form-control", @placeholder = "Address" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_Gender, new { @id = "UserGender", @class = "form-control", @placeholder = "Gender" })
-                        </div>
-                        <div class="form-group">
-                            <a href="#" class="btn-block btn-danger" id="SaveUserRecord">Save</a>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <!--Render Section-->
     <section class="banner">
         <div class="container">
@@ -315,44 +274,5 @@
         </script>
     }
 
-<script>
-    //Show The Popup Modal For Edit User Record
-    function EditUserRecord(User_ID) {
-        var url = "/User/GetUserById?User_ID=" + User_ID;
-        $("#ModalTitle").html("Update User Profile");
-        $("#MyModal").modal();
-        $.ajax({
-            type: "GET",
-            url: url,
-            success: function (data) {
-                var obj = JSON.parse(data);
-                $("#UserId").val(obj.User_ID);
-                $("#UserName").val(obj.User_FullName);
-                $("#UserEmail").val(obj.User_Email);
-                $("#UserContact").val(obj.User_Contact);
-                $("#UserPass").val(obj.User_Password);
-                $("#UserDOB").val(obj.User_DOB);
-                $("#UserAddress").val(obj.User_Address);
-                $("#UserGender").val(obj.User_Gender);
-            }
-        })
-    }
-
-    $("#SaveUserRecord").click(function () {
-        var data = $("#SubmitForm").serialize();
-        $.ajax({
-            type: "Post",
-            url: "/User/SaveDataInDatabase",
-            data: data,
-            success: function (result) {
-                alert("Success!....");
-                window.location.href = "/Home/index";
-                $("#MyModal").modal("hide");
-
-            }
-        })
-
-    })
-</script>
 </body>
 </html>
