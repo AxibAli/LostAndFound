@@ -94,14 +94,6 @@
                             <a href="@Url.Action("PostProduct","User")" class="btn btn-solid-border btn-sm"><i class="ti-phone-alt mr-2"></i>Post Item</a>
                         </li>
                     </ul>
-                    @*<ul class="list-inline header-contact float-lg-right">
-                            <li class="list-inline-item">
-                                <a class="btn btn-main-2 btn-sm" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt"></i>
-                                    Logout
-                                </a>
-                            </li>
-                        </ul>*@
                     <ul class="list-inline header-contact float-lg-right" style="margin-left:8px; margin-right: 8px;">
                         <li class="nav-item dropdown">
                             <a class="btn btn-main-2 btn-sm nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -112,16 +104,9 @@
                                 <li><a class="dropdown-item" href="#" onclick="EditUserRecord(@Session["User_ID"])">My Profile</a></li>
                                 <li class="dropdown-item">
                                     @Html.ActionLink("My Active Posts", "MyPosts", "User", new { postedby = Session["User_ID"] }, new { style = "color:black" })
-                                    @*<a href="@Url.Action("MyPosts","User"),new" style="color:black">
-                                            My Posts
-                                        </a>*@
                                 </li>
-
                                 <li class="dropdown-item">
                                     @Html.ActionLink("My Deactive Posts", "MyDeactivePosts", "User", new { postedby = Session["User_ID"] }, new { style = "color:black" })
-                                    @*<a href="@Url.Action("MyPosts","User"),new" style="color:black">
-                                            My Posts
-                                        </a>*@
                                 </li>
                                 <li>
                                     <a class="dropdown-item btn btn-main-2 btn-sm" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -136,47 +121,6 @@
             </nav>
         </div> <!-- / .container -->
     </div>
-    @*Create a Popup Modal For Edit User's Profile'*@
-    <div class="modal fade" id="MyModal">
-        <div class="modal-dialog">
-            <div class="modal-header">
-                <a href="#" class="close" data-dismiss="modal">&times;</a>
-                <h4 id="ModalTitle"></h4>
-            </div>
-            <div class="modal-body">
-                <form id="form">
-                    <fieldset id="SubmitForm">
-                        @Html.HiddenFor(m => m.User_ID, new { @id = "UserId" })
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_FullName, new { @id = "UserName", @class = "form-control", @placeholder = "Name" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_Email, new { @id = "UserEmail", @class = "form-control", @placeholder = "Email" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_Contact, new { @id = "UserContact", @class = "form-control", @placeholder = "Contact" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_Password, new { @id = "UserPass", @class = "form-control", @placeholder = "Password" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_DOB, new { @id = "UserDOB", @class = "form-control", @placeholder = "DOB" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_Address, new { @id = "UserAddress", @class = "form-control", @placeholder = "Address" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.User_Gender, new { @id = "UserGender", @class = "form-control", @placeholder = "Gender" })
-                        </div>
-                        <div class="form-group">
-                            <a href="#" class="btn-block btn-danger" id="SaveUserRecord">Save</a>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <!--Render Section-->
     <section class="banner">
         <div class="container">
@@ -185,6 +129,7 @@
             </div>
         </div>
     </section>
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -204,6 +149,55 @@
             </div>
         </div>
     </div>
+    @*Create a Popup Modal For Edit User's Profile'*@
+    <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">MY PROFILE</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body input-box" >
+                    <form id="form">
+                        <fieldset id="SubmitForm">
+                            @Html.HiddenFor(m => m.User_ID, new { @id = "UserId" })
+                            @Html.HiddenFor(m => m.User_Role, new { @id = "userrole" })
+                            @Html.HiddenFor(m => m.User_IsActive, new { @id = "useract" })
+
+
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_FullName, new { @id = "UserName", @class = "form-control", @placeholder = "Name" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_Email, new { @id = "UserEmail", @class = "form-control", @placeholder = "Email" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_Contact, new { @id = "UserContact", @class = "form-control", @placeholder = "Contact" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_Password, new { @id = "UserPass", @class = "form-control", @placeholder = "Password" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_DOB, new { @id = "UserDOB", @class = "form-control", @placeholder = "DOB" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_Address, new { @id = "UserAddress", @class = "form-control", @placeholder = "Address" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_Gender, new { @id = "UserGender", @class = "form-control", @placeholder = "Gender" })
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <a class="btn btn-primary" href="#" id="SaveUserRecord">Update My Profile </a>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div></div>
+            </div>
+        </div>
     <!--Footer-->
     <div class="footer-btm">
         <div class="container">
@@ -338,6 +332,7 @@
                     $("#UserDOB").val(obj.User_DOB);
                     $("#UserAddress").val(obj.User_Address);
                     $("#UserGender").val(obj.User_Gender);
+                    
                 }
             })
         }
@@ -346,11 +341,11 @@
             var data = $("#SubmitForm").serialize();
             $.ajax({
                 type: "Post",
-                url: "/User/SaveDataInDatabase",
+                url: "/User/UpdateDataInDatabase",
                 data: data,
                 success: function (result) {
                     alert("Success!....");
-                    window.location.href = "/Home/index";
+                    window.location.href = "/User/Home";
                     $("#MyModal").modal("hide");
 
                 }

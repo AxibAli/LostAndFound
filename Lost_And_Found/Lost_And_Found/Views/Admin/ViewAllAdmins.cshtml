@@ -43,42 +43,59 @@
                     <td class="view-admins-table-data" data-label="Admin Modify">
                         <div class="modify-record">
                             <a href="#" onclick="EditAdminRecord(@Session["Admin_ID"])"><img src="~/Content/assets/images/edit-record.png" /></a>
-                            <a href="#"><img src="~/Content/assets/images/delete-record.png" /></a>
                         </div>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-
-    @*Create a Popup Modal With Registration Form For Add or Edit Student Record*@
-    <div class="modal fade" id="MyModal">
-        <div class="modal-dialog">
-            <div class="modal-header">
-                <a href="#" class="close" data-dismiss="modal">&times;</a>
-                <h4 id="ModalTitle"></h4>
-            </div>
-            <div class="modal-body">
-                <form id="form">
-                    <fieldset id="SubmitForm">
-                        @Html.HiddenFor(@model.Admin_ID, new { @id = "StuId" })
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.StudentName, new { @id = "StuName", @class = "form-control", @placeholder = "Name" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.Email, new { @id = "Email", @class = "form-control", @placeholder = "Email" })
-                        </div>
-                        <div class="form-group">
-                            @Html.DropDownListFor(m => m.DepartmentId, ViewBag.ListOfDepartment as SelectList, "----Select Dept---", new { @id = "DropDwn", @class = "form-control" })
-                        </div>
-                        <div class="form-group">
-                            <a href="#" class="btn-block btn-danger" id="SaveStudentRecord">Save</a>
-                        </div>
-                    </fieldset>
-                </form>
+    @*Create a Popup Modal For Edit User's Profile'*@
+    @*<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">MY PROFILE</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body input-box">
+                    <form id="form">
+                        <fieldset id="SubmitForm">
+                            @Html.HiddenFor(.Admin_FullName, new { @id = "UserId" });
+                            
+                            <div class="form-group">
+                                @Html.TextBoxFor(Model[].Admin_FullName, new { @id = "UserName", @class = "form-control", @placeholder = "Name" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_Email, new { @id = "UserEmail", @class = "form-control", @placeholder = "Email" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_Contact, new { @id = "UserContact", @class = "form-control", @placeholder = "Contact" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_Password, new { @id = "UserPass", @class = "form-control", @placeholder = "Password" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_DOB, new { @id = "UserDOB", @class = "form-control", @placeholder = "DOB" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_Address, new { @id = "UserAddress", @class = "form-control", @placeholder = "Address" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.User_Gender, new { @id = "UserGender", @class = "form-control", @placeholder = "Gender" })
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <a class="btn btn-primary" href="#" id="SaveUserRecord">Update My Profile </a>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    </div>*@
 </div>
 <script>
     //Show The Popup Modal For Edit Student Record

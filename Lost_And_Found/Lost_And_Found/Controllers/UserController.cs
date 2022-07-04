@@ -114,7 +114,6 @@ namespace Lost_And_Found.Controllers
 
         }
 
-
         [HttpPost]
         public ActionResult UpdatePostStatus(bool Status, int productid) 
         {
@@ -124,9 +123,6 @@ namespace Lost_And_Found.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
 
         }
-
-
-
 
         public JsonResult GetUserById(int User_ID)
         {
@@ -140,38 +136,22 @@ namespace Lost_And_Found.Controllers
             return Json(value, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SaveDataInDatabase(UserRegisterModel model)
+        public JsonResult UpdateDataInDatabase(UserRegisterModel model)
         {
             var result = false;
             try
             {
                 if (model.User_ID > 0)
                 {
-                    App_User User = db.App_User.SingleOrDefault(x => x.User_IsActive == false && x.User_ID == model.User_ID);
+                    App_User User = db.App_User.SingleOrDefault(x => x.User_IsActive == true && x.User_ID == model.User_ID);
                     User.User_FullName = model.User_FullName;
                     User.User_Email = model.User_Email;
                     User.User_Contact = model.User_Contact;
                     User.User_Password = model.User_Password;
                     User.User_DOB = model.User_DOB;
                     User.User_Address = model.User_Address;
+                    User.User_Updated_ON = DateTime.Now;
                     User.User_Gender = model.User_Gender;
-                    db.SaveChanges();
-                    result = true;
-                }
-
-                else
-                {
-                    App_User User = new App_User();
-                    User.User_ID = model.User_ID;
-                    User.User_FullName = model.User_FullName;
-                    User.User_Email = model.User_Email;
-                    User.User_Contact = model.User_Contact;
-                    User.User_Password = model.User_Password;
-                    User.User_DOB = model.User_DOB;
-                    User.User_Address = model.User_Address;
-                    User.User_Gender = model.User_Gender;
-                    User.User_IsActive = false;
-                    db.App_User.Add(User);
                     db.SaveChanges();
                     result = true;
                 }
@@ -181,10 +161,7 @@ namespace Lost_And_Found.Controllers
                 throw ex;
             }
 
-
             return Json(result, JsonRequestBehavior.AllowGet);
-
         }
-
     }
 }
