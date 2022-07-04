@@ -1,9 +1,11 @@
 ﻿using Lost_And_Found.Filters;
 using Lost_And_Found.Manager;
 using Lost_And_Found.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,6 +14,7 @@ namespace Lost_And_Found.Controllers
     [AuthorizedUser]
     public class UserController : Controller
     {
+        LostandFoundEntities db = new LostandFoundEntities();
         public ActionResult Home()
         {
             return View();
@@ -96,6 +99,65 @@ namespace Lost_And_Found.Controllers
         }
 
         public ActionResult abc() { return View(); }
+
+
+        public JsonResult GetUserById(int User_ID)
+        {
+            
+            App_User model = db.App_User.Where(x => x.User_ID == User_ID).SingleOrDefault();
+            string value = string.Empty;
+            value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            return Json(value, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveDataInDatabase(UserRegisterModel model)
+        {
+            var result = false;
+            try
+            {
+                if (model.User_ID > 0)
+                {
+                    App_User User = db.App_User.SingleOrDefault(x => x.User_IsActive == false && x.User_ID == model.User_ID);
+                    User.User_FullName = model.User_FullName;
+                    User.User_Email = model.User_Email;
+                    User.User_Contact = model.User_Contact;
+                    User.User_Password = model.User_Password;
+                    User.User_DOB = model.User_DOB;
+                    User.User_Address = model.User_Address;
+                    User.User_Gender = model.User_Gender;
+                    db.SaveChanges();
+                    result = true;
+                }
+
+                else
+                {
+                    App_User User = new App_User();
+                    User.User_ID = model.User_ID;
+                    User.User_FullName = model.User_FullName;
+                    User.User_Email = model.User_Email;
+                    User.User_Contact = model.User_Contact;
+                    User.User_Password = model.User_Password;
+                    User.User_DOB = model.User_DOB;
+                    User.User_Address = model.User_Address;
+                    User.User_Gender = model.User_Gender;
+                    User.User_IsActive = false;
+                    db.App_User.Add(User);
+                    db.SaveChanges();
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
 
     }
 }

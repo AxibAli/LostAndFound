@@ -1,4 +1,5 @@
-﻿@model List<Lost_And_Found.Models.CreateAdminModel>
+﻿
+@model List<Lost_And_Found.Models.CreateAdminModel>
 @{
     ViewBag.Title = "ViewAllAdmins";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -41,7 +42,7 @@
                     </td>
                     <td class="view-admins-table-data" data-label="Admin Modify">
                         <div class="modify-record">
-                            <a href="#"><img src="~/Content/assets/images/edit-record.png" /></a>
+                            <a href="#" onclick="EditAdminRecord(@Session["Admin_ID"])"><img src="~/Content/assets/images/edit-record.png" /></a>
                             <a href="#"><img src="~/Content/assets/images/delete-record.png" /></a>
                         </div>
                     </td>
@@ -49,7 +50,72 @@
             }
         </tbody>
     </table>
+
+    @*Create a Popup Modal With Registration Form For Add or Edit Student Record*@
+    <div class="modal fade" id="MyModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 id="ModalTitle"></h4>
+            </div>
+            <div class="modal-body">
+                <form id="form">
+                    <fieldset id="SubmitForm">
+                        @Html.HiddenFor(@model.Admin_ID, new { @id = "StuId" })
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.StudentName, new { @id = "StuName", @class = "form-control", @placeholder = "Name" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Email, new { @id = "Email", @class = "form-control", @placeholder = "Email" })
+                        </div>
+                        <div class="form-group">
+                            @Html.DropDownListFor(m => m.DepartmentId, ViewBag.ListOfDepartment as SelectList, "----Select Dept---", new { @id = "DropDwn", @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <a href="#" class="btn-block btn-danger" id="SaveStudentRecord">Save</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    //Show The Popup Modal For Edit Student Record
+    function EditAdminRecord(Admin_ID) {
+        var url = "/Admin/GetStudentById?Admin_ID=" + Admin_ID;
+        $("#ModalTitle").html("Update Student Record");
+        $("#MyModal").modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $("#StuId").val(obj.StudentId);
+                $("#StuName").val(obj.StudentName);
+                $("#Email").val(obj.Email);
+                $("#DropDwn option:selected").text(obj.tblDepartment.DepartmentName);
+                $("#DropDwn option:selected").val(obj.DepartmentId);
+            }
+        })
+    }
+
+    $("#SaveStudentRecord").click(function () {
+        var data = $("#SubmitForm").serialize();
+        $.ajax({
+            type: "Post",
+            url: "/Admin/SaveDataInDatabase",
+            data: data,
+            success: function (result) {
+                alert("Success!....");
+                window.location.href = "/Home/index";
+                $("#MyModal").modal("hide");
+
+            }
+        })
+
+    })
+</script>
 
 
 
