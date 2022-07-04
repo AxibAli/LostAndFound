@@ -6,12 +6,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Lost_And_Found.Filters;
+using Newtonsoft.Json;
 
 namespace Lost_And_Found.Controllers
 {
     [AuthorizedUser]
     public class AdminController : Controller
     {
+        LostandFoundEntities db = new LostandFoundEntities();
         [HttpGet]
         public ActionResult Dashboard(DashboardModel dbm)
         {
@@ -93,6 +95,48 @@ namespace Lost_And_Found.Controllers
             var response = obj.UpdatePostStatus(Status, productid);
 
             return Json(response, JsonRequestBehavior.AllowGet);
+
+        }
+        public JsonResult GetStudentById(int Admin_ID)
+        {
+            App_Admin model = db.App_Admin.Where(x => x.Admin_ID == Admin_ID).SingleOrDefault();
+            string value = string.Empty;
+            value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            return Json(value, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveDataInDatabase(CreateAdminModel model)
+        {
+            var result = false;
+            try
+            {
+                if (model.Admin_ID > 0)
+                {
+                    App_Admin Add = db.App_Admin.SingleOrDefault(x => x.Admin_IsActive == false && x.Admin_ID == model.Admin_ID);
+                    Add.Admin_FullName = model.Admin_FullName;
+                    db.SaveChanges();
+                    result = true;
+                }
+
+                else
+                {
+                    App_Admin Add = new App_Admin();
+                    Add.Admin_ID = model.Admin_ID;
+                    Add.Admin_FullName = model.Admin_FullName;
+                    db.SaveChanges();
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
 
         }
 
