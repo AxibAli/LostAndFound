@@ -97,7 +97,7 @@ namespace Lost_And_Found.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
 
         }
-        public JsonResult GetStudentById(int Admin_ID)
+        public JsonResult GetAdminById(int Admin_ID)
         {
             App_Admin model = db.App_Admin.Where(x => x.Admin_ID == Admin_ID).SingleOrDefault();
             string value = string.Empty;
@@ -108,36 +108,21 @@ namespace Lost_And_Found.Controllers
             return Json(value, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SaveDataInDatabase(CreateAdminModel model)
+        public JsonResult UpdateDataInDatabase(CreateAdminModel model, long adminid, string adminname, string adminemail,
+            string admincontact, string adminpass, string admingender)
         {
-            var result = false;
-            try
-            {
-                if (model.Admin_ID > 0)
-                {
-                    App_Admin Add = db.App_Admin.SingleOrDefault(x => x.Admin_IsActive == false && x.Admin_ID == model.Admin_ID);
-                    Add.Admin_FullName = model.Admin_FullName;
-                    db.SaveChanges();
-                    result = true;
-                }
 
-                else
-                {
-                    App_Admin Add = new App_Admin();
-                    Add.Admin_ID = model.Admin_ID;
-                    Add.Admin_FullName = model.Admin_FullName;
-                    db.SaveChanges();
-                    result = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            model.Admin_ID = adminid;
+            model.Admin_FullName = adminname;
+            model.Admin_Email = adminemail;
+            model.Admin_Password = adminpass;
+            model.Admin_Contact = admincontact;
+            model.Admin_Gender = admingender;
+            
 
-
+            AdminManager obj = new AdminManager();
+            bool result = obj.UpdateAdmin(model);
             return Json(result, JsonRequestBehavior.AllowGet);
-
         }
 
     }

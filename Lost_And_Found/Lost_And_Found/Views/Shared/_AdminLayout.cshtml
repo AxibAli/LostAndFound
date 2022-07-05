@@ -181,10 +181,56 @@
             <!-- Header User Profile & Signout -->
             <div class="header-user">
                 @*<img src="~/Content/assets/images/dashboard__user.png" alt="User Image" class="header-user__img">*@
-                <h2 class="header-user__name">@Session["Admin_FullName"]</h2>
-                <a href="" data-toggle="modal" data-target="#logoutModal"><img src="~/Content/assets/images/dashboard__signout.png" alt="Logo Image" class="header-user__signout" ></a>
+                <a href="" data-toggle="modal" data-target="#MyModal" onclick="EditAdminRecord(@Session["Admin_ID"])">
+                    <h2 class="header-user__name">@Session["Admin_FullName"]</h2>
+                    <a href="" data-toggle="modal" data-target="#logoutModal"><img src="~/Content/assets/images/dashboard__signout.png" alt="Logo Image" class="header-user__signout"></a>
+                </a>
             </div>
         </header>
+
+        @*Create a Popup Modal For Edit Admin's' Profile'*@
+        <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">MY PROFILE</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body input-box">
+                        <form id="form">
+                            <fieldset id="SubmitForm">
+                                <input type="hidden" id="AdminId" name="AdminId">
+                                <div class="form-group">
+                                    <input type="text" class="form-class-r" id="AdminFullName" placeholder="Name" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-class-r" id="AdminContact" placeholder="Contact" minlenght="11" maxlength="11" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-class-r" id="AdminEmail" placeholder="AdminEmail" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-class-r" id="AdminPass" placeholder="AdminPass" />  
+                                </div>
+                                <div class="form-group">
+                                    <select name="gender" id="AdminGender" class="form-class-r">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                    <a class="btn btn-primary" href="#" id="SaveAdminRecord">Update My Profile </a>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Building Middle Section (Main Dashboard) -->
         <div class="middle-window">
@@ -289,6 +335,51 @@
             }
         </script>
     }
+
+    <script>
+        //Show The Popup Modal For Edit User Record
+        function EditAdminRecord(Admin_ID) {
+            var url = "/Admin/GetAdminById?Admin_ID=" + Admin_ID;
+            $("#ModalTitle").html("Update User Profile");
+            $("#MyModal").modal();
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (data) {
+                    var obj = JSON.parse(data);
+                    $("#AdminId").val(obj.Admin_ID);
+                    $("#AdminFullName").val(obj.Admin_FullName);
+                    $("#AdminEmail").val(obj.Admin_Email);
+                    $("#AdminContact").val(obj.Admin_Contact);
+                    $("#AdminPass").val(obj.Admin_Password);
+                    $("#AdminGender").val(obj.Admin_Gender);
+
+                }
+            })
+        }
+
+        $("#SaveAdminRecord").click(function () {
+
+            var data = {
+                adminid: $('#AdminId').val(),
+                adminname: $('#AdminFullName').val(),
+                adminemail: $('#AdminEmail').val(),
+                admincontact: $('#AdminContact').val(),
+                adminpass: $('#AdminPass').val(),
+                admingender: $('#AdminGender').val()
+            }
+            $.ajax({
+                type: "Post",
+                url: "/Admin/UpdateDataInDatabase",
+                data: data,
+                success: function (result) {
+                    alert("Successfully Updated....");
+                    window.location.href = "/Admin/Dashboard";
+                    $("#MyModal").modal("hide");
+                }
+            })
+        })
+    </script>
 
 </body>
 

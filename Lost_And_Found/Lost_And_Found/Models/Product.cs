@@ -22,7 +22,7 @@ namespace Lost_And_Found.Models
         }
     
         public long Product_ID { get; set; }
-        public long Postedby { get; set; }
+        public Nullable<long> Postedby { get; set; }
         public string Product_Name { get; set; }
         public string Product_Category { get; set; }
         public string Product_Image { get; set; }
@@ -31,10 +31,10 @@ namespace Lost_And_Found.Models
         public string Product_Location { get; set; }
         public bool Product_IsActive { get; set; }
     
+        public virtual App_User App_User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Found_Product> Found_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lost_Product> Lost_Product { get; set; }
-        public virtual App_User App_User { get; set; }
     }
 }

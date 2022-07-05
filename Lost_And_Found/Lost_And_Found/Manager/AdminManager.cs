@@ -162,6 +162,37 @@ namespace Lost_And_Found.Manager
 
         }
 
+        public bool UpdateAdmin(CreateAdminModel crm)
+        {
+            var result = false;
+            try
+            {
+                if (crm.Admin_ID > 0)
+                {
+                    var Admin = db.App_Admin.SingleOrDefault(x => x.Admin_IsActive == true && x.Admin_ID == crm.Admin_ID);
+                    Admin.Admin_FullName = crm.Admin_FullName;
+                    Admin.Admin_Email = crm.Admin_Email;
+                    Admin.Admin_Contact = crm.Admin_Contact;
+                    Admin.Admin_Password = crm.Admin_Password;
+                    Admin.Admin_DOB = crm.Admin_DOB;
+                    Admin.Admin_Updated_ON = DateTime.Now;
+                    Admin.Admin_Role = "Admin";
+                    Admin.Admin_Gender = crm.Admin_Gender;
+
+                    db.Entry(Admin).State = EntityState.Modified;
+
+                    var check = db.SaveChanges();
+                    if (check > 0) return true;
+                    return false;
+                }
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
     }
 
 
