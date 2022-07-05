@@ -1,12 +1,10 @@
-﻿
-@model List<Lost_And_Found.Models.CreateAdminModel>
+﻿@model List<Lost_And_Found.Models.CreateAdminModel>
 @{
     ViewBag.Title = "ViewAllAdmins";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="admins-table-container">
-
     <div class="admins-head-box">
         <h2>All Admins</h2>
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Admins">
@@ -20,7 +18,6 @@
                 <th class="view-admins-table-head" scope="col">Gender</th>
                 <th class="view-admins-table-head" scope="col">Contact</th>
                 <th class="view-admins-table-head" scope="col">IsActive</th>
-                <th class="view-admins-table-head" scope="col">Modify Record</th>
             </tr>
         </thead>
         <tbody>
@@ -32,106 +29,53 @@
                     <td class="view-admins-table-data" data-label="Admin Gender">@item.Admin_Gender</td>
                     <td class="view-admins-table-data" data-label="Admin Contact">@item.Admin_Contact</td>
                     <td class="view-admins-table-data" data-label="Admin IsActive">
-                        <div class="toggle-button-cover">
-                            <div class="button r" id="button-3">
-                                <input type="checkbox" class="checkbox">
-                                <div class="knobs"></div>
-                                <div class="layer"></div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="view-admins-table-data" data-label="Admin Modify">
-                        <div class="modify-record">
-                            <a href="#" onclick="EditAdminRecord(@Session["Admin_ID"])"><img src="~/Content/assets/images/edit-record.png" /></a>
+                        <div>
+                            <a href='#' class='checkbox'><span class='checkbox'></span></a>
+                            @{
+                                var stat = string.Empty;
+                                if (@item.Admin_IsActive == true)
+                                {
+                                    stat = "checked";
+                                }
+                                else
+                                {
+                                    stat = "";
+                                }
+                                <label class="switch">
+                                    <input type="checkbox" id="switchId-@item.Admin_ID" onchange="UpdateAdminStatus(this,@item.Admin_ID)" @stat>
+                                    <span class="slider round"></span>
+                                </label>
+                            }
                         </div>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-    @*Create a Popup Modal For Edit User's Profile'*@
-    @*<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">MY PROFILE</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body input-box">
-                    <form id="form">
-                        <fieldset id="SubmitForm">
-                            @Html.HiddenFor(.Admin_FullName, new { @id = "UserId" });
-                            
-                            <div class="form-group">
-                                @Html.TextBoxFor(Model[].Admin_FullName, new { @id = "UserName", @class = "form-control", @placeholder = "Name" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_Email, new { @id = "UserEmail", @class = "form-control", @placeholder = "Email" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_Contact, new { @id = "UserContact", @class = "form-control", @placeholder = "Contact" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_Password, new { @id = "UserPass", @class = "form-control", @placeholder = "Password" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_DOB, new { @id = "UserDOB", @class = "form-control", @placeholder = "DOB" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_Address, new { @id = "UserAddress", @class = "form-control", @placeholder = "Address" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_Gender, new { @id = "UserGender", @class = "form-control", @placeholder = "Gender" })
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                <a class="btn btn-primary" href="#" id="SaveUserRecord">Update My Profile </a>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>*@
 </div>
+
 <script>
-    //Show The Popup Modal For Edit Student Record
-    function EditAdminRecord(Admin_ID) {
-        var url = "/Admin/GetStudentById?Admin_ID=" + Admin_ID;
-        $("#ModalTitle").html("Update Student Record");
-        $("#MyModal").modal();
-        $.ajax({
-            type: "GET",
-            url: url,
-            success: function (data) {
-                var obj = JSON.parse(data);
-                $("#StuId").val(obj.StudentId);
-                $("#StuName").val(obj.StudentName);
-                $("#Email").val(obj.Email);
-                $("#DropDwn option:selected").text(obj.tblDepartment.DepartmentName);
-                $("#DropDwn option:selected").val(obj.DepartmentId);
-            }
-        })
+    function UpdateAdminStatus(data, adminid) {
+        debugger;
+        var id = data.id;
+        var status = document.getElementById(id).checked
+
+        $.post("/Admin/UpdateAdminStatus",
+            {
+                Status: status,
+                adminid: adminid
+            },
+            function (data) {
+                if (data == true) {
+
+                }
+                else {
+                    document.getElementById(id).checked = status;
+                    alert("Error Updating")
+                }
+                console.log(status)
+            });
     }
-
-    $("#SaveStudentRecord").click(function () {
-        var data = $("#SubmitForm").serialize();
-        $.ajax({
-            type: "Post",
-            url: "/Admin/SaveDataInDatabase",
-            data: data,
-            success: function (result) {
-                alert("Success!....");
-                window.location.href = "/Home/index";
-                $("#MyModal").modal("hide");
-
-            }
-        })
-
-    })
 </script>
 
 
