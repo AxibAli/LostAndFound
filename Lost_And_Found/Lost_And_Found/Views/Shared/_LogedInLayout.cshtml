@@ -1,7 +1,7 @@
-﻿@model Lost_And_Found.Models.UserRegisterModel
-
-@{
-    Layout = "";
+﻿
+@model Lost_And_Found.Models.UserRegisterModel
+{    
+   Layout = "";
 }
 <!DOCTYPE html>
 
@@ -72,20 +72,9 @@
                                 Home
                             </a>
                         </li>
-
-                        <li class="nav-item ">
-                            <a href="@Url.Action("About","User")" class="nav-link js-scroll-trigger">
-                                About
-                            </a>
-                        </li>
                         <li class="nav-item ">
                             <a href="@Url.Action("ItemListing","User")" class="nav-link js-scroll-trigger">
                                 Items Listing
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a href="@Url.Action("Contact","User")" class="nav-link">
-                                Contact
                             </a>
                         </li>
                     </ul>
@@ -149,6 +138,7 @@
             </div>
         </div>
     </div>
+
     @*Create a Popup Modal For Edit User's Profile'*@
     <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -160,13 +150,12 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body input-box" >
+                <div class="modal-body input-box">
                     <form id="form">
                         <fieldset id="SubmitForm">
                             @Html.HiddenFor(m => m.User_ID, new { @id = "UserId" })
                             @Html.HiddenFor(m => m.User_Role, new { @id = "userrole" })
                             @Html.HiddenFor(m => m.User_IsActive, new { @id = "useract" })
-
 
                             <div class="form-group">
                                 @Html.TextBoxFor(m => m.User_FullName, new { @id = "UserName", @class = "form-control", @placeholder = "Name" })
@@ -195,9 +184,11 @@
                             </div>
                         </fieldset>
                     </form>
-                </div></div>
+                </div>
             </div>
         </div>
+    </div>
+    
     <!--Footer-->
     <div class="footer-btm">
         <div class="container">
@@ -332,7 +323,7 @@
                     $("#UserDOB").val(obj.User_DOB);
                     $("#UserAddress").val(obj.User_Address);
                     $("#UserGender").val(obj.User_Gender);
-                    
+
                 }
             })
         }
