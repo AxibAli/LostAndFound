@@ -114,6 +114,37 @@ namespace Lost_And_Found.Manager
             }
 
         }
+        public bool UpdateUser(UserRegisterModel urm)
+        {
+            var result = false;
+            try
+            {
+                if (urm.User_ID > 0)
+                {
+                    var User = db.App_User.SingleOrDefault(x => x.User_IsActive == true && x.User_ID == urm.User_ID);
+                    User.User_FullName = urm.User_FullName;
+                    User.User_Email = urm.User_Email;
+                    User.User_Contact = urm.User_Contact;
+                    User.User_Password = urm.User_Password;
+                    User.User_DOB = urm.User_DOB;
+                    User.User_Address = urm.User_Address;
+                    User.User_Updated_ON = DateTime.Now;
+                    User.User_Role = "User";
+                    User.User_Gender = urm.User_Gender;
+
+                    db.Entry(User).State = EntityState.Modified;
+
+                    var check = db.SaveChanges();
+                    if (check > 0) return true;
+                    return false;
+                }
+                return result;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 
 }

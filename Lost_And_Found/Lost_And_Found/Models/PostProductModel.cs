@@ -33,6 +33,7 @@ namespace Lost_And_Found.Models
 
         public System.DateTime Product_Created_On { get; set; }
         public long Myposts { get; set; }
+        public string PostMessages { get; set; }
 
     }
 }

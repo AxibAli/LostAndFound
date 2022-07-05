@@ -9,7 +9,7 @@ using Lost_And_Found.Filters;
 
 namespace Lost_And_Found.Controllers
 {
-    [AuthorizedUser]
+    //[AuthorizedUser]
     public class CategoryController : Controller
     {
         public ActionResult Mobile(PostProductModel ppm)

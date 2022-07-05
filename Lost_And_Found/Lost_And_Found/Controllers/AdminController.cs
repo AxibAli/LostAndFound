@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace Lost_And_Found.Controllers
 {
-    [AuthorizedUser]
+    //[AuthorizedUser]
     public class AdminController : Controller
     {
         LostandFoundEntities db = new LostandFoundEntities();

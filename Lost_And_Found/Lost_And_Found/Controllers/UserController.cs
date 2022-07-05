@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace Lost_And_Found.Controllers
 {
-    [AuthorizedUser]
+    //[AuthorizedUser]
     public class UserController : Controller
     {
         LostandFoundEntities db = new LostandFoundEntities();
@@ -19,7 +19,14 @@ namespace Lost_And_Found.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult SendMessage(PostProductModel ppm,string postMessage,long productid)
+        {
+            
+            ppm.PostMessages = postMessage;
 
+            return View(ppm);
+        }
         public ActionResult PostProduct()
         {
             return View();
@@ -119,7 +126,6 @@ namespace Lost_And_Found.Controllers
         {
             UserManager obj = new UserManager();
             var response = obj.UpdatePostStatus(Status, productid);
-
             return Json(response, JsonRequestBehavior.AllowGet);
 
         }
@@ -136,31 +142,20 @@ namespace Lost_And_Found.Controllers
             return Json(value, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult UpdateDataInDatabase(UserRegisterModel model)
+        public JsonResult UpdateDataInDatabase(UserRegisterModel model,long userid,string username,string useremail,
+            string usercontact,string userpass,string useradd,string usergender)
         {
-            var result = false;
-            try
-            {
-                if (model.User_ID > 0)
-                {
-                    App_User User = db.App_User.SingleOrDefault(x => x.User_IsActive == true && x.User_ID == model.User_ID);
-                    User.User_FullName = model.User_FullName;
-                    User.User_Email = model.User_Email;
-                    User.User_Contact = model.User_Contact;
-                    User.User_Password = model.User_Password;
-                    User.User_DOB = model.User_DOB;
-                    User.User_Address = model.User_Address;
-                    User.User_Updated_ON = DateTime.Now;
-                    User.User_Gender = model.User_Gender;
-                    db.SaveChanges();
-                    result = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
 
+            model.User_ID = userid;
+            model.User_FullName = username;
+            model.User_Email = useremail;
+            model.User_Password = userpass;
+            model.User_Contact = usercontact;
+            model.User_Gender=usergender;
+            model.User_Address = useradd;
+
+            UserManager obj = new UserManager();
+            bool result = obj.UpdateUser(model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
     }

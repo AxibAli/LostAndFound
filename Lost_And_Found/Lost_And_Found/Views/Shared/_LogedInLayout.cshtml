@@ -1,10 +1,4 @@
-﻿
-@model Lost_And_Found.Models.UserRegisterModel
-{    
-   Layout = "";
-}
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -153,30 +147,34 @@
                 <div class="modal-body input-box">
                     <form id="form">
                         <fieldset id="SubmitForm">
-                            @Html.HiddenFor(m => m.User_ID, new { @id = "UserId" })
-                            @Html.HiddenFor(m => m.User_Role, new { @id = "userrole" })
-                            @Html.HiddenFor(m => m.User_IsActive, new { @id = "useract" })
-
+                            <input type="hidden" id="UserId" name="UserId">
+                            @*@Html.HiddenFor(m => m.User_ID, new { @id = "UserId" })*@
                             <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_FullName, new { @id = "UserName", @class = "form-control", @placeholder = "Name" })
+                                <input type="text" class="form-class-r" id="UserName" placeholder="Name" />
+                                @*@Html.TextBoxFor(m => m.User_FullName, new { @id = "UserName", @class = "form-control", @placeholder = "Name" })*@
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_Email, new { @id = "UserEmail", @class = "form-control", @placeholder = "Email" })
+                                <input type="text" class="form-class-r" id="UserEmail" placeholder="Email" />
+                                @*@Html.TextBoxFor(m => m.User_Email, new { @id = "UserEmail", @class = "form-control", @placeholder = "Email" })*@
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_Contact, new { @id = "UserContact", @class = "form-control", @placeholder = "Contact" })
+                                <input type="tel" class="form-class-r" id="UserContact" placeholder="Contact" minlenght="11" maxlength="11" required="required"/>
+                                @*@Html.TextBoxFor(m => m.User_Contact, new { @id = "UserContact", @class = "form-control", @placeholder = "Contact" })*@
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_Password, new { @id = "UserPass", @class = "form-control", @placeholder = "Password" })
+                                <input type="text" class="form-class-r" id="UserPass" placeholder="Password" />
+                                @*@Html.TextBoxFor(m => m.User_Password, new { @id = "UserPass", @class = "form-control", @placeholder = "Password" })*@
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_DOB, new { @id = "UserDOB", @class = "form-control", @placeholder = "DOB" })
+                                <input type="text" class="form-class-r" id="UserAddress" placeholder="Address" />
+                                @*@Html.TextBoxFor(m => m.User_Address, new { @id = "UserAddress", @class = "form-control", @placeholder = "Address" })*@
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_Address, new { @id = "UserAddress", @class = "form-control", @placeholder = "Address" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.User_Gender, new { @id = "UserGender", @class = "form-control", @placeholder = "Gender" })
+                                <select name="gender" id="UserGender" class="form-class-r">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                @*@Html.TextBoxFor(m => m.User_Gender, new { @id = "UserGender", @class = "form-control", @placeholder = "Gender" })*@
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -320,7 +318,6 @@
                     $("#UserEmail").val(obj.User_Email);
                     $("#UserContact").val(obj.User_Contact);
                     $("#UserPass").val(obj.User_Password);
-                    $("#UserDOB").val(obj.User_DOB);
                     $("#UserAddress").val(obj.User_Address);
                     $("#UserGender").val(obj.User_Gender);
 
@@ -329,21 +326,27 @@
         }
 
         $("#SaveUserRecord").click(function () {
-            var data = $("#SubmitForm").serialize();
+
+            var data = {
+                userid: $('#UserId').val(),
+                username: $('#UserName').val(),
+                useremail: $('#UserEmail').val(),
+                usercontact: $('#UserContact').val(),
+                userpass: $('#UserPass').val(),
+                useradd: $('#UserAddress').val(),
+                usergender: $('#UserGender').val()
+            }
             $.ajax({
                 type: "Post",
                 url: "/User/UpdateDataInDatabase",
                 data: data,
                 success: function (result) {
-                    alert("Success!....");
+                    alert("Successfully Updated....");
                     window.location.href = "/User/Home";
                     $("#MyModal").modal("hide");
-
                 }
             })
-
         })
     </script>
-
 </body>
 </html>
