@@ -16,11 +16,12 @@ header2{
   margin-bottom: 60px;
   font-family: 'Montserrat', sans-serif;
 }
-.input-field2, form .button{
-  margin: 25px 0;
-  position: relative;
-  height: 50px;
-  width: 100%;
+.input-field2, form .button {
+    margin: 35px 0;
+    position: relative;
+    height: 50px;
+    width: 100%;
+   
 }
 .input-field2 input{
   height: 100%;
@@ -61,8 +62,8 @@ input:valid ~ span.show{
 }
 input:focus ~ label,
 input:valid ~ label{
-  transform: translateY(-33px);
-  background: white;
+  transform: translateY(-35px);
+  background-color: white;
   font-size: 16px;
   color: #1DA1F2;
 }

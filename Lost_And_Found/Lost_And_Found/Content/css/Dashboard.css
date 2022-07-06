@@ -128,6 +128,7 @@ ADDITIONAL (Dark Grey): #AAAAAA
 .header-user__name {
     color: #000000;
     font-size: 1.1rem;
+    margin: auto;
 }
 
 .header-user__signout {
