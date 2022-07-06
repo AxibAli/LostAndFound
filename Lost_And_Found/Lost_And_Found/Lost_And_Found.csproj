@@ -359,6 +359,7 @@
     <Compile Include="Models\Lost_Product.cs">
       <DependentUpon>Lost&amp;FoundModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\PostProductModel.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>Lost&amp;FoundModel.tt</DependentUpon>

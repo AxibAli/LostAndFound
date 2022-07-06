@@ -20,12 +20,13 @@ namespace Lost_And_Found.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SendMessage(PostProductModel ppm,string postMessage,long productid)
+        public ActionResult SendMessage(MessageModel mm,string postMessage,long productid)
         {
-            
-            ppm.PostMessages = postMessage;
+            mm.Product_Id = productid;
+            mm.Meassage_Date=DateTime.Now;
+            mm.Message = postMessage;
 
-            return View(ppm);
+            return View();
         }
         public ActionResult PostProduct()
         {

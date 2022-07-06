@@ -6,18 +6,82 @@
 
 <div class="row">
     @foreach (var item in Model)
-        {
-    <div class="card" style="width:20em;margin:10px;">
-        <img src="@Url.Content(item.Product_Image)" class="card-img-top" />
-        <div class="card-body">
-            <div class="card-title">
-                <h2>@item.Product_Name</h2>
+    {
+        <input type="hidden" id="Id" name="Id" value="@item.Product_Id">
+        <div class="card" style="width:20em;margin:10px;">
+            <img src="@Url.Content(item.Product_Image)" class="card-img-top" />
+            <div class="card-body">
+                <div class="card-title">
+                    <h2>@item.Product_Name</h2>
+                </div>
+                <div class="card-text">
+                    <p>@*@item.Product_Description*@</p>
+                </div>
+                <div style="display:flex;">
+                    <div>
+                        <a href="#" class="btn btn-primary" style="font-size:12px; width: 100px; line-height: 30px;" data-toggle="modal" data-target="#MyModal2">Read More</a>
+                        <!--Description Modal-->
+                        <div class="modal fade" id="MyModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Description</h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body input-box">
+                                        <form id="form">
+                                            <fieldset id="SubmitForm">
+                                                <p>@item.Product_Description</p>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div style="width:70%;">
+                        <a href="#" class="btn btn-icon" data-toggle="modal" data-target="#meassageModal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            </svg>
+                        </a>
+                        <!--Message Modal-->
+                        <div class="modal fade" id="meassageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Send Meassage Area</h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body input-box">
+                                        <form id="form">
+                                            <fieldset id="SubmitForm">
+                                                <div class="form-group">
+                                                    <textarea rows="4" cols="55" name="comment" id="message"> Enter Meassage text here...</textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                    <a class="btn btn-primary" href="#" id="sendMessage">Send Message</a>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-text">
-                <p>@item.Product_Description</p>
-            </div>
-            <a href="#" class="btn btn-primary">Read More...</a>
         </div>
-    </div>
     }
 </div>

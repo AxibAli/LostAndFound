@@ -18,6 +18,7 @@ namespace Lost_And_Found.Manager
                 Product_Id = x.Product_ID,
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
+                Product_Description =x.Product_Description
             }).ToList();
             return List;
 
@@ -30,6 +31,8 @@ namespace Lost_And_Found.Manager
                 Product_Id = x.Product_ID,
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description
+
             }).ToList();
             return List;
 
@@ -43,6 +46,8 @@ namespace Lost_And_Found.Manager
                 Product_Id = x.Product_ID,
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description
+
             }).ToList();
             return List;
 
@@ -57,6 +62,8 @@ namespace Lost_And_Found.Manager
                 Product_Id = x.Product_ID,
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description
+
             }).ToList();
             return List;
 
@@ -70,6 +77,8 @@ namespace Lost_And_Found.Manager
                 Product_Id = x.Product_ID,
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description
+
             }).ToList();
             return List;
 
@@ -83,6 +92,8 @@ namespace Lost_And_Found.Manager
                 Product_Id = x.Product_ID,
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description
+
             }).ToList();
             return List;
 
@@ -96,6 +107,8 @@ namespace Lost_And_Found.Manager
                 Product_Id = x.Product_ID,
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description
+
             }).ToList();
             return List;
 
@@ -109,6 +122,8 @@ namespace Lost_And_Found.Manager
                 Product_Id = x.Product_ID,
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description
+
             }).ToList();
             return List;
 
@@ -122,6 +137,8 @@ namespace Lost_And_Found.Manager
                 Product_Id = x.Product_ID,
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description
+
             }).ToList();
             return List;
 
@@ -135,6 +152,8 @@ namespace Lost_And_Found.Manager
                 Product_Id = x.Product_ID,
                 Product_Image = x.Product_Image,
                 Product_Name = x.Product_Name,
+                Product_Description = x.Product_Description
+
             }).ToList();
             return List;
 

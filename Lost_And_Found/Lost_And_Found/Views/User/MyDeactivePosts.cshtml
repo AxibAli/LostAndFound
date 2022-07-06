@@ -4,128 +4,6 @@
     Layout = "~/Views/Shared/_LogedInLayout.cshtml";
 }
 
-<style>
-    /*Toggle*/ /*Toggle*/
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-    }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-    input:checked + .slider {
-        background-color: green;
-    }
-
-    input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
-
-    /* Rounded sliders */
-    .slider.round {
-        border-radius: 34px;
-    }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-    }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #E74C3C;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-    input:checked + .slider {
-        background-color: green;
-    }
-
-    input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
-
-    /* Rounded sliders */
-    .slider.round {
-        border-radius: 34px;
-    }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-</style>
 
 <div class="row">
     @foreach (var item in Model)
@@ -137,17 +15,38 @@
                     <h2>@item.Product_Name</h2>
                 </div>
                 <div class="card-text">
-                    <p>@item.Product_Description</p>
+                    <p>@*@item.Product_Description*@</p>
                 </div>
-                <a href="#" class="btn btn-primary">Read More...</a>
-                
                 <div>
-
+                    <a href="#" class="btn btn-primary" style="font-size:12px; width: 100px; line-height: 30px;" data-toggle="modal" data-target="#MyModal2">Read More</a>
+                    <!--Description Modal-->
+                    <div class="modal fade" id="MyModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Description</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body input-box">
+                                    <form id="form">
+                                        <fieldset id="SubmitForm">
+                                            <p>@item.Product_Description</p>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     }
 </div>
 
-       
-      
+

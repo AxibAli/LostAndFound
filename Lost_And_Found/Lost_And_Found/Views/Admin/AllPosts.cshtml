@@ -130,25 +130,4 @@
                 console.log(status)
             });
     }
-    $(document).ready(function () {
-        $("#sendMessage").click(function () {
-            debugger;
-            var data = {
-                postMessage: $('#message').val(),
-                productid: $('#Id').val()
-            }
-            $.ajax({
-                type: "Post",
-                url: "/User/SendMessage",
-                data: data,
-
-                success: function (result) {
-                    alert("Successfully Sent!....");
-                    window.location.href = "/User/Home";
-                    $("#MyModal").modal("hide");
-
-                }
-            });
-        });
-    });
 </script>
