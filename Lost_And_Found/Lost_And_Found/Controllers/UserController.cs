@@ -159,5 +159,32 @@ namespace Lost_And_Found.Controllers
             bool result = obj.UpdateUser(model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetMyPostById(int Product_Id)
+        {
+
+            Product model = db.Products.Where(x => x.Product_ID == Product_Id).SingleOrDefault();
+            string value = string.Empty;
+            value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            return Json(value, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult UpdateMyPostInDatabase(PostProductModel model, long productid, string productname, string productlocation,
+             string productcategory, string productdecsription)
+        {
+
+            model.Product_Id = productid;
+            model.Product_Name = productname;
+            model.Product_Location = productlocation;
+            model.Product_Category = productcategory;
+            model.Product_Description = productdecsription;
+
+            UserManager obj = new UserManager();
+            bool result = obj.UpdateMyPost(model);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -12,151 +12,231 @@ namespace Lost_And_Found.Manager
 
         public List<PostProductModel> selectmobiles()
         {
-            var request = db.Products.Where(x=>x.Product_Category=="Mobile" && x.Product_IsActive==true).ToList();
-            List<PostProductModel> List = request.Select(x => new PostProductModel
+            try
             {
-                Product_Id = x.Product_ID,
-                Product_Image = x.Product_Image,
-                Product_Name = x.Product_Name,
-                Product_Description =x.Product_Description
-            }).ToList();
-            return List;
 
+
+                var request = db.Products.Where(x => x.Product_Category == "Mobile" && x.Product_IsActive == true).ToList();
+                List<PostProductModel> List = request.Select(x => new PostProductModel
+                {
+                    Product_Id = x.Product_ID,
+                    Product_Image = x.Product_Image,
+                    Product_Name = x.Product_Name,
+                    Product_Description = x.Product_Description
+                }).ToList();
+                return List;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public List<PostProductModel> selectbags()
         {
-            var request = db.Products.Where(x => x.Product_Category == "Bags" && x.Product_IsActive == true).ToList();
-            List<PostProductModel> List = request.Select(x => new PostProductModel
+            try
             {
-                Product_Id = x.Product_ID,
-                Product_Image = x.Product_Image,
-                Product_Name = x.Product_Name,
-                Product_Description = x.Product_Description
 
-            }).ToList();
-            return List;
 
+                var request = db.Products.Where(x => x.Product_Category == "Bags" && x.Product_IsActive == true).ToList();
+                List<PostProductModel> List = request.Select(x => new PostProductModel
+                {
+                    Product_Id = x.Product_ID,
+                    Product_Image = x.Product_Image,
+                    Product_Name = x.Product_Name,
+                    Product_Description = x.Product_Description
+
+                }).ToList();
+                return List;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<PostProductModel> selectcars()
         {
-            var request = db.Products.Where(x => x.Product_Category == "Cars" && x.Product_IsActive == true).ToList();
-            List<PostProductModel> List = request.Select(x => new PostProductModel
+            try
             {
-                Product_Id = x.Product_ID,
-                Product_Image = x.Product_Image,
-                Product_Name = x.Product_Name,
-                Product_Description = x.Product_Description
 
-            }).ToList();
-            return List;
 
+                var request = db.Products.Where(x => x.Product_Category == "Cars" && x.Product_IsActive == true).ToList();
+                List<PostProductModel> List = request.Select(x => new PostProductModel
+                {
+                    Product_Id = x.Product_ID,
+                    Product_Image = x.Product_Image,
+                    Product_Name = x.Product_Name,
+                    Product_Description = x.Product_Description
+
+                }).ToList();
+                return List;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
 
         public List<PostProductModel> selectclothes_shoes()
         {
-            var request = db.Products.Where(x => x.Product_Category == "Clothes_Shoes" && x.Product_IsActive == true).ToList();
-            List<PostProductModel> List = request.Select(x => new PostProductModel
+            try
             {
-                Product_Id = x.Product_ID,
-                Product_Image = x.Product_Image,
-                Product_Name = x.Product_Name,
-                Product_Description = x.Product_Description
 
-            }).ToList();
-            return List;
 
+                var request = db.Products.Where(x => x.Product_Category == "Clothes_Shoes" && x.Product_IsActive == true).ToList();
+                List<PostProductModel> List = request.Select(x => new PostProductModel
+                {
+                    Product_Id = x.Product_ID,
+                    Product_Image = x.Product_Image,
+                    Product_Name = x.Product_Name,
+                    Product_Description = x.Product_Description
+
+                }).ToList();
+                return List;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<PostProductModel> selectdocuments()
         {
-            var request = db.Products.Where(x => x.Product_Category == "Documents" && x.Product_IsActive == true).ToList();
-            List<PostProductModel> List = request.Select(x => new PostProductModel
+            try
             {
-                Product_Id = x.Product_ID,
-                Product_Image = x.Product_Image,
-                Product_Name = x.Product_Name,
-                Product_Description = x.Product_Description
 
-            }).ToList();
-            return List;
 
+                var request = db.Products.Where(x => x.Product_Category == "Documents" && x.Product_IsActive == true).ToList();
+                List<PostProductModel> List = request.Select(x => new PostProductModel
+                {
+                    Product_Id = x.Product_ID,
+                    Product_Image = x.Product_Image,
+                    Product_Name = x.Product_Name,
+                    Product_Description = x.Product_Description
+
+                }).ToList();
+                return List;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<PostProductModel> selectjewellery()
         {
-            var request = db.Products.Where(x => x.Product_Category == "Jewellery" && x.Product_IsActive == true).ToList();
-            List<PostProductModel> List = request.Select(x => new PostProductModel
+            try
             {
-                Product_Id = x.Product_ID,
-                Product_Image = x.Product_Image,
-                Product_Name = x.Product_Name,
-                Product_Description = x.Product_Description
 
-            }).ToList();
-            return List;
 
+                var request = db.Products.Where(x => x.Product_Category == "Jewellery" && x.Product_IsActive == true).ToList();
+                List<PostProductModel> List = request.Select(x => new PostProductModel
+                {
+                    Product_Id = x.Product_ID,
+                    Product_Image = x.Product_Image,
+                    Product_Name = x.Product_Name,
+                    Product_Description = x.Product_Description
+
+                }).ToList();
+                return List;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<PostProductModel> selectKeys()
         {
-            var request = db.Products.Where(x => x.Product_Category == "Keys" && x.Product_IsActive == true).ToList();
-            List<PostProductModel> List = request.Select(x => new PostProductModel
+            try
             {
-                Product_Id = x.Product_ID,
-                Product_Image = x.Product_Image,
-                Product_Name = x.Product_Name,
-                Product_Description = x.Product_Description
 
-            }).ToList();
-            return List;
 
+                var request = db.Products.Where(x => x.Product_Category == "Keys" && x.Product_IsActive == true).ToList();
+                List<PostProductModel> List = request.Select(x => new PostProductModel
+                {
+                    Product_Id = x.Product_ID,
+                    Product_Image = x.Product_Image,
+                    Product_Name = x.Product_Name,
+                    Product_Description = x.Product_Description
+
+                }).ToList();
+                return List;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<PostProductModel> selectlaptop()
         {
-            var request = db.Products.Where(x => x.Product_Category == "Laptop" && x.Product_IsActive == true).ToList();
-            List<PostProductModel> List = request.Select(x => new PostProductModel
+            try
             {
-                Product_Id = x.Product_ID,
-                Product_Image = x.Product_Image,
-                Product_Name = x.Product_Name,
-                Product_Description = x.Product_Description
 
-            }).ToList();
-            return List;
 
+                var request = db.Products.Where(x => x.Product_Category == "Laptop" && x.Product_IsActive == true).ToList();
+                List<PostProductModel> List = request.Select(x => new PostProductModel
+                {
+                    Product_Id = x.Product_ID,
+                    Product_Image = x.Product_Image,
+                    Product_Name = x.Product_Name,
+                    Product_Description = x.Product_Description
+
+                }).ToList();
+                return List;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<PostProductModel> selectpeople()
         {
-            var request = db.Products.Where(x => x.Product_Category == "People" && x.Product_IsActive == true).ToList();
-            List<PostProductModel> List = request.Select(x => new PostProductModel
+            try
             {
-                Product_Id = x.Product_ID,
-                Product_Image = x.Product_Image,
-                Product_Name = x.Product_Name,
-                Product_Description = x.Product_Description
 
-            }).ToList();
-            return List;
 
+                var request = db.Products.Where(x => x.Product_Category == "People" && x.Product_IsActive == true).ToList();
+                List<PostProductModel> List = request.Select(x => new PostProductModel
+                {
+                    Product_Id = x.Product_ID,
+                    Product_Image = x.Product_Image,
+                    Product_Name = x.Product_Name,
+                    Product_Description = x.Product_Description
+
+                }).ToList();
+                return List;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<PostProductModel> selectpets()
         {
-            var request = db.Products.Where(x => x.Product_Category == "Pets" && x.Product_IsActive == true).ToList();
-            List<PostProductModel> List = request.Select(x => new PostProductModel
+            try
             {
-                Product_Id = x.Product_ID,
-                Product_Image = x.Product_Image,
-                Product_Name = x.Product_Name,
-                Product_Description = x.Product_Description
 
-            }).ToList();
-            return List;
 
+                var request = db.Products.Where(x => x.Product_Category == "Pets" && x.Product_IsActive == true).ToList();
+                List<PostProductModel> List = request.Select(x => new PostProductModel
+                {
+                    Product_Id = x.Product_ID,
+                    Product_Image = x.Product_Image,
+                    Product_Name = x.Product_Name,
+                    Product_Description = x.Product_Description
+
+                }).ToList();
+                return List;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
 

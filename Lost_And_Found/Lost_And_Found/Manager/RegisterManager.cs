@@ -13,24 +13,33 @@ namespace Lost_And_Found.Manager
         long userid = 0;
         public long AddUser(UserRegisterModel uid)
         {
-            App_User tbluser = new App_User();
-            tbluser.User_ID = uid.User_ID;
-            tbluser.User_FullName = uid.User_FullName;
-            tbluser.User_Email = uid.User_Email;
-            tbluser.User_Gender = uid.User_Gender;
-            tbluser.User_Contact = uid.User_Contact;
-            tbluser.User_Password = uid.User_Password;
-            tbluser.User_Role = uid.User_Role;
-            tbluser.User_DOB = uid.User_DOB;
-            tbluser.User_Address = uid.User_Address;
-            tbluser.User_Created_ON = uid.User_Created_ON;
-            tbluser.User_IsActive = uid.User_IsActive;
-            db.App_User.Add(tbluser);
-            db.SaveChanges();
+            try
+            {
 
-            userid = tbluser.User_ID;
 
-            return userid;
+                App_User tbluser = new App_User();
+                tbluser.User_ID = uid.User_ID;
+                tbluser.User_FullName = uid.User_FullName;
+                tbluser.User_Email = uid.User_Email;
+                tbluser.User_Gender = uid.User_Gender;
+                tbluser.User_Contact = uid.User_Contact;
+                tbluser.User_Password = uid.User_Password;
+                tbluser.User_Role = uid.User_Role;
+                tbluser.User_DOB = uid.User_DOB;
+                tbluser.User_Address = uid.User_Address;
+                tbluser.User_Created_ON = uid.User_Created_ON;
+                tbluser.User_IsActive = uid.User_IsActive;
+                db.App_User.Add(tbluser);
+                db.SaveChanges();
+
+                userid = tbluser.User_ID;
+
+                return userid;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
 
