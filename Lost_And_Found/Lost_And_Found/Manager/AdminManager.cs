@@ -11,12 +11,12 @@ namespace Lost_And_Found.Manager
     {
         LostandFoundEntities db = new LostandFoundEntities();
         long adminid = 0;
+
+        //create admin work
         public long AddAdmin(CreateAdminModel aid)
         {
             try
             {
-
-
                 App_Admin tbladmin = new App_Admin();
                 tbladmin.Admin_ID = aid.Admin_ID;
                 tbladmin.Admin_FullName = aid.Admin_FullName;
@@ -42,12 +42,11 @@ namespace Lost_And_Found.Manager
             }
         }
 
+        // get all user work for admin
         public List<UserRegisterModel> selectUser()
         {
             try
             {
-
-
                 var request = db.App_User.ToList();
                 List<UserRegisterModel> List = request.Select(x => new UserRegisterModel
                 {
@@ -70,37 +69,11 @@ namespace Lost_And_Found.Manager
             }
         }
 
-
-        public List<PostProductModel> selectMyposts(long postedby)
-        {
-            try
-            {
-
-
-                var request = db.Products.Where(x => x.Product_IsActive == true && x.Postedby == postedby).OrderByDescending(x => x.Product_ID).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
-                {
-                    Product_Id = x.Product_ID,
-                    Product_Image = x.Product_Image,
-                    Product_Name = x.Product_Name,
-                    Product_Description = x.Product_Description,
-                    Product_IsActive = x.Product_IsActive,
-                }).ToList();
-                return List;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
+        // get all admin for admin
         public List<CreateAdminModel> selectAdmin()
         {
             try
             {
-
-
                 var request = db.App_Admin.ToList();
                 List<CreateAdminModel> List = request.Select(x => new CreateAdminModel
                 {
@@ -123,9 +96,7 @@ namespace Lost_And_Found.Manager
             }
         }
             
-        
-
-
+        // activate and deactivate admin work
         public bool UpdateAdminStatus(bool Status, int adminid)
         {
             try
@@ -144,26 +115,7 @@ namespace Lost_And_Found.Manager
 
         }
 
-
-        public bool UpdateUserStatus(bool Status, int userid)
-        {
-            try
-            {
-                var result = db.App_User.FirstOrDefault(x => x.User_ID == userid);
-                result.User_IsActive = Status;
-                db.Entry(result).State = EntityState.Modified;
-                var check = db.SaveChanges();
-                if (check > 0) return true;
-                return false;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-        }
-
-
+        // activate and deactivate post from admin side
         public bool UpdatePostStatus(bool Status, int productid)
         {
             try
@@ -181,12 +133,12 @@ namespace Lost_And_Found.Manager
             }
 
         }
+
+        // select all post for admin work
         public List<PostProductModel> selectitemsforadmins()
         {
             try
             {
-
-
                 var request = db.Products.OrderByDescending(x => x.Product_ID).ToList();
                 List<PostProductModel> List = request.Select(x => new PostProductModel
                 {
@@ -204,6 +156,7 @@ namespace Lost_And_Found.Manager
             }
         }
 
+        // update admin profile
         public bool UpdateAdmin(CreateAdminModel crm)
         {
             var result = false;
@@ -234,9 +187,6 @@ namespace Lost_And_Found.Manager
                 return false;
             }
         }
-
     }
-
-
 }
 

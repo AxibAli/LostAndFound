@@ -13,12 +13,12 @@ namespace Lost_And_Found.Manager
         LostandFoundEntities db = new LostandFoundEntities();
 
         long postid = 0;
+
+        // add new post
         public long addpost(PostProductModel ppm)
         {
             try
             {
-
-
                 Product tblpro = new Product();
                 tblpro.Product_ID = ppm.Product_Id;
                 tblpro.Product_Image = ppm.Product_Image;
@@ -58,21 +58,47 @@ namespace Lost_And_Found.Manager
             }
         }
 
-
-        public List<PostProductModel> selectitems()
+        // select all items
+        public List<ProductDataModel> selectitems()
         {
             try
             {
+                //var request = (from pd in db.Products
+                //               join u in db.App_User on pd.Postedby equals u.User_ID
+                //               join l in db.Lost_Product on pd.Product_ID equals l.Product_ID 
+                //               join f in db.Found_Product on pd.Product_ID equals f.Product_ID 
+                //               where (pd.Postedby == u.User_ID) && (pd.Product_ID == l.Product_ID) && (pd.Product_ID == f.Product_ID) && (pd.Product_IsActive == true)
+                //               select new
+                //               {
+                //                   pd.Product_ID,
+                //                   pd.Product_Image,
+                //                   pd.Product_Name,
+                //                   pd.Product_Category,
+                //                   pd.Product_Location,
+                //                   pd.Product_Description,
+                //                   pd.Product_IsActive,
+                //                   u.User_FullName,
+                //                   u.User_Contact,
+                //                   l.Lost_Product_Status,
+                //                   f.Found_Product_Status
+                //               }).OrderByDescending(x => x.Product_ID).ToList();
 
 
                 var request = db.Products.Where(x => x.Product_IsActive == true).OrderByDescending(x => x.Product_ID).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
                     Product_Description = x.Product_Description,
-                    Product_IsActive = x.Product_IsActive
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -80,15 +106,13 @@ namespace Lost_And_Found.Manager
             {
                 throw ex;
             }
-
         }
 
+        // all active posts
         public List<PostProductModel> selectMyposts(long postedby)
         {
             try
             {
-
-
                 var request = db.Products.Where(x => x.Product_IsActive == true && x.Postedby == postedby).OrderByDescending(x => x.Product_ID).ToList();
                 List<PostProductModel> List = request.Select(x => new PostProductModel
                 {
@@ -104,16 +128,13 @@ namespace Lost_And_Found.Manager
             {
                 throw ex;
             }
-
         }
 
-
+        // all deactivate posts
         public List<PostProductModel> selectMyDeactiveposts(long postedby)
         {
             try
             {
-
-
                 var request = db.Products.Where(x => x.Product_IsActive == false && x.Postedby == postedby).OrderByDescending(x => x.Product_ID).ToList();
                 List<PostProductModel> List = request.Select(x => new PostProductModel
                 {
@@ -129,10 +150,9 @@ namespace Lost_And_Found.Manager
             {
                 throw ex;
             }
-
         }
 
-
+        // deactivate post from user side
         public bool UpdatePostStatus(bool Status, int productid)
         {
             try
@@ -148,8 +168,9 @@ namespace Lost_And_Found.Manager
             {
                 return false;
             }
-
         }
+
+        //update my profile user side
         public bool UpdateUser(UserRegisterModel urm)
         {
             var result = false;
@@ -182,6 +203,7 @@ namespace Lost_And_Found.Manager
             }
         }
 
+        // post update work user side
         public bool UpdateMyPost(PostProductModel ppm)
         {
             var result = false;
@@ -210,5 +232,4 @@ namespace Lost_And_Found.Manager
             }
         }
     }
-
 }

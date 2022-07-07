@@ -13,7 +13,6 @@ namespace Lost_And_Found.Models
 
         [Required(ErrorMessage = "Kindly select the Product category")]
         public string Product_Category { get; set; }
-
         public string Product_Image { get; set; }
 
         [Required(ErrorMessage = "Kindly enter the Product description")]
@@ -24,16 +23,11 @@ namespace Lost_And_Found.Models
 
         [Required(ErrorMessage = "Kindly select the Product status")]
         public string Product_Status { get; set; }
-
         public bool Product_IsActive { get; set; }
-
         public long Product_Id { get; set; }
-
         public long Postedby { get; set; }
-
         public System.DateTime Product_Created_On { get; set; }
-        public long Myposts { get; set; }
-        public string PostMessages { get; set; }
+
 
     }
 }

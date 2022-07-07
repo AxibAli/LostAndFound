@@ -160,6 +160,7 @@
     <Content Include="Content\assets\images\logo.png" />
     <Content Include="Content\assets\images\search-record.png" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\CardandToogleStyleSheet.css" />
     <Content Include="Content\css\cards.css" />
     <Content Include="Content\css\Dashboard.css" />
     <Content Include="Content\css\font-roboto.css" />
@@ -364,6 +365,7 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>Lost&amp;FoundModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductDataModel.cs" />
     <Compile Include="Models\UserRegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

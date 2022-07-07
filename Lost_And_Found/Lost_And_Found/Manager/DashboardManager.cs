@@ -6,13 +6,13 @@ namespace Lost_And_Found
 {
     public class DashboardManager
     {
-        private LostandFoundEntities db = new LostandFoundEntities();
+        LostandFoundEntities db = new LostandFoundEntities();
+
+        // cards work for admin dashboard
         public DashboardModel Cards(DashboardModel dm)
         {
             try
             {
-
-
                 dm.total_users = db.App_User.Count();
                 dm.total_admins = db.App_Admin.Count();
                 dm.total_post = db.Products.Count();

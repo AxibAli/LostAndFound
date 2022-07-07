@@ -83,10 +83,10 @@ namespace Lost_And_Found.Controllers
         }
 
 
-        public ActionResult ItemListing(PostProductModel ppm)
+        public ActionResult ItemListing()
         {
             UserManager obj = new UserManager();
-            List<PostProductModel> items = obj.selectitems();
+            List<ProductDataModel> items = obj.selectitems();
             return View(items);
         }
 
@@ -160,10 +160,10 @@ namespace Lost_And_Found.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetMyPostById(int Product_Id)
+        public JsonResult GetMyPostById(int productid)
         {
 
-            Product model = db.Products.Where(x => x.Product_ID == Product_Id).SingleOrDefault();
+            Product model = db.Products.Where(x => x.Product_ID == productid).SingleOrDefault();
             string value = string.Empty;
             value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
             {

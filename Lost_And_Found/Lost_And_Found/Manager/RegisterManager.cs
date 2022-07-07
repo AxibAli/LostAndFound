@@ -11,12 +11,12 @@ namespace Lost_And_Found.Manager
     {
         LostandFoundEntities db = new LostandFoundEntities();
         long userid = 0;
+
+        // register new user work
         public long AddUser(UserRegisterModel uid)
         {
             try
             {
-
-
                 App_User tbluser = new App_User();
                 tbluser.User_ID = uid.User_ID;
                 tbluser.User_FullName = uid.User_FullName;
@@ -41,66 +41,5 @@ namespace Lost_And_Found.Manager
                 throw ex;
             }
         }
-
-
-
-
-        //    public UserRegisterModel GetUser(int uid)
-        //{
-        //    using (LostandFoundEntities1 db = new LostandFoundEntities1())
-        //    {
-        //        var request = db.App_User.Where(x => x.User_ID == uid).FirstOrDefault();
-        //        UserRegisterModel User = null;
-        //        if (request != null)
-        //        {
-        //            User = new UserRegisterModel()
-        //            {
-        //                User_ID = request.User_ID,
-        //                User_FullName = request.User_FullName,
-        //                User_Email = request.User_Email,
-        //                User_Gender = request.User_Gender,
-        //                User_Contact = request.User_Contact,
-        //                User_Password = request.User_Password,
-        //                User_DOB = request.User_DOB,
-        //                User_Address = request.User_Address,
-        //            };
-        //            return User;
-        //        }
-
-        //        else
-        //        {
-        //            return User;
-        //        }
-        //    }
-        //}
-
-        //public bool UpdateUser(UserRegisterModel uid)
-        //{
-        //    using (LostandFoundEntities1 db = new LostandFoundEntities1())
-        //    {
-        //        var Data = db.App_User.Where(x => x.User_ID == uid.User_ID).FirstOrDefault();
-        //        if (Data != null)
-        //        {
-        //            Data.User_ID = uid.User_ID;
-        //            Data.User_FullName = uid.User_FullName;
-        //            Data.User_Email = uid.User_Email;
-        //            Data.User_Gender = uid.User_Gender;
-        //            Data.User_Contact = uid.User_Contact;
-        //            Data.User_Password = uid.User_Password;
-        //            Data.User_DOB = uid.User_DOB;
-        //            Data.User_Address = uid.User_Address;
-        //            Data.User_Created_ON = uid.User_Created_ON;
-        //            Data.User_Updated_ON = uid.User_Updated_ON;
-        //            db.Entry(Data).State = EntityState.Modified;
-        //            db.SaveChanges();
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //}
-
     }
 }

@@ -16,8 +16,6 @@ namespace Lost_And_Found.Manager
         {
             try
             {
-
-
                 var data = db.App_Admin.Where
                 (x => x.Admin_Email == logindata.Username ||
                  x.Admin_FullName == logindata.Username &&
@@ -50,12 +48,11 @@ namespace Lost_And_Found.Manager
         {
             try
             {
-
-
                 var user = db.App_User.Where
                    (x => x.User_Email == ld.Username ||
                     x.User_FullName == ld.Username &&
                     x.User_Password == ld.Password).FirstOrDefault();
+                
                 UserRegisterModel userdata = null;
 
                 if (user != null)

@@ -87,7 +87,7 @@
                 <div class="modal-body input-box">
                     <form id="form">
                         <fieldset id="SubmitForm">
-                            <input type="hidden" id="ProductId" name="ProductId">
+                            <input type="text" id="productid" name="productid">
                             <div class="form-group">
                                 <input type="text" class="form-class-r" id="ProductName" placeholder="ProductName" />
                             </div>
@@ -137,8 +137,8 @@
 
 <script>
     //Show The Popup Modal For Edit User Record
-    function EditMyPost(Product_Id) {
-        var url = "/User/GetMyPostById?Product_Id=" + Product_Id;
+    function EditMyPost(productid) {
+        var url = "/User/GetMyPostById?productid=" + productid;
         $("#ModalTitle").html("Update My Post Profile");
         $("#MyModal").modal();
         $.ajax({
@@ -146,7 +146,7 @@
             url: url,
             success: function (data) {
                 var obj = JSON.parse(data);
-                $("#ProductId").val(obj.Product_Id);
+                $("#productid").val(obj.Product_Id);
                 $("#ProductName").val(obj.Product_Name);
                 $("#ProductLocation").val(obj.Product_Location);
                 $("#ProductCategory").val(obj.Product_Category);
