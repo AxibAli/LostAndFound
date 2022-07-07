@@ -160,10 +160,10 @@ namespace Lost_And_Found.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetMyPostById(int productid)
+        public JsonResult GetMyPostById(int Product_Id)
         {
 
-            Product model = db.Products.Where(x => x.Product_ID == productid).SingleOrDefault();
+            Product model = db.Products.Where(x => x.Product_ID == Product_Id).SingleOrDefault();
             string value = string.Empty;
             value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
             {
