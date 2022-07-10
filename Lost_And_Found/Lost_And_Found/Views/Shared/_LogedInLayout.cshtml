@@ -12,6 +12,7 @@
     <!-- Mobile Specific Meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- bootstrap.min css -->
+    <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="~/Content/Home/plugins/bootstrap/css/bootstrap.min.css">
     <!-- Icofont Css -->
     <link rel="stylesheet" href="~/Content/Home/plugins/themify/css/themify-icons.css">
@@ -38,6 +39,57 @@
     <link href="~/Content/css/registerstyle.css" rel="stylesheet" />
     <!--Card & Toggle Style-->
     <link href="~/Content/css/CardandToogleStyleSheet.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .noti-content {
+            position: fixed;
+            right: 100px;
+            background: #e5e5e5;
+            border-radius: 4px;
+            top: 47px;
+            width: 250px;
+            display: none;
+            border: 1px solid #9E988B;
+        }
+
+        ul#notiContent {
+            max-height: 200px;
+            overflow: auto;
+            padding: 0px;
+            margin: 0px;
+            padding-left: 20px;
+        }
+
+            ul#notiContent li {
+                margin: 3px;
+                padding: 6px;
+                background: #fff;
+            }
+
+        .noti-top-arrow {
+            border-color: transparent;
+            border-bottom-color: #F5DEB3;
+            border-style: dashed dashed solid;
+            border-width: 0 8.5px 8.5px;
+            position: absolute;
+            right: 32px;
+            top: -8px;
+        }
+
+        span.noti {
+            color: #FF2323;
+            margin: 15px;
+            position: fixed;
+            right: 80px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        span.count {
+            position: relative;
+            top: -3px;
+        }
+    </style>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -95,6 +147,11 @@
                             </ul>
                         </li>
                     </ul>
+                    <span class=" noti fa fa-bell"><span class="count">&nbsp;</span></span>
+                    <div class="noti-content">
+                        <div class="noti-top-arrow"></div>
+                        <ul id="notiContent"></ul>
+                    </div>
                 </div> <!-- / .navbar-collapse -->
             </nav>
         </div> <!-- / .container -->
@@ -207,17 +264,18 @@
 
     <!--Essential Scripts-->
     <!-- Bootstrap4. 3.1 -->
-    <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
+    @*<script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>*@
     <!-- Slick Slider -->
     <script src="~/Content/Home/plugins/slick-carousel/slick/slick.min.js"></script>
     <!-- Counterup -->
     <script src="~/Content/Home/plugins/counterup/waypoint.js"></script>
     <script src="~/Content/Home/plugins/counterup/jquery.counterup.min.js"></script>
     <script src="~/Content/Home/plugins/instafeed-js/instafeed.min.js"></script>
-
+    <!--Signal R-->
+    <script src="~/scripts/jquery.signalR-2.4.3.min.js"></script>
+    <script src="/signalr/hubs"></script>
     <!--  Magnific Popup-->
     <script src="~/Content/Home/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-
     <script src="~/Content/Home/js/script.js"></script>
     <!--Category Card Script-->
     <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -290,6 +348,7 @@
             }
         </script>
     }
+
     <script>
         //Show The Popup Modal For Edit User Record
         function EditUserRecord(User_ID) {
@@ -364,5 +423,70 @@
             $("#desc").html(description);
         }
     </script>
+
+    <!--Signal R ajax-->
+    @* Add jquery code for Get Notification & setup signalr *@
+    <script type="text/javascript">
+        $(function () {
+            debugger;
+            // Click on notification icon for show notification
+            $('span.noti').click(function (e) {
+                e.stopPropagation();
+                $('.noti-content').show();
+                var count = 0;
+                count = parseInt($('span.count').html()) || 0;
+                //only load notification if not already loaded
+                if (count > 0) {
+                    updateNotification();
+                }
+                $('span.count', this).html('&nbsp;');
+            })
+            // hide notifications
+            $('html').click(function () {
+                $('.noti-content').hide();
+            })
+            // update notification
+            function updateNotification() {
+                debugger;
+                $('#notiContent').empty();
+                $('#notiContent').append($('<li>Loading...</li>'));
+                $.ajax({
+                    type: 'GET',
+                    url: '/User/GetNotificationContacts',
+                    success: function (response) {
+                        $('#notiContent').empty();
+                        if (response.length == 0) {
+                            $('#notiContent').append($('<li>No data available</li>'));
+                        }
+                        $.each(response, function (index, value) {
+                            $('#notiContent').append($('<li>New contact : ' + value.Contact_Name + ' (' + value.Contact_No + ') added</li>'));
+                        });
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                })
+            }
+            // update notification count
+            function updateNotificationCount() {
+                var count = 0;
+                count = parseInt($('span.count').html()) || 0;
+                count++;
+                $('span.count').html(count);
+            }
+            // signalr js code for start hub and send receive notification
+            var notificationHub = $.connection.notificationHub;
+            $.connection.hub.start().done(function () {
+                console.log('Notification hub started');
+            });
+            //signalr method for push server message to client
+            notificationHub.client.notify = function (message) {
+                if (message && message.toLowerCase() == "added") {
+                    updateNotificationCount();
+                }
+            }
+        })
+    </script>
+
 </body>
 </html>
