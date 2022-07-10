@@ -1,4 +1,4 @@
-﻿@model List<Lost_And_Found.Models.PostProductModel>
+﻿@model List<Lost_And_Found.Models.ProductDataModel>
 @{
     ViewBag.Title = "Mobile";
     Layout = "~/Views/Shared/_LogedInLayout.cshtml";
@@ -12,39 +12,25 @@
             <img src="@Url.Content(item.Product_Image)" class="card-img-top" />
             <div class="card-body">
                 <div class="card-title">
-                    <h2>@item.Product_Name</h2>
-                </div>
-                <div class="card-text">
-                    <p>@*@item.Product_Description*@</p>
+                    <h5 style="font-size:14px;"><b style="font-size:18px;">Name: </b>@item.Product_Name</h5>
+                    <h5 style="font-size:14px;"><b style="font-size:18px;">Categoty: </b> @item.Product_Category</h5>
+                    <h5 style="font-size:14px;"><b style="font-size:18px;">Location: </b> @item.Product_Location</h5>
+                    <h5 style="font-size:14px;"><b style="font-size:18px;">Posted By: </b> @item.Name</h5>
+                    <h5 style="font-size:14px;"><b style="font-size:18px;">Contact No: </b> @item.Contact</h5>
+                    @if (item.Product_Lost_Status == null)
+                    {
+                        <h5 style="font-size:14px; color:red;"><b style="font-size:20px;">Status: </b> @item.Product_Found_Status</h5>
+                    }
+                    else
+                    {
+                        <h5 style="font-size:14px; color:red;"><b style="font-size:20px;">Status: </b> @item.Product_Lost_Status</h5>
+                    }
                 </div>
                 <div style="display:flex;">
                     <div>
-                        <a href="#" class="btn btn-primary custyle" data-toggle="modal" data-target="#MyModal2">Read More</a>
-                        <!--Description Modal-->
-                        <div class="modal fade" id="MyModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                             aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Description</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body input-box">
-                                        <form id="form">
-                                            <fieldset id="SubmitForm">
-                                                <p>@item.Product_Description</p>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                </div>
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
+                        <a href="#" class="btn btn-primary custyle" onclick="loadDescription('@item.Product_Description')">
+                            Read More
+                        </a>
                     </div>
                     <div style="width:70%;">
                         <a href="#" class="btn btn-icon" data-toggle="modal" data-target="#meassageModal">
@@ -84,4 +70,29 @@
             </div>
         </div>
     }
+</div>
+
+<!--Description Modal-->
+<div class="modal fade" id="MyModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Description</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body input-box">
+                <form id="form">
+                    <fieldset id="SubmitForm">
+                        <p id="desc"></p>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

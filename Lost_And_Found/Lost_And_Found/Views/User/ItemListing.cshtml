@@ -16,8 +16,7 @@
                     <h5 style="font-size:14px;"><b style="font-size:18px;">Categoty: </b> @item.Product_Category</h5>
                     <h5 style="font-size:14px;"><b style="font-size:18px;">Location: </b> @item.Product_Location</h5>
                     <h5 style="font-size:14px;"><b style="font-size:18px;">Posted By: </b> @item.Name</h5>
-                    @*<h5 style="font-size:14px;"><b style="font-size:18px;">Description: </b>@item.Product_Description</h5>*@ 
-                    
+                    <h5 style="font-size:14px;"><b style="font-size:18px;">Contact No: </b> @item.Contact</h5>
                     @if (item.Product_Lost_Status==null)
                     {
                         <h5 style="font-size:14px; color:red;"><b style="font-size:20px;">Status: </b> @item.Product_Found_Status</h5>
@@ -29,10 +28,9 @@
                 </div>
                 <div style="display:flex;">
                     <div>
-                        <a href="#" class="btn btn-primary custyle" id="abc" onclick="loadDescription('@item.Product_Description')" @*data-toggle="modal" data-target="#MyModal2"*@>
+                        <a href="#" class="btn btn-primary custyle" onclick="loadDescription('@item.Product_Description')">
                             Read More
                         </a>
-                        <br />
                     </div>
                     <div style="width:70%;">
                         <a href="#" class="btn btn-icon" data-toggle="modal" data-target="#meassageModal">
@@ -58,9 +56,7 @@
                     <div class="modal-body input-box">
                         <form id="form">
                             <fieldset id="SubmitForm">
-                                
                                 <p id="desc"></p>
-
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                 </div>
@@ -100,7 +96,7 @@
     }
 </div>
 
-<script>
+@*<script>
     function loadDescription(description) {
         //var dataId = $("#control").attr("data-text");
         //alert(description);
@@ -109,4 +105,4 @@
         $("#MyModal2").modal();
         $("#desc").html(description);
     }
-</script>
+</script>*@

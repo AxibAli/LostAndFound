@@ -67,7 +67,7 @@ namespace Lost_And_Found.Controllers
         public ActionResult AllPosts()
         {
             AdminManager obj = new AdminManager();
-            List<PostProductModel> posts = obj.selectitemsforadmins();
+            List<ProductDataModel> posts = obj.selectitemsforadmins();
             return View(posts);
         }
 

@@ -4,13 +4,12 @@
     Layout = "~/Views/Shared/_LogedInLayout.cshtml";
 }
 
-
 <div class="container5">
     <form id="" method="post" enctype="multipart/form-data">
         <div class="leftcont">
             <div class="">
                 <div class="">
-                    <h4>Image Upload</h4>
+                    <h4 style="padding-left:160px;" padding-top:5px;><b>Image Upload</b></h4>
                 </div>
                 <div class="container">
                     <div class="row">
@@ -29,6 +28,9 @@
             </div>
         </div>
         <div class="rightcont">
+            <div class="">
+                <h4 style="padding-left:130px; padding-top:5px;"><b>Fill this Form Kindly</b></h4>
+            </div>
             <div class="input-box">
                 <span class="details">Product Name </span>
                 @Html.TextBoxFor(x => x.Product_Name, null, new { @Class = "form-class-r" })
@@ -70,7 +72,7 @@
                 }, new { @Class = "form-class-r" })
                 @Html.ValidationMessageFor(x => x.Product_Status, null, new { style = "color:red" })
             </div>
-            <div class="button">
+            <div class="button" sstyle="padding-top:5px;">
                 <input type="submit" id="btnDraft" value="Post Your Item">
             </div>
         </div>

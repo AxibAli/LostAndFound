@@ -93,7 +93,7 @@ namespace Lost_And_Found.Controllers
         public ActionResult MyPosts(long postedby)
         {
             UserManager obj = new UserManager();
-            List<PostProductModel> posts = obj.selectMyposts(postedby);
+            List<ProductDataModel> posts = obj.selectMyposts(postedby);
             if (posts == null)
             {
                 TempData["Message"] = "Posts not Found";
@@ -109,7 +109,7 @@ namespace Lost_And_Found.Controllers
         public ActionResult MyDeactivePosts(long postedby)
         {
             UserManager obj = new UserManager();
-            List<PostProductModel> posts = obj.selectMyDeactiveposts(postedby);
+            List<ProductDataModel> posts = obj.selectMyDeactiveposts(postedby);
             if (posts == null)
             {
                 TempData["Message"] = "Posts not Found";

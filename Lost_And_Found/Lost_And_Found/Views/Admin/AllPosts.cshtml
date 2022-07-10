@@ -1,4 +1,4 @@
-﻿@model List<Lost_And_Found.Models.PostProductModel>
+﻿@model List<Lost_And_Found.Models.ProductDataModel>
 @{
     ViewBag.Title = "AllPosts";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -13,42 +13,28 @@
             <img src="@Url.Content(item.Product_Image)" class="card-img-top" />
             <div class="card-body">
                 <div class="card-title">
-                    <h2>@item.Product_Name</h2>
+                    <h5 style="font-size:14px;"><b style="font-size:18px;">Name: </b>@item.Product_Name</h5>
+                    <h5 style="font-size:14px;"><b style="font-size:18px;">Categoty: </b> @item.Product_Category</h5>
+                    <h5 style="font-size:14px;"><b style="font-size:18px;">Location: </b> @item.Product_Location</h5>
+                    <h5 style="font-size:14px;"><b style="font-size:18px;">Posted By: </b> @item.Name</h5>
+                    <h5 style="font-size:14px;"><b style="font-size:18px;">Contact No: </b> @item.Contact</h5>
+                    @if (item.Product_Lost_Status == null)
+                    {
+                        <h5 style="font-size:14px; color:red;"><b style="font-size:20px;">Status: </b> @item.Product_Found_Status</h5>
+                    }
+                    else
+                    {
+                        <h5 style="font-size:14px; color:red;"><b style="font-size:20px;">Status: </b> @item.Product_Lost_Status</h5>
+                    }
                 </div>
-                <div class="card-text">
-                    <p>@*@item.Product_Description*@</p> 
-                </div>
+
                 <div style="display:flex;">
                     <div>
-                    <a href="#" class="btn btn-primary" style="font-size:12px; width: 100px;  line-height: 30px;" data-toggle="modal" data-target="#MyModal2">Read More</a>
-                    <!--Description Modal-->
-                    <div class="modal fade" id="MyModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Description</h5>
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body input-box">
-                                    <form id="form">
-                                        <fieldset id="SubmitForm">
-                                            <p>@item.Product_Description</p>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                            </div>
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="#" class="btn btn-primary" style="font-size:12px; width: 100px;  line-height: 30px;" data-toggle="modal" data-target="#MyModal2" onclick="loadDescription('@item.Product_Description')">
+                        Read More
+                        </a>
                     </div>
-                    <br />
-                    </div>
-                    
-                    <div style="width:70%;">
+                    <div style="width:70%; padding-left:5px;">
                         @{
                             var stat = string.Empty;
                             if (@item.Product_IsActive == true)
@@ -60,54 +46,42 @@
                                 stat = "";
                             }
                             <label class="switch btn btn-icon">
-                                <input type="checkbox"  id="switchId-@item.Product_Id"  onchange="UpdatePostStatus(this,  @item.Product_Id)" @stat>
+                                <input type="checkbox" id="switchId-@item.Product_Id" onchange="UpdatePostStatus(this,  @item.Product_Id)" @stat>
                                 <span class="slider round"></span>
                             </label>
                         }
-                        <a href="#" class="btn btn-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="btn btn-icon" data-toggle="modal" data-target="#meassageModal">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
-                                <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                            </svg>
-                        </a>
-                        <!--Message Modal-->
-                        <div class="modal fade" id="meassageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                             aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Send Meassage Area</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body input-box">
-                                        <form id="form">
-                                            <fieldset id="SubmitForm">
-                                                <div class="form-group">
-                                                    <textarea rows="4" cols="55" name="comment" id="message"> Enter Meassage text here...</textarea>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                    <a class="btn btn-primary" href="#" id="sendMessage">Send Message</a>
-                                                </div>
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     }
 </div>
+
+<!--Description Modal-->
+<div class="modal fade" id="MyModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Description</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body input-box">
+                <form id="form">
+                    <fieldset id="SubmitForm">
+                        <p id="desc"></p>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script>
     function UpdatePostStatus(data, productid) {
@@ -129,5 +103,10 @@
                 }
                 console.log(status)
             });
+    }
+    function loadDescription(description) {
+        $("#ModalTitle").html("");
+        $("#MyModal2").modal();
+        $("#desc").html(description);
     }
 </script>

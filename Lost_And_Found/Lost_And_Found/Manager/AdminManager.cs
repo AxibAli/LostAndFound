@@ -135,18 +135,24 @@ namespace Lost_And_Found.Manager
         }
 
         // select all post for admin work
-        public List<PostProductModel> selectitemsforadmins()
+        public List<ProductDataModel> selectitemsforadmins()
         {
             try
             {
                 var request = db.Products.OrderByDescending(x => x.Product_ID).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
                     Product_Description = x.Product_Description,
-                    Product_IsActive = x.Product_IsActive
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }

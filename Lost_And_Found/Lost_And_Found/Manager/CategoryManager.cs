@@ -11,17 +11,24 @@ namespace Lost_And_Found.Manager
         LostandFoundEntities db = new LostandFoundEntities();
 
         // mobiles category
-        public List<PostProductModel> selectmobiles()
+        public List<ProductDataModel> selectmobiles()
         {
             try
             {
                 var request = db.Products.Where(x => x.Product_Category == "Mobile" && x.Product_IsActive == true).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
-                    Product_Description = x.Product_Description
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
+                    Product_Description = x.Product_Description,
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -32,18 +39,24 @@ namespace Lost_And_Found.Manager
         }
 
         // bags category
-        public List<PostProductModel> selectbags()
+        public List<ProductDataModel> selectbags()
         {
             try
             {
                 var request = db.Products.Where(x => x.Product_Category == "Bags" && x.Product_IsActive == true).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
-                    Product_Description = x.Product_Description
-
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
+                    Product_Description = x.Product_Description,
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -54,18 +67,24 @@ namespace Lost_And_Found.Manager
         }
 
         // cars category
-        public List<PostProductModel> selectcars()
+        public List<ProductDataModel> selectcars()
         {
             try
             {
                 var request = db.Products.Where(x => x.Product_Category == "Cars" && x.Product_IsActive == true).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
-                    Product_Description = x.Product_Description
-
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
+                    Product_Description = x.Product_Description,
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -76,18 +95,24 @@ namespace Lost_And_Found.Manager
         }
 
         // clothees and shoes category
-        public List<PostProductModel> selectclothes_shoes()
+        public List<ProductDataModel> selectclothes_shoes()
         {
             try
             {
                 var request = db.Products.Where(x => x.Product_Category == "Clothes_Shoes" && x.Product_IsActive == true).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
-                    Product_Description = x.Product_Description
-
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
+                    Product_Description = x.Product_Description,
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -98,18 +123,24 @@ namespace Lost_And_Found.Manager
         }
 
         // documents category
-        public List<PostProductModel> selectdocuments()
+        public List<ProductDataModel> selectdocuments()
         {
             try
             {
                 var request = db.Products.Where(x => x.Product_Category == "Documents" && x.Product_IsActive == true).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
-                    Product_Description = x.Product_Description
-
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
+                    Product_Description = x.Product_Description,
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -120,18 +151,24 @@ namespace Lost_And_Found.Manager
         }
 
         // Jewellery category
-        public List<PostProductModel> selectjewellery()
+        public List<ProductDataModel> selectjewellery()
         {
             try
             {
                 var request = db.Products.Where(x => x.Product_Category == "Jewellery" && x.Product_IsActive == true).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
-                    Product_Description = x.Product_Description
-
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
+                    Product_Description = x.Product_Description,
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -142,18 +179,24 @@ namespace Lost_And_Found.Manager
         }
 
         // keys category
-        public List<PostProductModel> selectKeys()
+        public List<ProductDataModel> selectKeys()
         {
             try
             {
                 var request = db.Products.Where(x => x.Product_Category == "Keys" && x.Product_IsActive == true).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
-                    Product_Description = x.Product_Description
-
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
+                    Product_Description = x.Product_Description,
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -164,18 +207,24 @@ namespace Lost_And_Found.Manager
         }
 
         // laptop category
-        public List<PostProductModel> selectlaptop()
+        public List<ProductDataModel> selectlaptop()
         {
             try
             {
                 var request = db.Products.Where(x => x.Product_Category == "Laptop" && x.Product_IsActive == true).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
-                    Product_Description = x.Product_Description
-
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
+                    Product_Description = x.Product_Description,
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -186,18 +235,24 @@ namespace Lost_And_Found.Manager
         }
 
         // people category
-        public List<PostProductModel> selectpeople()
+        public List<ProductDataModel> selectpeople()
         {
             try
             {
                 var request = db.Products.Where(x => x.Product_Category == "People" && x.Product_IsActive == true).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
-                    Product_Description = x.Product_Description
-
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
+                    Product_Description = x.Product_Description,
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -208,18 +263,24 @@ namespace Lost_And_Found.Manager
         }
 
         // pets category
-        public List<PostProductModel> selectpets()
+        public List<ProductDataModel> selectpets()
         {
             try
             {
                 var request = db.Products.Where(x => x.Product_Category == "Pets" && x.Product_IsActive == true).ToList();
-                List<PostProductModel> List = request.Select(x => new PostProductModel
+                List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
                     Product_Image = x.Product_Image,
                     Product_Name = x.Product_Name,
-                    Product_Description = x.Product_Description
-
+                    Product_Category = x.Product_Category,
+                    Product_Location = x.Product_Location,
+                    Product_Description = x.Product_Description,
+                    Product_IsActive = x.Product_IsActive,
+                    //Name = x.User_FullName,
+                    //Contact = x.User_Contact,
+                    //Product_Lost_Status=x.Lost_Product_Status,
+                    //Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }

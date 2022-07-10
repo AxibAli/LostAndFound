@@ -12,74 +12,74 @@ namespace Lost_And_Found.Controllers
     [AuthorizedUser]
     public class CategoryController : Controller
     {
-        public ActionResult Mobile(PostProductModel ppm)
+        public ActionResult Mobile(ProductDataModel ppm)
         {
             CategoryManager obj = new CategoryManager();
-            List<PostProductModel> mobilelist = obj.selectmobiles();
+            List<ProductDataModel> mobilelist = obj.selectmobiles();
             return View(mobilelist);
         }
 
-        public ActionResult Pets(PostProductModel ppm)
+        public ActionResult Pets(ProductDataModel ppm)
         {
             CategoryManager obj = new CategoryManager();
-            List<PostProductModel> petslist = obj.selectpets();
+            List<ProductDataModel> petslist = obj.selectpets();
             return View(petslist);
         }
 
-        public ActionResult Cars(PostProductModel ppm)
+        public ActionResult Cars(ProductDataModel ppm)
         {
             CategoryManager obj = new CategoryManager();
-            List<PostProductModel> carslist = obj.selectcars();
+            List<ProductDataModel> carslist = obj.selectcars();
             return View(carslist);
         }
 
-        public ActionResult Clothes_Shoes(PostProductModel ppm)
+        public ActionResult Clothes_Shoes(ProductDataModel ppm)
         {
             CategoryManager obj = new CategoryManager();
-            List<PostProductModel> cslist = obj.selectclothes_shoes();
+            List<ProductDataModel> cslist = obj.selectclothes_shoes();
             return View(cslist);
         }
 
-        public ActionResult Bags(PostProductModel ppm)
+        public ActionResult Bags(ProductDataModel ppm)
         {
             CategoryManager obj = new CategoryManager();
-            List<PostProductModel> bagslist = obj.selectbags();
+            List<ProductDataModel> bagslist = obj.selectbags();
             return View(bagslist);
         }
 
-        public ActionResult People(PostProductModel ppm)
+        public ActionResult People(ProductDataModel ppm)
         {
             CategoryManager obj = new CategoryManager();
-            List<PostProductModel> peoplelist = obj.selectpeople();
+            List<ProductDataModel> peoplelist = obj.selectpeople();
             return View(peoplelist);
         }
 
-        public ActionResult Documents(PostProductModel ppm)
+        public ActionResult Documents(ProductDataModel ppm)
         {
             CategoryManager obj = new CategoryManager();
-            List<PostProductModel> docslist = obj.selectdocuments();
+            List<ProductDataModel> docslist = obj.selectdocuments();
             return View(docslist);
         }
 
-        public ActionResult Laptop(PostProductModel ppm)
+        public ActionResult Laptop(ProductDataModel ppm)
         {
             CategoryManager obj = new CategoryManager();
-            List<PostProductModel> laptoplist = obj.selectlaptop();
+            List<ProductDataModel> laptoplist = obj.selectlaptop();
             return View(laptoplist);
         }
 
-        public ActionResult Jewellery(PostProductModel ppm)
+        public ActionResult Jewellery(ProductDataModel ppm)
         {
             CategoryManager obj = new CategoryManager();
-            List<PostProductModel> jewellerylist = obj.selectjewellery();
+            List<ProductDataModel> jewellerylist = obj.selectjewellery();
             return View(jewellerylist);
         }
 
 
-        public ActionResult Keys(PostProductModel ppm)
+        public ActionResult Keys(ProductDataModel ppm)
         {
             CategoryManager obj = new CategoryManager();
-            List<PostProductModel> keyslist = obj.selectKeys();
+            List<ProductDataModel> keyslist = obj.selectKeys();
             return View(keyslist);
         }
     }
