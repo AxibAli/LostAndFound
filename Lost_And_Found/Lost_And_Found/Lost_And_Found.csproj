@@ -356,6 +356,7 @@
     <Compile Include="Manager\CategoryManager.cs" />
     <Compile Include="Manager\DashboardManager.cs" />
     <Compile Include="Manager\LoginManager.cs" />
+    <Compile Include="Manager\MessageManager.cs" />
     <Compile Include="Manager\RegisterManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Models\AjaxResponseModel.cs" />

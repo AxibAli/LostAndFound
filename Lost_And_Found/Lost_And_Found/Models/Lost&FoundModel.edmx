@@ -64,6 +64,7 @@
           <Property Name="Product_ID" Type="bigint" Nullable="false" />
           <Property Name="Messages" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Message_Date" Type="datetime" Nullable="false" />
+          <Property Name="Sent_By" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -296,6 +297,7 @@
           <Property Name="Messages" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Message_Date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Product" Relationship="LostandFoundModel.FK__Messages__Produc__160F4887" FromRole="Message" ToRole="Product" />
+          <Property Name="Sent_By" Type="Int64" Nullable="false" />
         </EntityType>
         <Association Name="FK__Messages__Produc__160F4887">
           <End Type="LostandFoundModel.Product" Role="Product" Multiplicity="1" />
@@ -388,6 +390,7 @@
           <EntitySetMapping Name="Messages">
             <EntityTypeMapping TypeName="LostandFoundModel.Message">
               <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="Sent_By" ColumnName="Sent_By" />
                 <ScalarProperty Name="Message_Date" ColumnName="Message_Date" />
                 <ScalarProperty Name="Messages" ColumnName="Messages" />
                 <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />

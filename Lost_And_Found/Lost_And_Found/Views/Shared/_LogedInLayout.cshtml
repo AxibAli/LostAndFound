@@ -394,12 +394,25 @@
                 }
             })
         })
+        function loadDescription(description) {
+
+            $("#ModalTitle").html("");
+            $("#MyModal2").modal();
+            $("#desc").html(description);
+        }
+        function getid(ProductId) {
+
+            $("#ModalTitle").html("");
+            $("#meassageModal").modal();
+            // $("#ProductId").html(ProductId);
+            $("#ProductId").val(ProductId);
+        }
         $(document).ready(function () {
             $("#sendMessage").click(function () {
                 debugger;
                 var data = {
                     postMessage: $('#message').val(),
-                    productid: $('#postid').val()
+                    productid: $('#ProductId').val()
                 }
                 $.ajax({
                     type: "Post",
@@ -408,20 +421,13 @@
 
                     success: function (result) {
                         alert("Successfully Sent!....");
-                        window.location.href = "/User/Home";
+                        //window.location.href = "/User/Home";
                         $("#MyModal").modal("hide");
-
+                       // window.location.reload();
                     }
                 });
             });
         });
-
-        function loadDescription(description) {
-
-            $("#ModalTitle").html("");
-            $("#MyModal2").modal();
-            $("#desc").html(description);
-        }
     </script>
 
     <!--Signal R ajax-->

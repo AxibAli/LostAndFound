@@ -20,13 +20,16 @@ namespace Lost_And_Found.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SendMessage(MessageModel mm,string postMessage,long productid)
+        public ActionResult SendMessage(MessageModel mm, string postMessage, long productid)
         {
             mm.Product_Id = productid;
-            mm.Meassage_Date=DateTime.Now;
+            mm.Meassage_Date = DateTime.Now;
             mm.Message = postMessage;
+            mm.Sent_By = Convert.ToInt64(Session["User_ID"]);
 
-            return View();
+            MessageManager obj = new MessageManager();
+            long msgid = obj.addmsg(mm);
+            return Json(msgid, JsonRequestBehavior.AllowGet);
         }
         public ActionResult PostProduct()
         {
@@ -118,7 +121,7 @@ namespace Lost_And_Found.Controllers
 
         }
         [HttpPost]
-        public ActionResult UpdatePostStatus(bool Status, int productid) 
+        public ActionResult UpdatePostStatus(bool Status, int productid)
         {
             UserManager obj = new UserManager();
             var response = obj.UpdatePostStatus(Status, productid);
@@ -127,7 +130,7 @@ namespace Lost_And_Found.Controllers
         }
         public JsonResult GetUserById(int User_ID)
         {
-            
+
             App_User model = db.App_User.Where(x => x.User_ID == User_ID).SingleOrDefault();
             string value = string.Empty;
             value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
@@ -136,8 +139,8 @@ namespace Lost_And_Found.Controllers
             });
             return Json(value, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult UpdateDataInDatabase(UserRegisterModel model,long userid,string username,string useremail,
-            string usercontact,string userpass,string useradd,string usergender)
+        public JsonResult UpdateDataInDatabase(UserRegisterModel model, long userid, string username, string useremail,
+            string usercontact, string userpass, string useradd, string usergender)
         {
 
             model.User_ID = userid;
@@ -145,7 +148,7 @@ namespace Lost_And_Found.Controllers
             model.User_Email = useremail;
             model.User_Password = userpass;
             model.User_Contact = usercontact;
-            model.User_Gender=usergender;
+            model.User_Gender = usergender;
             model.User_Address = useradd;
 
             UserManager obj = new UserManager();
