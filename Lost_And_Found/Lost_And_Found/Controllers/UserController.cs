@@ -81,15 +81,12 @@ namespace Lost_And_Found.Controllers
             }
             return View();
         }
-
-
         public ActionResult ItemListing()
         {
             UserManager obj = new UserManager();
             List<ProductDataModel> items = obj.selectitems();
             return View(items);
         }
-
         public ActionResult MyPosts(long postedby)
         {
             UserManager obj = new UserManager();
@@ -105,7 +102,6 @@ namespace Lost_And_Found.Controllers
             }
 
         }
-
         public ActionResult MyDeactivePosts(long postedby)
         {
             UserManager obj = new UserManager();
@@ -121,7 +117,6 @@ namespace Lost_And_Found.Controllers
             }
 
         }
-
         [HttpPost]
         public ActionResult UpdatePostStatus(bool Status, int productid) 
         {
@@ -130,7 +125,6 @@ namespace Lost_And_Found.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
 
         }
-
         public JsonResult GetUserById(int User_ID)
         {
             
@@ -142,7 +136,6 @@ namespace Lost_And_Found.Controllers
             });
             return Json(value, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult UpdateDataInDatabase(UserRegisterModel model,long userid,string username,string useremail,
             string usercontact,string userpass,string useradd,string usergender)
         {
@@ -159,7 +152,6 @@ namespace Lost_And_Found.Controllers
             bool result = obj.UpdateUser(model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult GetMyPostById(int Productid)
         {
 
@@ -171,16 +163,15 @@ namespace Lost_And_Found.Controllers
             });
             return Json(value, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult UpdateMyPostInDatabase(PostProductModel model, long productid, string productname, string productlocation,
-             string productcategory, string productdecsription)
+             string productcategory, string productdescription)
         {
 
             model.Product_Id = productid;
             model.Product_Name = productname;
             model.Product_Location = productlocation;
             model.Product_Category = productcategory;
-            model.Product_Description = productdecsription;
+            model.Product_Description = productdescription;
 
             UserManager obj = new UserManager();
             bool result = obj.UpdateMyPost(model);

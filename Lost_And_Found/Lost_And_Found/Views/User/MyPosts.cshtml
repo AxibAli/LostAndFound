@@ -88,7 +88,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">MY PROFILE</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Post Deatils</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -96,7 +96,8 @@
                 <div class="modal-body input-box">
                     <form id="form">
                         <fieldset id="SubmitForm">
-                            <p id="proid" ></p>
+                            @*<p id="proid"></p>*@
+                            <input type="hidden" class="form-class-r" id="ProductId" placeholder="ProductId" />
                             <div class="form-group">
                                 <input type="text" class="form-class-r" id="ProductName" placeholder="ProductName" />
                             </div>
@@ -148,13 +149,13 @@
         var url = "/User/GetMyPostById?Productid=" + Productid;
         $("#ModalTitle").html("Update My Post Data");
         $("#MyModal").modal();
-        $("#proid").html(Productid);
+        //$("#proid").html(Productid);
         $.ajax({
             type: "GET",
             url: url,
             success: function (data) {
                 var obj = JSON.parse(data);
-                $("#proid").val(obj.Product_Id);  
+                $("#ProductId").val(Productid);  
                 $("#ProductName").val(obj.Product_Name);
                 $("#ProductLocation").val(obj.Product_Location);
                 $("#ProductCategory").val(obj.Product_Category);
@@ -168,6 +169,7 @@
 
         debugger;
         var data = {
+            productid: $('#ProductId').val(),
             productname: $('#ProductName').val(),
             productlocation: $('#ProductLocation').val(),
             productcategory: $('#ProductCategory').val(),
@@ -179,7 +181,7 @@
             data: data,
             success: function (result) {
                 alert("Successfully Updated....");
-                window.location.href = "/User/Home";
+                //window.location.href = "/User/MyPosts";
                 $("#MyModal").modal("hide");
             }
         })
