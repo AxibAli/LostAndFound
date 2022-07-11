@@ -15,12 +15,12 @@ namespace Lost_And_Found
         public void RegisterNotification(DateTime currentTime)
         {
             string conStr = ConfigurationManager.ConnectionStrings["sqlConString"].ConnectionString;
-            string sqlCommand = @"SELECT [Message_Id],[Product_Id],[Meassage_Date],[Message] from [dbo].[Message] where [Meassage_Date] > @Meassage_Date";
+            string sqlCommand = @"SELECT [Message_Id],[Product_Id],[Message_Date],[Messages] from [dbo].[Messages] where [Message_Date] > @Message_Date";
             //you can notice here I have added table name like this [dbo].[Contacts] with [dbo], its mendatory when you use Sql Dependency
             using (SqlConnection con = new SqlConnection(conStr))
             {
                 SqlCommand cmd = new SqlCommand(sqlCommand, con);
-                cmd.Parameters.AddWithValue("@Meassage_Date", currentTime);
+                cmd.Parameters.AddWithValue("@Message_Date", currentTime);
                 if (con.State != System.Data.ConnectionState.Open)
                 {
                     con.Open();
@@ -56,7 +56,7 @@ namespace Lost_And_Found
         {
             using (LostandFoundEntities db = new LostandFoundEntities())
             {
-                return db.Messages.Where(a => a.Meassage_Date > afterDate).OrderByDescending(a => a.Meassage_Date).ToList();
+                return db.Messages.Where(a => a.Message_Date > afterDate).OrderByDescending(a => a.Message_Date).ToList();
             }
         }
     }

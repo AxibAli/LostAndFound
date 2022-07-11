@@ -63,28 +63,30 @@ namespace Lost_And_Found.Manager
         {
             try
             {
-                //var request = (from pd in db.Products
-                //               join u in db.App_User on pd.Postedby equals u.User_ID
-                //               join l in db.Lost_Product on pd.Product_ID equals l.Product_ID 
-                //               join f in db.Found_Product on pd.Product_ID equals f.Product_ID 
-                //               where (pd.Postedby == u.User_ID) && (pd.Product_ID == l.Product_ID) && (pd.Product_ID == f.Product_ID) && (pd.Product_IsActive == true)
-                //               select new
-                //               {
-                //                   pd.Product_ID,
-                //                   pd.Product_Image,
-                //                   pd.Product_Name,
-                //                   pd.Product_Category,
-                //                   pd.Product_Location,
-                //                   pd.Product_Description,
-                //                   pd.Product_IsActive,
-                //                   u.User_FullName,
-                //                   u.User_Contact,
-                //                   l.Lost_Product_Status,
-                //                   f.Found_Product_Status
-                //               }).OrderByDescending(x => x.Product_ID).ToList();
+                var request = (from pd in db.Products
+                               join u in db.App_User on pd.Postedby equals u.User_ID
+                               join l in db.Lost_Product on pd.Product_ID equals l.Product_ID into lostpro
+                               from lostproduct in lostpro.DefaultIfEmpty()
+                               join f in db.Found_Product on pd.Product_ID equals f.Product_ID into foundpro
+                               from foundproduct in foundpro.DefaultIfEmpty()
+                               where (pd.Product_IsActive == true)
+                               select new
+                               {
+                                   pd.Product_ID,
+                                   pd.Product_Image,
+                                   pd.Product_Name,
+                                   pd.Product_Category,
+                                   pd.Product_Location,
+                                   pd.Product_Description,
+                                   pd.Product_IsActive,
+                                   u.User_FullName,
+                                   u.User_Contact,
+                                   lostproduct.Lost_Product_Status,
+                                   foundproduct.Found_Product_Status
+                               }).OrderByDescending(x => x.Product_ID).ToList();
 
 
-                var request = db.Products.Where(x => x.Product_IsActive == true).OrderByDescending(x => x.Product_ID).ToList();
+                //var request = db.Products.Where(x => x.Product_IsActive == true).OrderByDescending(x => x.Product_ID).ToList();
 
                 List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
@@ -95,10 +97,10 @@ namespace Lost_And_Found.Manager
                     Product_Location = x.Product_Location,
                     Product_Description = x.Product_Description,
                     Product_IsActive = x.Product_IsActive,
-                    //Name = x.User_FullName,
-                    //Contact = x.User_Contact,
-                    //Product_Lost_Status=x.Lost_Product_Status,
-                    //Product_Found_Status = x.Found_Product_Status
+                    Name = x.User_FullName,
+                    Contact = x.User_Contact,
+                    Product_Lost_Status=x.Lost_Product_Status,
+                    Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -113,7 +115,31 @@ namespace Lost_And_Found.Manager
         {
             try
             {
-                var request = db.Products.Where(x => x.Product_IsActive == true && x.Postedby == postedby).OrderByDescending(x => x.Product_ID).ToList();
+                var request = (from pd in db.Products
+                               join u in db.App_User on pd.Postedby equals u.User_ID
+                               join l in db.Lost_Product on pd.Product_ID equals l.Product_ID into lostpro
+                               from lostproduct in lostpro.DefaultIfEmpty()
+                               join f in db.Found_Product on pd.Product_ID equals f.Product_ID into foundpro
+                               from foundproduct in foundpro.DefaultIfEmpty()
+                               where (pd.Product_IsActive == true && pd.Postedby == postedby)
+                               select new
+                               {
+                                   pd.Product_ID,
+                                   pd.Product_Image,
+                                   pd.Product_Name,
+                                   pd.Product_Category,
+                                   pd.Product_Location,
+                                   pd.Product_Description,
+                                   pd.Product_IsActive,
+                                   u.User_FullName,
+                                   u.User_Contact,
+                                   lostproduct.Lost_Product_Status,
+                                   foundproduct.Found_Product_Status
+                               }).OrderByDescending(x => x.Product_ID).ToList();
+
+
+                //var request = db.Products.Where(x => x.Product_IsActive == true && x.Postedby == postedby).OrderByDescending(x => x.Product_ID).ToList();
+
                 List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
@@ -123,10 +149,10 @@ namespace Lost_And_Found.Manager
                     Product_Location = x.Product_Location,
                     Product_Description = x.Product_Description,
                     Product_IsActive = x.Product_IsActive,
-                    //Name = x.User_FullName,
-                    //Contact = x.User_Contact,
-                    //Product_Lost_Status=x.Lost_Product_Status,
-                    //Product_Found_Status = x.Found_Product_Status
+                    Name = x.User_FullName,
+                    Contact = x.User_Contact,
+                    Product_Lost_Status=x.Lost_Product_Status,
+                    Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }
@@ -141,7 +167,30 @@ namespace Lost_And_Found.Manager
         {
             try
             {
-                var request = db.Products.Where(x => x.Product_IsActive == false && x.Postedby == postedby).OrderByDescending(x => x.Product_ID).ToList();
+                var request = (from pd in db.Products
+                               join u in db.App_User on pd.Postedby equals u.User_ID
+                               join l in db.Lost_Product on pd.Product_ID equals l.Product_ID into lostpro
+                               from lostproduct in lostpro.DefaultIfEmpty()
+                               join f in db.Found_Product on pd.Product_ID equals f.Product_ID into foundpro
+                               from foundproduct in foundpro.DefaultIfEmpty()
+                               where (pd.Product_IsActive == false && pd.Postedby == postedby)
+                               select new
+                               {
+                                   pd.Product_ID,
+                                   pd.Product_Image,
+                                   pd.Product_Name,
+                                   pd.Product_Category,
+                                   pd.Product_Location,
+                                   pd.Product_Description,
+                                   pd.Product_IsActive,
+                                   u.User_FullName,
+                                   u.User_Contact,
+                                   lostproduct.Lost_Product_Status,
+                                   foundproduct.Found_Product_Status
+                               }).OrderByDescending(x => x.Product_ID).ToList();
+
+                //var request = db.Products.Where(x => x.Product_IsActive == false && x.Postedby == postedby).OrderByDescending(x => x.Product_ID).ToList();
+
                 List<ProductDataModel> List = request.Select(x => new ProductDataModel
                 {
                     Product_Id = x.Product_ID,
@@ -151,10 +200,10 @@ namespace Lost_And_Found.Manager
                     Product_Location = x.Product_Location,
                     Product_Description = x.Product_Description,
                     Product_IsActive = x.Product_IsActive,
-                    //Name = x.User_FullName,
-                    //Contact = x.User_Contact,
-                    //Product_Lost_Status=x.Lost_Product_Status,
-                    //Product_Found_Status = x.Found_Product_Status
+                    Name = x.User_FullName,
+                    Contact = x.User_Contact,
+                    Product_Lost_Status=x.Lost_Product_Status,
+                    Product_Found_Status = x.Found_Product_Status
                 }).ToList();
                 return List;
             }

@@ -16,8 +16,8 @@ namespace Lost_And_Found.Models
     {
         public long Message_ID { get; set; }
         public long Product_ID { get; set; }
-        public string Message1 { get; set; }
-        public System.DateTime Meassage_Date { get; set; }
+        public string Messages { get; set; }
+        public System.DateTime Message_Date { get; set; }
     
         public virtual Product Product { get; set; }
     }

@@ -62,8 +62,8 @@
           </Key>
           <Property Name="Message_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Product_ID" Type="bigint" Nullable="false" />
-          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Meassage_Date" Type="datetime" Nullable="false" />
+          <Property Name="Messages" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Message_Date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -160,7 +160,6 @@
           <EntitySet Name="App_User" EntityType="LostandFoundModel.App_User" />
           <EntitySet Name="Found_Product" EntityType="LostandFoundModel.Found_Product" />
           <EntitySet Name="Lost_Product" EntityType="LostandFoundModel.Lost_Product" />
-          <EntitySet Name="Messages" EntityType="LostandFoundModel.Message" />
           <EntitySet Name="Products" EntityType="LostandFoundModel.Product" />
           <AssociationSet Name="FK__Product__Postedb__1273C1CD" Association="LostandFoundModel.FK__Product__Postedb__1273C1CD">
             <End Role="App_User" EntitySet="App_User" />
@@ -174,6 +173,7 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="Lost_Product" EntitySet="Lost_Product" />
           </AssociationSet>
+          <EntitySet Name="Messages" EntityType="LostandFoundModel.Message" />
           <AssociationSet Name="FK__Messages__Produc__160F4887" Association="LostandFoundModel.FK__Messages__Produc__160F4887">
             <End Role="Product" EntitySet="Products" />
             <End Role="Message" EntitySet="Messages" />
@@ -233,16 +233,6 @@
           <Property Name="Lost_Product_Status" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="LostandFoundModel.FK__Lost_Prod__Produ__15502E78" FromRole="Lost_Product" ToRole="Product" />
         </EntityType>
-        <EntityType Name="Message">
-          <Key>
-            <PropertyRef Name="Message_ID" />
-          </Key>
-          <Property Name="Message_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Product_ID" Type="Int64" Nullable="false" />
-          <Property Name="Message1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Meassage_Date" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Product" Relationship="LostandFoundModel.FK__Messages__Produc__160F4887" FromRole="Message" ToRole="Product" />
-        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Product_ID" />
@@ -297,6 +287,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Message_ID" />
+          </Key>
+          <Property Name="Message_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_ID" Type="Int64" Nullable="false" />
+          <Property Name="Messages" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Product" Relationship="LostandFoundModel.FK__Messages__Produc__160F4887" FromRole="Message" ToRole="Product" />
+        </EntityType>
         <Association Name="FK__Messages__Produc__160F4887">
           <End Type="LostandFoundModel.Product" Role="Product" Multiplicity="1" />
           <End Type="LostandFoundModel.Message" Role="Message" Multiplicity="*" />
@@ -370,16 +370,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Messages">
-            <EntityTypeMapping TypeName="LostandFoundModel.Message">
-              <MappingFragment StoreEntitySet="Messages">
-                <ScalarProperty Name="Meassage_Date" ColumnName="Meassage_Date" />
-                <ScalarProperty Name="Message1" ColumnName="Message" />
-                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
-                <ScalarProperty Name="Message_ID" ColumnName="Message_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="LostandFoundModel.Product">
               <MappingFragment StoreEntitySet="Product">
@@ -392,6 +382,16 @@
                 <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
                 <ScalarProperty Name="Postedby" ColumnName="Postedby" />
                 <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="LostandFoundModel.Message">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="Message_Date" ColumnName="Message_Date" />
+                <ScalarProperty Name="Messages" ColumnName="Messages" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="Message_ID" ColumnName="Message_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
