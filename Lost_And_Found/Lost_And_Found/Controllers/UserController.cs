@@ -62,7 +62,7 @@ namespace Lost_And_Found.Controllers
                         long u_id = obj.addpost(ppm);
                         if (u_id > 0)
                         {
-                            TempData["Message"] = "Your Item Posted Succefully ";
+                            TempData["Message"] = "Your Item Posted Successfully ";
                             return RedirectToAction("Itemlisting");
                         }
 
@@ -188,6 +188,21 @@ namespace Lost_And_Found.Controllers
             //update session here for get only new added contacts (notification)
             Session["LastUpdate"] = DateTime.Now;
             return new JsonResult { Data = list, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+        public ActionResult search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult search(string category, string description)
+        {
+            SearchManager obj = new SearchManager();
+            List<ProductDataModel> items = null;
+            items = obj.selectsearchitems(category, description);
+
+            return View(items);
         }
     }
 }

@@ -358,6 +358,7 @@
     <Compile Include="Manager\LoginManager.cs" />
     <Compile Include="Manager\MessageManager.cs" />
     <Compile Include="Manager\RegisterManager.cs" />
+    <Compile Include="Manager\SearchManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Models\AjaxResponseModel.cs" />
     <Compile Include="Models\App_Admin.cs">
@@ -475,6 +476,7 @@
     <Content Include="scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="scripts\jquery-3.6.0.min.map" />
     <Content Include="Views\User\MyDeactivePosts.cshtml" />
+    <Content Include="Views\User\search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
