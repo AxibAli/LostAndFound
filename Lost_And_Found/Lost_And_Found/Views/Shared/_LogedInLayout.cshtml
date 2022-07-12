@@ -268,6 +268,9 @@
 
 
     <!--Essential Scripts-->
+    <!--Signal R-->
+    <script src="~/scripts/jquery.signalR-2.4.3.min.js"></script>
+    <script src="/signalr/hubs"></script>
     <!-- Bootstrap4. 3.1 -->
     <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- Slick Slider -->
@@ -276,9 +279,6 @@
     <script src="~/Content/Home/plugins/counterup/waypoint.js"></script>
     <script src="~/Content/Home/plugins/counterup/jquery.counterup.min.js"></script>
     <script src="~/Content/Home/plugins/instafeed-js/instafeed.min.js"></script>
-    <!--Signal R-->
-    <script src="~/scripts/jquery.signalR-2.4.3.min.js"></script>
-    <script src="/signalr/hubs"></script>
     <!--  Magnific Popup-->
     <script src="~/Content/Home/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
     <script src="~/Content/Home/js/script.js"></script>
@@ -428,7 +428,7 @@
                         alert("Successfully Sent!....");
                         //window.location.href = "/User/Home";
                         $("#MyModal").modal("hide");
-                       // window.location.reload();
+                        window.location.reload();
                     }
                 });
             });
@@ -447,7 +447,7 @@
                 var count = 0;
                 count = parseInt($('span.count').html()) || 0;
                 //only load notification if not already loaded
-                if (count > 0) {
+                if (count >= 0) {
                     updateNotification();
                 }
                 $('span.count', this).html('&nbsp;');
