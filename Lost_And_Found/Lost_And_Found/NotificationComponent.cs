@@ -14,8 +14,8 @@ namespace Lost_And_Found
         //Here we will add a function for register notification (will add sql dependency)
         public void RegisterNotification(DateTime currentTime)
         {
-            string conStr = ConfigurationManager.ConnectionStrings["SqlConString"].ConnectionString;
-            string sqlCommand = @"SELECT [Message_Id],[Product_Id],[Message_Date],[Messages] from [dbo].[Messages] where [Message_Date] > @Message_Date";
+            string conStr = ConfigurationManager.ConnectionStrings["sqlConString"].ConnectionString;
+            string sqlCommand = @"SELECT [Message_Id],[Product_Id],[Message_Date],[User_Messages] from [dbo].[Messages_Details] where [Message_Date] > @Message_Date";
             //you can notice here I have added table name like this [dbo].[Contacts] with [dbo], its mendatory when you use Sql Dependency
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -52,12 +52,49 @@ namespace Lost_And_Found
             }
         }
 
-        public List<Message> GetMessages(DateTime afterDate)
+        LostandFoundEntities db = new LostandFoundEntities();
+        public List<MessageModel> GetMessages(DateTime afterDate)
         {
-            using (LostandFoundEntities db = new LostandFoundEntities())
+            //return dc.contacts.Where(a => a.AddedOn > afterDate).OrderByDescending(a => a.AddedOn).ToList();
+
+            try
             {
-                return db.Messages.Where(a => a.Message_Date > afterDate).OrderByDescending(a => a.Message_Date).ToList();
+                var request = (from pd in db.Products
+                               join m in db.Messages_Details on pd.Product_ID equals m.Product_ID into msg
+                               from msgdata in msg.DefaultIfEmpty()
+                               join u in db.App_User on msgdata.Sent_By equals u.User_ID
+                               where (pd.Product_IsActive == true )
+                               select new
+                               {
+                                   pd.Product_ID,
+                                   pd.Product_Name,
+                                   pd.Product_Category,
+                                   pd.Product_Location,
+                                   pd.Product_Description,
+                                   pd.Product_IsActive,
+                                   u.User_FullName,
+                                   u.User_Contact,
+                                   msgdata.User_Messages,
+                                   msgdata.Message_Date,
+                               }).OrderByDescending(x => x.Product_ID).ToList();
+
+
+                List<MessageModel> List = request.Select(x => new MessageModel
+                {
+                    Product_Id = x.Product_ID,
+                    User_Message=x.User_Messages,
+                    From =x.User_FullName,
+                    Contact=x.User_Contact,
+
+
+                }).ToList();
+                return List;
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

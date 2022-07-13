@@ -16,14 +16,14 @@ namespace Lost_And_Found.Manager
         {
             try
             {
-                Message tblmsg = new Message();
+                Messages_Details tblmsg = new Messages_Details();
                 tblmsg.Message_ID = mm.Message_Id;
                 tblmsg.Product_ID = mm.Product_Id;
                 tblmsg.Message_Date = mm.Meassage_Date;
                 tblmsg.Sent_By = mm.Sent_By;
-                tblmsg.Messages = mm.Message;
+                tblmsg.User_Messages = mm.User_Message;
                 
-                db.Messages.Add(tblmsg);
+                db.Messages_Details.Add(tblmsg);
                 db.SaveChanges();
                 msgid = tblmsg.Message_ID;
                 return msgid;

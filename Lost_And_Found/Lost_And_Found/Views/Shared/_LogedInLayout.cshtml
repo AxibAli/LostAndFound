@@ -11,9 +11,15 @@
 
     <!-- Mobile Specific Meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Ajax Script-->
+    @*<script src="~/scripts/jquery-3.6.0.js"></script>*@
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/GeneralAjax.js"></script>
     <!-- bootstrap.min css -->
+    <link href="~/Content/Home/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/scripts/jquery.signalR-2.4.3.min.js"></script>
     <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="~/Content/Home/plugins/bootstrap/css/bootstrap.min.css">
+    <script src="/signalr/hubs"></script>
     <!-- Icofont Css -->
     <link rel="stylesheet" href="~/Content/Home/plugins/themify/css/themify-icons.css">
     <link rel="stylesheet" href="~/Content/Home/plugins/fontawesome/css/all.css">
@@ -28,9 +34,6 @@
     <link href="~/Content/css/ProfileStyleSheet1.css" rel="stylesheet" />
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="~/Content/Home/css/style.css">
-    <!--Ajax Script-->
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
-    <script src="~/Scripts/GeneralAjax.js"></script>
     <!--Sweet Alert Script-->
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -90,6 +93,7 @@
             top: -3px;
         }
     </style>
+
 </head>
 <body>
     <!-- NAVBAR -->
@@ -266,13 +270,6 @@
         </div>
     </div>
 
-
-    <!--Essential Scripts-->
-    <!--Signal R-->
-    <script src="~/scripts/jquery.signalR-2.4.3.min.js"></script>
-    <script src="/signalr/hubs"></script>
-    <!-- Bootstrap4. 3.1 -->
-    <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- Slick Slider -->
     <script src="~/Content/Home/plugins/slick-carousel/slick/slick.min.js"></script>
     <!-- Counterup -->
@@ -428,7 +425,7 @@
                         alert("Successfully Sent!....");
                         //window.location.href = "/User/Home";
                         $("#MyModal").modal("hide");
-                        window.location.reload();
+                        //window.location.reload();
                     }
                 });
             });
@@ -458,19 +455,24 @@
             })
             // update notification
             function updateNotification() {
-                debugger;
+               // debugger;
+                var log = '';
                 $('#notiContent').empty();
                 $('#notiContent').append($('<li>Loading...</li>'));
                 $.ajax({
                     type: 'GET',
-                    url: '/User/GetNotificationContacts',
+                    url: '/User/GetNotification',
                     success: function (response) {
                         $('#notiContent').empty();
                         if (response.length == 0) {
                             $('#notiContent').append($('<li>No data available</li>'));
                         }
-                        $.each(response, function (index, value) {
-                            $('#notiContent').append($('<li>New contact : ' + value.Contact_Name + ' (' + value.Contact_No + ') added</li>'));
+                        $(response).each(function (index, value) {
+                            debugger;                           
+                            //$('#notiContent').append($('<li>Message:' + value.User_Messages + ' (' + value.Message_Date + ')added</li>'));
+                            $('#notiContent').append('<li> Message:' + value.User_Message + '</li>' );
+                            //log+=value.User_Message;
+                            //alert(value.User_Message);
                         });
                     },
                     error: function (error) {

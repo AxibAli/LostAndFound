@@ -15,7 +15,7 @@ namespace Lost_And_Found.Models
     public partial class Found_Product
     {
         public long Found_Product_ID { get; set; }
-        public long Product_ID { get; set; }
+        public Nullable<long> Product_ID { get; set; }
         public string Found_Product_Status { get; set; }
     
         public virtual Product Product { get; set; }

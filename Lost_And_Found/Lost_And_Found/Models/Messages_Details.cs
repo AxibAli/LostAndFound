@@ -12,11 +12,11 @@ namespace Lost_And_Found.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Message
+    public partial class Messages_Details
     {
         public long Message_ID { get; set; }
         public long Product_ID { get; set; }
-        public string Messages { get; set; }
+        public string User_Messages { get; set; }
         public System.DateTime Message_Date { get; set; }
         public long Sent_By { get; set; }
     

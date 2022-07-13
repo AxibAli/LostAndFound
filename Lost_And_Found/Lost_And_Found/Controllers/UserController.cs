@@ -24,7 +24,7 @@ namespace Lost_And_Found.Controllers
         {
             mm.Product_Id = productid;
             mm.Meassage_Date = DateTime.Now;
-            mm.Message = postMessage;
+            mm.User_Message = postMessage;
             mm.Sent_By = Convert.ToInt64(Session["User_ID"]);
 
             MessageManager obj = new MessageManager();
@@ -180,7 +180,7 @@ namespace Lost_And_Found.Controllers
             bool result = obj.UpdateMyPost(model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetNotificationContacts()
+        public JsonResult GetNotification()
         {
             var notificationRegisterTime = Session["LastUpdated"] != null ? Convert.ToDateTime(Session["LastUpdated"]) : DateTime.Now;
             NotificationComponent NC = new NotificationComponent();

@@ -19,11 +19,11 @@ namespace Lost_And_Found.Models
         {
             this.Found_Product = new HashSet<Found_Product>();
             this.Lost_Product = new HashSet<Lost_Product>();
-            this.Messages = new HashSet<Message>();
+            this.Messages_Details = new HashSet<Messages_Details>();
         }
     
         public long Product_ID { get; set; }
-        public long Postedby { get; set; }
+        public Nullable<long> Postedby { get; set; }
         public string Product_Name { get; set; }
         public string Product_Category { get; set; }
         public string Product_Image { get; set; }
@@ -38,6 +38,6 @@ namespace Lost_And_Found.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lost_Product> Lost_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Message> Messages { get; set; }
+        public virtual ICollection<Messages_Details> Messages_Details { get; set; }
     }
 }

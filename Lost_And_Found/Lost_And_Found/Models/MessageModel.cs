@@ -11,7 +11,8 @@ namespace Lost_And_Found.Models
         public long Product_Id { get; set; }
         public long Sent_By { get; set; }
         public DateTime Meassage_Date { get; set; }
-        public string Message { get; set; }
-
+        public string User_Message { get; set; }
+        public string From {get; set;}
+        public string Contact {get; set;}
     }
 }
