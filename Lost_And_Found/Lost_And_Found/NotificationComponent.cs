@@ -53,7 +53,7 @@ namespace Lost_And_Found
         }
 
         LostandFoundEntities db = new LostandFoundEntities();
-        public List<MessageModel> GetMessages(DateTime afterDate)
+        public List<MessageModel> GetMessages(DateTime afterDate ,long id )
         {
             //return dc.contacts.Where(a => a.AddedOn > afterDate).OrderByDescending(a => a.AddedOn).ToList();
 
@@ -63,7 +63,7 @@ namespace Lost_And_Found
                                join m in db.Messages_Details on pd.Product_ID equals m.Product_ID into msg
                                from msgdata in msg.DefaultIfEmpty()
                                join u in db.App_User on msgdata.Sent_By equals u.User_ID
-                               where (pd.Product_IsActive == true )
+                               where (pd.Product_IsActive == true && pd.Postedby == id )
                                select new
                                {
                                    pd.Product_ID,
@@ -74,9 +74,10 @@ namespace Lost_And_Found
                                    pd.Product_IsActive,
                                    u.User_FullName,
                                    u.User_Contact,
+                                   msgdata.Message_ID,
                                    msgdata.User_Messages,
                                    msgdata.Message_Date,
-                               }).OrderByDescending(x => x.Product_ID).ToList();
+                               }).OrderByDescending(x => x.Message_ID).ToList();
 
 
                 List<MessageModel> List = request.Select(x => new MessageModel
@@ -85,8 +86,6 @@ namespace Lost_And_Found
                     User_Message=x.User_Messages,
                     From =x.User_FullName,
                     Contact=x.User_Contact,
-
-
                 }).ToList();
                 return List;
             }

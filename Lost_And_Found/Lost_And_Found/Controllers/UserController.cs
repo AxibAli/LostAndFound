@@ -183,8 +183,10 @@ namespace Lost_And_Found.Controllers
         public JsonResult GetNotification()
         {
             var notificationRegisterTime = Session["LastUpdated"] != null ? Convert.ToDateTime(Session["LastUpdated"]) : DateTime.Now;
+            long id = Convert.ToInt64(Session["User_ID"]);
+
             NotificationComponent NC = new NotificationComponent();
-            var list = NC.GetMessages(notificationRegisterTime);
+            var list = NC.GetMessages(notificationRegisterTime,id);
             //update session here for get only new added contacts (notification)
             Session["LastUpdate"] = DateTime.Now;
             return new JsonResult { Data = list, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
