@@ -11,9 +11,11 @@ namespace Lost_And_Found.Controllers
     public class HomeController : Controller
     {
         
-        public ActionResult MainIndex()
+        public ActionResult MainIndex(DashboardModel dbm)
         {
-            return View();
+            DashboardManager obj = new DashboardManager();
+            var request = obj.Cards(dbm);
+            return View(request);
         }
 
         public ActionResult About()

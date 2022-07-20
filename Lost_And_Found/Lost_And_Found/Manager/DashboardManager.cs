@@ -18,7 +18,7 @@ namespace Lost_And_Found
                 dm.total_post = db.Products.Count();
                 dm.total_found_post = db.Found_Product.Count();
                 dm.total_lost_post = db.Lost_Product.Count();
-                dm.total_recovered_post = db.Products.Count();
+                dm.total_recovered_post = db.Products.Where(x=>x.Product_IsActive == false).Count();
                 var act = db.App_Admin.Where(x => x.Admin_IsActive == true).Count();
                 var deact = db.App_Admin.Where(x => x.Admin_IsActive == false).Count();
 

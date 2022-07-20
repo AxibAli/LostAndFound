@@ -1,12 +1,61 @@
-﻿@model List<Lost_And_Found.Models.PostProductModel>
+﻿@model Lost_And_Found.Models.DashboardModel
 
 @{
     ViewBag.Title = "Lost & Found";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-    <div class="container">
-        <h2>No Product are Uploaded </h2>
+
+<!-- -------------- Welcome Heading Row -------------- -->
+<div class="row">
+    <div class="col-sm welcome-heading-col">
+        <h1 class="welcome-heading">Welcome to Lost and Found </h1>
     </div>
+</div>
+<div>
+    <!-- -------------- Cards Row # 01 -------------- -->
+    <div class="row">
+        <div class="col-sm card-col">
+            <div class="row card-content">
+                <span class="card-content__count">@Model.total_post</span>
+                <br>
+                @*<p class="card-content__text">Total posts</p>*@
+            </div>
+            <div class="row card-link">
+                <p class="card-link__text">Total Posts</p>
+            </div>
+        </div>
 
+        <div class="col-sm card-col">
+            <div class="row card-content">
+                <span class="card-content__count">@Model.total_found_post</span>
+                <br>
+                @*<p class="card-content__text">Total Found Posts</p>*@
+            </div>
+            <div class="row card-link">
+                <p class="card-link__text">Total Found Posts</p>
+            </div>
+        </div>
+        <div class="col-sm card-col">
+            <div class="row card-content">
+                <span class="card-content__count">@Model.total_lost_post</span>
+                <br>
+                @*<p class="card-content__text">Total Lost Posts</p>*@
+            </div>
+            <div class="row card-link">
+                <p class="card-link__text">Total Lost Posts</p>
+            </div>
+        </div>
 
+        <div class="col-sm card-col">
+            <div class="row card-content">
+                <span class="card-content__count">@Model.total_recovered_post</span>
+                <br>
+                @*<p class="card-content__text">Total Recovered Posts</p>*@
+            </div>
+            <div class="row card-link">
+                <p class="card-link__text">Recovered Items</p>
+            </div>
+        </div>
+    </div>
+</div>
