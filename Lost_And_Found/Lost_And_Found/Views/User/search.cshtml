@@ -6,7 +6,7 @@
 
 
 <style>
-    .srch {
+   /* .srch {
         position: relative;
         display: inline-block;
         margin-top: 8px;
@@ -14,40 +14,118 @@
         height: 30px;
         padding-left:10px;
        
-    }
+    }*/
     .srchlabel{
         padding-left:5px;
         color:black;
     }
-</style>
+    .searchdrop {
+        display: inline-flex;
+        outline: 0;
+        float: left;
+        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        position: relative;
+    }
 
-<form method="post">
-    <div class="row">
-        <div>
-            <label for="description" class="srchlabel">Any Description:</label>
-            <input type="text" class="srch" name="description" id="des" />
+        .searchdrop > input[type=text] {
+            outline: 0;
+            height: 100% !important;
+            width: 244px;
+            line-height: 42px;
+            padding: 0 16px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #212121;
+            border: 0;
+            float: left;
+            -webkit-border-radius: 4px 0 0 4px;
+            border-radius: 4px 0 0 4px;
+        }
+
+            .searchdrop > input[type=text]:focus {
+                outline: 0;
+                background-color: #FFF;
+            }
+
+        .searchdrop > input[type=button] {
+            outline: 0;
+            background: none;
+            background-color: var(--buttoncolor);
+            float: left;
+            height: 42px;
+            width: 42px;
+            text-align: center;
+            line-height: 42px;
+            border: 0;
+            color: #FFF;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: 16px;
+            text-rendering: auto;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            -webkit-transition: background-color .4s ease;
+            transition: background-color .4s ease;
+            -webkit-border-radius: 0 4px 4px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+            .searchdrop > input[type=button]:hover {
+                background-color: var(--buttonhovercolor);
+                cursor: pointer;
+            }
+    .dd {
+        display: inline-flex;
+        outline: 0;
+        float: left;
+        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        position: relative;
+    }
+        .dd > select {
+            outline: 0;
+            height: 100% !important;
+            width: 244px;
+            line-height: 42px;
+            padding: 0 16px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #212121;
+            border: 0;
+            float: left;
+            -webkit-border-radius: 4px 0 0 4px;
+            border-radius: 4px 0 0 4px;
+        }
+</style>
+<div style="width: 800px; margin:auto;">
+    <form method="post">
+        <div class="row">
+            <div class="searchdrop">
+                <input type="text" placeholder="Search" class="srch" name="description" id="des" />
+            </div>
+            <div class="dd">
+                <label for="category" class="srchlabel"></label>
+                <select name="category" id="cat" class="srch">
+                    <option value="">Please Select</option>
+                    <option value="Bags">Bags</option>
+                    <option value="Cars">Cars</option>
+                    <option value="Clothes_Shoes">Clothes_Shoes</option>
+                    <option value="Documents">Documents</option>
+                    <option value="Jewellery">Jewellery</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="People">People</option>
+                    <option value="Pets">Pets</option>
+                    <option value="Keys">Keys</option>
+                </select>
+            </div>
+            <div style="padding-left:7px; margin-top:2px; ">
+                <button class="btn btn-primary custyle" id="search"><i class="fa fa-search"></i></button>
+            </div>
         </div>
-        <div>
-            <label for="category" class="srchlabel">Choose a Category:</label>
-            <select name="category" id="cat" class="srch">
-                <option value="">Please Select</option>
-                <option value="Bags">Bags</option>
-                <option value="Cars">Cars</option>
-                <option value="Clothes_Shoes">Clothes_Shoes</option>
-                <option value="Documents">Documents</option>
-                <option value="Jewellery">Jewellery</option>
-                <option value="Laptop">Laptop</option>
-                <option value="Mobile">Mobile</option>
-                <option value="People">People</option>
-                <option value="Pets">Pets</option>
-                <option value="Keys">Keys</option>
-            </select>
-        </div>
-        <div style="padding-left:7px; margin-top:2px; ">
-            <button class="btn btn-primary custyle" id="search">Search</button>
-        </div>
-    </div>
-</form>
+    </form>
+</div>
 @if (Model != null)
 {
     <div class="row">
