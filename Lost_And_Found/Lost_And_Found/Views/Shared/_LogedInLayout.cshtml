@@ -107,6 +107,13 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="ti-menu-alt"></span>
                 </button>
+                <div style="position:absolute; top:0; padding: 10px;">
+                    <span class=" noti fa fa-bell"><span class="count">&nbsp;</span></span>
+                    <div class="noti-content">
+            <div class="noti-top-arrow"></div>
+            <ul id="notiContent"></ul>
+        </div>
+                </div>
 
                 <!-- Collapse -->
                 <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -128,11 +135,19 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="list-inline header-contact float-lg-right">
-                        <li class="list-inline-item">
-                            <a href="@Url.Action("PostProduct","User")" class="btn btn-solid-border btn-sm"><i class="ti-phone-alt mr-2"></i>Post Item</a>
+                    @*<ul class="list-inline header-contact float-lg-right">
+            <li class="nav-item">
+                <a href="@Url.Action("PostProduct","User")" class="btn btn-solid-border btn-sm"><i class="ti-phone-alt mr-2"></i>Post Item</a>
+            </li>
+        </ul>*@
+                    <ul class="list-inline header-contact float-lg-right" style="margin-left:8px; margin-right: 8px;">
+                        <li class="nav-item dropdown">
+                            <a class="btn btn-main-2 btn-sm nav-link dropdown-toggle" href="@Url.Action("PostProduct","User")" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Post Item
+                            </a>
                         </li>
                     </ul>
+
                     <ul class="list-inline header-contact float-lg-right" style="margin-left:8px; margin-right: 8px;">
                         <li class="nav-item dropdown">
                             <a class="btn btn-main-2 btn-sm nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -156,11 +171,11 @@
                             </ul>
                         </li>
                     </ul>
-                    <span class=" noti fa fa-bell"><span class="count">&nbsp;</span></span>
-                    <div class="noti-content">
-                        <div class="noti-top-arrow"></div>
-                        <ul id="notiContent"></ul>
-                    </div>
+                    @*<span class=" noti fa fa-bell"><span class="count">&nbsp;</span></span>
+        <div class="noti-content">
+            <div class="noti-top-arrow"></div>
+            <ul id="notiContent"></ul>
+        </div>*@
                 </div> <!-- / .navbar-collapse -->
             </nav>
         </div> <!-- / .container -->

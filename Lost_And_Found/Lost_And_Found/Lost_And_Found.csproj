@@ -162,6 +162,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\images\ab.jpeg" />
+    <Content Include="Content\assets\images\aftr.png" />
     <Content Include="Content\assets\images\dashboard__add-admin.png" />
     <Content Include="Content\assets\images\dashboard__all-posts.png" />
     <Content Include="Content\assets\images\dashboard__all-users.png" />
@@ -184,6 +186,7 @@
     <Content Include="Content\assets\images\icon\icon_1.png" />
     <Content Include="Content\assets\images\icon\icon_2.png" />
     <Content Include="Content\assets\images\icon\icon_3.png" />
+    <Content Include="Content\assets\images\Lf.jpeg" />
     <Content Include="Content\assets\images\login__backgroung.jpeg" />
     <Content Include="Content\assets\images\logo.png" />
     <Content Include="Content\assets\images\search-record.png" />

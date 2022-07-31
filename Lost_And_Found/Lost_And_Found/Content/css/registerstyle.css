@@ -1,18 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-/**{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
-}*/
-/*body{
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}*/
+
 .container3 {
     max-width: 700px;
     width: 100%;
@@ -20,9 +7,7 @@
     padding: 25px 30px;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-    margin: auto; /*
-  margin-top:150px;
-  margin-bottom:50px;*/
+    margin: auto;
 }
 
     .container3 .title {
@@ -66,8 +51,31 @@ form .user-details .input-box {
     width: 50%;
 }
 
+.container6 {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .rightcont {
     display: table-cell;
+}
+
+@media only screen and (max-width: 720px) {
+    .rightcont {
+        display: block;
+        padding-left: 40px;
+    }
+
+    .user-profile-image {
+        padding-left: 40px;
+    }
+
+        .user-profile-image .upload-pic {
+            left: 55px;
+        }
 }
 
 form .input-box span.details {
@@ -153,7 +161,6 @@ form .button {
     }
 
         form .button input:hover {
-            /* transform: scale(0.99); */
             background: linear-gradient(-135deg, #71b7e6, #9b59b6);
         }
 
@@ -177,7 +184,6 @@ form .crtbutton {
     }
 
         form .crtbutton input:hover {
-            /* transform: scale(0.99); */
             background: linear-gradient(-135deg, #71b7e6, #9b59b6);
         }
 
