@@ -1,71 +1,74 @@
 ﻿@model Lost_And_Found.Models.UserRegisterModel
-@{ 
+@{
     ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_HomeLayout.cshtml"; 
-    }
-
-<div class="container3">
-    <div class="title">Registration Form</div>
-    <div class="content">
-        <form id="form" method="post">
-            <div class="user-details">
-                <div class="input-box">
-                    <span class="details">Full Name</span>
-                    @Html.TextBoxFor(x => x.User_FullName, null, new { type = "text", placeholder = "Enter your name", required = true })
-                    @Html.ValidationMessageFor(x => x.User_FullName, null, new { style = "color:red" })
-                </div>
-                <div class="input-box">
-                    <span class="details">Email</span>
-                    @Html.TextBoxFor(x => x.User_Email, null, new { type = "text", placeholder = "Enter your email", required = true })
-                    @Html.ValidationMessageFor(x => x.User_Email, null, new { style = "color:red" })
-                </div>
-                <div class="input-box">
-                    <span class="details">Phone Number</span>
-                    @Html.TextBoxFor(x => x.User_Contact, null, new { type = "tel", placeholder = "Enter your number", required = true })
-                    @Html.ValidationMessageFor(x => x.User_Contact, null, new { style = "color:red" })
-                </div>
-                <div class="input-box">
-                    <span class="details">Password</span>
-                    @Html.TextBoxFor(x => x.User_Password, null, new { type = "text", placeholder = "Enter your password", required = true })
-                    @Html.ValidationMessageFor(x => x.User_Password, null, new { style = "color:red" })
-                </div>
-                <div class="input-box">
-                    <span class="details">Date of Birth</span>
-                    @Html.TextBoxFor(x => x.User_DOB, null, new { type = "date",placeholder = "Enter your Date of Birth", required = true })
-                    @Html.ValidationMessageFor(x => x.User_DOB, null, new { style = "color:red" })
-                </div>
-                <div class="input-box">
-                </div>
-                <div class="input-box" style="width:100%">
-                    <span class="details">Address</span>
-                    @Html.TextBoxFor(x => x.User_Address, null, new { type = "text", placeholder = "Enter your Address", required = true })
-                    @Html.ValidationMessageFor(x => x.User_Address, null, new { style = "color:red" })
-                </div>
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<section class="banner">
+    <div class="container" style="padding-bottom:75px; padding-top:9px;">
+        <div class="container3">
+            <div class="title">Registration Form</div>
+            <div class="content">
+                <form id="form" method="post">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">Full Name</span>
+                            @Html.TextBoxFor(x => x.User_FullName, null, new { type = "text", placeholder = "Enter your name", required = true })
+                            @Html.ValidationMessageFor(x => x.User_FullName, null, new { style = "color:red" })
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Email</span>
+                            @Html.TextBoxFor(x => x.User_Email, null, new { type = "text", placeholder = "Enter your email", required = true })
+                            @Html.ValidationMessageFor(x => x.User_Email, null, new { style = "color:red" })
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Phone Number</span>
+                            @Html.TextBoxFor(x => x.User_Contact, null, new { type = "tel", placeholder = "Enter your number", required = true })
+                            @Html.ValidationMessageFor(x => x.User_Contact, null, new { style = "color:red" })
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Password</span>
+                            @Html.TextBoxFor(x => x.User_Password, null, new { type = "text", placeholder = "Enter your password", required = true })
+                            @Html.ValidationMessageFor(x => x.User_Password, null, new { style = "color:red" })
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Date of Birth</span>
+                            @Html.TextBoxFor(x => x.User_DOB, null, new { type = "date", placeholder = "Enter your Date of Birth", required = true })
+                            @Html.ValidationMessageFor(x => x.User_DOB, null, new { style = "color:red" })
+                        </div>
+                        <div class="input-box">
+                        </div>
+                        <div class="input-box" style="width:100%">
+                            <span class="details">Address</span>
+                            @Html.TextBoxFor(x => x.User_Address, null, new { type = "text", placeholder = "Enter your Address", required = true })
+                            @Html.ValidationMessageFor(x => x.User_Address, null, new { style = "color:red" })
+                        </div>
+                    </div>
+                    <div class="gender-details">
+                        @Html.RadioButtonFor(x => x.User_Gender, "Male", new { type = "radio", name = "gender", id = "dot-1", required = true })
+                        @Html.RadioButtonFor(x => x.User_Gender, "Female", new { type = "radio", name = "gender", id = "dot-2", required = true })
+                        @Html.RadioButtonFor(x => x.User_Gender, "Not Say", new { type = "radio", name = "gender", id = "dot-3", required = true })
+                        @Html.ValidationMessageFor(x => x.User_Gender, "", new { style = "color:red" })
+                        <span class="gender-title">Gender</span>
+                        <div class="category">
+                            <label for="dot-1">
+                                <span class="dot one"></span>
+                                <span class="gender">Male</span>
+                            </label>
+                            <label for="dot-2">
+                                <span class="dot two"></span>
+                                <span class="gender">Female</span>
+                            </label>
+                            <label for="dot-3">
+                                <span class="dot three"></span>
+                                <span class="gender">Prefer not to say</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="crtbutton">
+                        <input type="submit" id="btnDraft" value="Register Your Self">
+                    </div>
+                </form>
             </div>
-            <div class="gender-details" >
-                @Html.RadioButtonFor(x => x.User_Gender, "Male", new { type = "radio", name = "gender", id = "dot-1" , required = true })
-                @Html.RadioButtonFor(x => x.User_Gender, "Female", new { type = "radio", name = "gender", id = "dot-2" , required = true })
-                @Html.RadioButtonFor(x => x.User_Gender, "Not Say", new { type = "radio", name = "gender", id = "dot-3", required = true })
-                @Html.ValidationMessageFor(x => x.User_Gender, "", new { style = "color:red" })
-                <span class="gender-title">Gender</span>
-                <div class="category">
-                    <label for="dot-1">
-                        <span class="dot one"></span>
-                        <span class="gender">Male</span>
-                    </label>
-                    <label for="dot-2">
-                        <span class="dot two"></span>
-                        <span class="gender">Female</span>
-                    </label>
-                    <label for="dot-3">
-                        <span class="dot three"></span>
-                        <span class="gender">Prefer not to say</span>
-                    </label>
-                </div>
-            </div>
-            <div class="crtbutton">
-                <input type="submit" id="btnDraft" value="Register Your Self">
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+</section>

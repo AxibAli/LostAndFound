@@ -12,43 +12,37 @@
         overflow: hidden;
         background-color: rgb(0, 0, 0,0.6);
         background-blend-mode: soft-light;
-        height:70.6vh;
+        height: 92.4vh;
     }
+
     #x {
         opacity: 0.7;
+    }
 
-    }
-    #x:hover{
-        opacity:1;
-        transition:0.3s;
-    }
+        #x:hover {
+            opacity: 1;
+            transition: 0.3s;
+        }
 </style>
 
 <!-- -------------- Welcome Heading Row -------------- -->
-    <div class="bgimgabt">
-        @*<div class="row">
-                <div class="col-sm welcome-heading-col" style="padding: 1px !important;">
-                    <h1 class="welcome-heading">Welcome to Lost and Found </h1>
-                </div>
-            </div>*@
+<section class="banner bgimgabt">
+    <div class="container">
         <!-- -------------- Cards Row # 01 -------------- -->
         <div class="row" id="x" style="padding-top:120px; ">
             <div class="col-sm card-col">
                 <div class="row card-content">
                     <span class="card-content__count">@Model.total_post</span>
                     <br>
-                    @*<p class="card-content__text">Total posts</p>*@
                 </div>
                 <div class="row card-link">
                     <p class="card-link__text">Total Posts</p>
                 </div>
             </div>
-
             <div class="col-sm card-col">
                 <div class="row card-content">
                     <span class="card-content__count">@Model.total_found_post</span>
                     <br>
-                    @*<p class="card-content__text">Total Found Posts</p>*@
                 </div>
                 <div class="row card-link">
                     <p class="card-link__text">Total Found Posts</p>
@@ -58,18 +52,15 @@
                 <div class="row card-content">
                     <span class="card-content__count">@Model.total_lost_post</span>
                     <br>
-                    @*<p class="card-content__text">Total Lost Posts</p>*@
                 </div>
                 <div class="row card-link">
                     <p class="card-link__text">Total Lost Posts</p>
                 </div>
             </div>
-
             <div class="col-sm card-col">
                 <div class="row card-content">
                     <span class="card-content__count">@Model.total_recovered_post</span>
                     <br>
-                    @*<p class="card-content__text">Total Recovered Posts</p>*@
                 </div>
                 <div class="row card-link">
                     <p class="card-link__text">Recovered Items</p>
@@ -77,3 +68,4 @@
             </div>
         </div>
     </div>
+</section>
