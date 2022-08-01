@@ -190,7 +190,6 @@
     <Content Include="Content\assets\images\Lf.jpeg" />
     <Content Include="Content\assets\images\login__backgroung.jpeg" />
     <Content Include="Content\assets\images\logo.png" />
-    <Content Include="Content\assets\images\logolf.png" />
     <Content Include="Content\assets\images\search-record.png" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\CardandToogleStyleSheet.css" />
@@ -275,7 +274,6 @@
     <Content Include="Content\Home\images\team\team-3.jpg" />
     <Content Include="Content\Home\images\team\team-4.jpg" />
     <Content Include="Content\Home\images\team\team-5.jpg" />
-    <Content Include="Content\Home\images\logolf.jpeg" />
     <Content Include="Content\Home\js\script.js" />
     <Content Include="Content\Home\plugins\animate-css\animate.css" />
     <Content Include="Content\Home\plugins\bootstrap\css\bootstrap.min.css" />
