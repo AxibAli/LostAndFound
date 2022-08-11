@@ -6,10 +6,11 @@ using System.Web.Mvc;
 using Lost_And_Found.Models;
 using Lost_And_Found.Manager;
 using Lost_And_Found.Filters;
+using System.Web.Security;
 
 namespace Lost_And_Found.Controllers
 {
-    [AuthorizedUser]
+    [AuthorizedUser(Roles = "User")]
     public class CategoryController : Controller
     {
         public ActionResult Mobile(ProductDataModel ppm)

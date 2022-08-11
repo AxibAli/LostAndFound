@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace Lost_And_Found.Controllers
 {
-    [AuthorizedUser]
+    [AuthorizedUser(Roles = "User")]
     public class UserController : Controller
     {
         LostandFoundEntities db = new LostandFoundEntities();
