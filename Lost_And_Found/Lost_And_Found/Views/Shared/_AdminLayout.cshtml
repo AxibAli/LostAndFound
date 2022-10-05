@@ -29,6 +29,9 @@
 
     @*<script src="~/Scripts/SweetAlert.js"></script>*@
 
+    @* Script for Modal My Profile *@
+    <script src="~/scripts/ModalForMyProfile.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
@@ -37,7 +40,7 @@
         .switch {
             position: relative;
             display: inline-block;
-            margin-top:8px;
+            margin-top: 8px;
             width: 60px;
             height: 34px;
         }
@@ -213,7 +216,7 @@
                                     <input type="text" class="form-class-r" id="AdminEmail" placeholder="AdminEmail" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-class-r" id="AdminPass" placeholder="AdminPass" />  
+                                    <input type="text" class="form-class-r" id="AdminPass" placeholder="AdminPass" />
                                 </div>
                                 <div class="form-group">
                                     <select name="gender" id="AdminGender" class="form-class-r">
@@ -336,71 +339,71 @@
         </script>
     }
 
-    <script>
-        //Show The Popup Modal For Edit User Record
-        function EditAdminRecord(Admin_ID) {
-            var url = "/Admin/GetAdminById?Admin_ID=" + Admin_ID;
-            $("#ModalTitle").html("Update User Profile");
-            $("#MyModal").modal();
-            $.ajax({
-                type: "GET",
-                url: url,
-                success: function (data) {
-                    var obj = JSON.parse(data);
-                    $("#AdminId").val(obj.Admin_ID);
-                    $("#AdminFullName").val(obj.Admin_FullName);
-                    $("#AdminEmail").val(obj.Admin_Email);
-                    $("#AdminContact").val(obj.Admin_Contact);
-                    $("#AdminPass").val(obj.Admin_Password);
-                    $("#AdminGender").val(obj.Admin_Gender);
+    @*<script>
+            //Show The Popup Modal For Edit User Record
+            function EditAdminRecord(Admin_ID) {
+                var url = "/Admin/GetAdminById?Admin_ID=" + Admin_ID;
+                $("#ModalTitle").html("Update User Profile");
+                $("#MyModal").modal();
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    success: function (data) {
+                        var obj = JSON.parse(data);
+                        $("#AdminId").val(obj.Admin_ID);
+                        $("#AdminFullName").val(obj.Admin_FullName);
+                        $("#AdminEmail").val(obj.Admin_Email);
+                        $("#AdminContact").val(obj.Admin_Contact);
+                        $("#AdminPass").val(obj.Admin_Password);
+                        $("#AdminGender").val(obj.Admin_Gender);
 
-                }
-            })
-        }
-
-        $("#SaveAdminRecord").click(function () {
-
-            var data = {
-                adminid: $('#AdminId').val(),
-                adminname: $('#AdminFullName').val(),
-                adminemail: $('#AdminEmail').val(),
-                admincontact: $('#AdminContact').val(),
-                adminpass: $('#AdminPass').val(),
-                admingender: $('#AdminGender').val()
+                    }
+                })
             }
-            $.ajax({
-                type: "Post",
-                url: "/Admin/UpdateDataInDatabase",
-                data: data,
-                success: function (result) {
-                    alert("Successfully Updated....");
-                    window.location.href = "/Admin/Dashboard";
-                    $("#MyModal").modal("hide");
-                }
-            })
-        })
-        $(document).ready(function () {
-            $("#sendMessage").click(function () {
-                debugger;
+
+            $("#SaveAdminRecord").click(function () {
+
                 var data = {
-                    postMessage: $('#message').val(),
-                    productid: $('#Id').val()
+                    adminid: $('#AdminId').val(),
+                    adminname: $('#AdminFullName').val(),
+                    adminemail: $('#AdminEmail').val(),
+                    admincontact: $('#AdminContact').val(),
+                    adminpass: $('#AdminPass').val(),
+                    admingender: $('#AdminGender').val()
                 }
                 $.ajax({
                     type: "Post",
-                    url: "/User/SendMessage",
+                    url: "/Admin/UpdateDataInDatabase",
                     data: data,
-
                     success: function (result) {
-                        alert("Successfully Sent!....");
-                        window.location.href = "/User/Home";
+                        alert("Successfully Updated....");
+                        window.location.href = "/Admin/Dashboard";
                         $("#MyModal").modal("hide");
-
                     }
+                })
+            })
+            $(document).ready(function () {
+                $("#sendMessage").click(function () {
+                    debugger;
+                    var data = {
+                        postMessage: $('#message').val(),
+                        productid: $('#Id').val()
+                    }
+                    $.ajax({
+                        type: "Post",
+                        url: "/User/SendMessage",
+                        data: data,
+
+                        success: function (result) {
+                            alert("Successfully Sent!....");
+                            window.location.href = "/User/Home";
+                            $("#MyModal").modal("hide");
+
+                        }
+                    });
                 });
             });
-        });
-    </script>
+        </script>*@
 </body>
 
 </html>
